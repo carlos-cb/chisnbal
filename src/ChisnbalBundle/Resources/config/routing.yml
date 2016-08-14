@@ -1,0 +1,3 @@
+chisnbal_homepage:
+    path:     /
+    defaults: { _controller: ChisnbalBundle:Default:index }

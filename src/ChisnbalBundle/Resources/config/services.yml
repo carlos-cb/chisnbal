@@ -1,0 +1,4 @@
+services:
+#    chisnbal.example:
+#        class: ChisnbalBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
