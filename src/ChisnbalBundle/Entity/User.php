@@ -3,16 +3,17 @@
 namespace ChisnbalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var int
      */
-    private $id;
+    protected $id;
 
 
     /**
@@ -39,6 +40,7 @@ class User
      */
     public function __construct()
     {
+        parent::__construct();
         $this->orderInfos = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
