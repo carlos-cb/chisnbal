@@ -1,9 +1,86 @@
 {% extends 'font.html.twig' %}
 
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/productlist.css') }}" />
+        {% endblock %}
 {% block content %}
-    <div class="site-inner" style="margin-bottom: 50px">
-        <div style="height: auto;" class="view-container">
-            <img src="{{ asset('bundles/chisnbal/img/1.jpg') }}"/>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="category">
+                    <li class="nuevo"><a href="">ÚLTIMA<br>SEMANA</a></li>
+                    <i class="empty-divider" role="separator">&nbsp;</i>
+                    <li class="mujer">HOMBRE</li>
+                    <i class="empty-divider" role="separator">&nbsp;</i>
+
+                    <li class="_category-link" data-categoryid="" tabindex="0">
+                        <a href="">ABRIGOS Y TRENCH</a>
+                    </li>
+                    <li class="_category-link" data-categoryid="" tabindex="0">
+                        <a href="">CAZADORAS</a>
+                    </li>
+                    <li class="_category-link" data-categoryid="" tabindex="0">
+                        <a href="">BLAZERS</a>
+                    </li>
+                    <li class="_category-link" data-categoryid="" tabindex="0">
+                        <a href="">CAMISAS</a>
+                    </li>
+                    <li class="_category-link" data-categoryid="" tabindex="0">
+                        <a href="">JEANS</a>
+                    </li>
+                    <li class="_category-link" data-categoryid="" tabindex="0">
+                        <a href="">POLOS</a>
+                    </li>
+                    <li class="_category-link" data-categoryid="" tabindex="0">
+                        <a href="">BOLSOS</a>
+                    </li>
+
+                    <li class="_category-link">
+                        <a href="">REBAJAS</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+                <div class='col-sm-6 col-md-4 col-lg-3'>
+                    <a href=""><img src="{{ asset('uploads/fotos/1792306800_2_3_1.jpg') }}" height="320px"></a>
+                    <div class="product-info">
+                        <a class="" href="">CAZADORA ANTELINA</a>
+                        <div class="price _product-price"><span>39.95 EUR</span></div>
+                    </div>
+                </div>
+                <div class='col-sm-6 col-md-4 col-lg-3'>
+                    <a href=""><img src="{{ asset('uploads/fotos/6688408427_2_4_1.jpg') }}" height="320px"></a>
+                    <div class="product-info">
+                        <a class="" href="">CAZADORA ANTELINA</a>
+                        <div class="price _product-price"><span>39.95 EUR</span></div>
+                    </div>
+                </div>
+                <div class='col-sm-6 col-md-4 col-lg-3'>
+                    <a href=""><img src="{{ asset('uploads/fotos/4341367751_2_1_1.jpg') }}" height="320px"></a>
+                    <div class="product-info">
+                        <a class="" href="">CAZADORA ANTELINA</a>
+                        <div class="price _product-price"><span>39.95 EUR</span></div>
+                    </div>
+                </div>
+                <div class='col-sm-6 col-md-4 col-lg-3'>
+                    <a href=""><img src="{{ asset('uploads/fotos/4341370800_2_1_1.jpg') }}" height="320px"></a>
+                    <div class="product-info">
+                        <a class="" href="">CAZADORA ANTELINA</a>
+                        <div class="price _product-price"><span>39.95 EUR</span></div>
+                    </div>
+                </div>
+                <div class='col-sm-6 col-md-4 col-lg-3'>
+                    <a href=""><img src="{{ asset('uploads/fotos/3918405505_1_1_1.jpg') }}" height="320px"></a>
+                    <div class="product-info">
+                        <a class="" href="">CAZADORA ANTELINA</a>
+                        <div class="price _product-price"><span>39.95 EUR</span></div>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
     </div>
 {% endblock %}

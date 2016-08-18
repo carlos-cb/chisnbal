@@ -1,3 +1,7 @@
 chisnbal_homepage:
     path:     /
     defaults: { _controller: ChisnbalBundle:Default:index }
+
+chisnbal_product_list:
+    path:     /productList
+    defaults: { _controller: ChisnbalBundle:Default:productList }

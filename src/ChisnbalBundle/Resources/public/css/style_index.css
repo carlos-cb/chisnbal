@@ -158,7 +158,6 @@ a.active,
 .link-text.active,
 a.two-line:hover .link-text{
     text-decoration: none;
-    border-bottom: 1px solid #000;
 }
 a.two-line { /* fix space */
     height: 34px;
@@ -665,7 +664,7 @@ footer {
 	padding-top:40px;
 	position:relative;
 	text-align:center;
-	width: 70%;
+	width: 65%;
     }
 footer .copyright{
 	line-height: 20px;

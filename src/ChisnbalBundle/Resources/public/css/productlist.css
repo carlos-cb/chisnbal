@@ -1,0 +1,75 @@
+body{
+    line-height: 14px;
+}
+.container-fluid {
+    margin-bottom: 100px;
+}
+.sidebar {
+        position: absolute;
+        top: 250px;
+        bottom: 0;
+        left: 90px;
+        display: block;
+        padding: 20px;
+        overflow-x: hidden;
+        overflow-y: auto;
+}
+ul.category {
+    margin: 10px 0 25px 2px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+ul.category li {
+    margin: 10px 0;
+}
+.mujer {
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+}
+li.nuevo a {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+}
+a:visited {
+    text-decoration: none;
+}
+a:link {
+    text-decoration: none;
+}
+ul.category li._category-link a {
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+}
+a{
+    color: black;
+}
+
+.product-info {
+    text-align: center;
+    font-size: 14px;
+    height: 70px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    text-transform: uppercase;
+    line-height: 14px;
+}
+.product-info a {
+    margin-bottom: 5px;
+    color: black;
+    overflow: hidden;
+}
+.price {
+    margin-top: 5px;
+    color: black;
+    overflow: hidden;
+}
