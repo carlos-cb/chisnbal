@@ -5,3 +5,7 @@ chisnbal_homepage:
 chisnbal_product_list:
     path:     /productList
     defaults: { _controller: ChisnbalBundle:Default:productList }
+
+chisnbal_fotodetalle_list:
+    path:     /fotodetalle
+    defaults: { _controller: ChisnbalBundle:Default:productDetalle }
