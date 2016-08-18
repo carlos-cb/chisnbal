@@ -1,1 +1,139 @@
-Hello World!
+{% extends 'font.html.twig' %}
+
+{% block content %}
+    <div class="site-inner" style="margin-bottom: 50px">
+        <div style="height: auto;" class="view-container">
+            <img src="{{ asset('bundles/chisnbal/img/1.jpg') }}"/>
+        </div>
+    </div>
+
+    <div class="site-section__inner site-section__inner--pattern-swirl">
+        <div class="site-section__content">
+            <h2 class="site-section__title">MÁS VENDIDO</h2>
+
+            <div class="flex-row flex-row--space products grid--row-6">
+                <div class="flex-row__col flex-row__col--2">
+                    <div class="product product--small">
+                        <a href="">
+                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item1.jpg') }}" alt="13&quot; Macbook EDC Kit">
+                        </a>
+                        <p class="product__subtitle"><a href="https://gallantry.com/collections/cargo-works">Cargo Works</a></p>
+                        <h4 class="product__title"><a href="">13" Macbook EDC Kit</a></h4>
+                    </div><!--end .product-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--2">
+                    <div class="product product--small">
+                        <a href="">
+                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item2.jpg') }}" alt="Atom AL"></a>
+                        <p class="product__subtitle"><a href="https://gallantry.com/collections/foursevens">Foursevens</a></p>
+                        <h4 class="product__title"><a href="">Atom AL</a></h4>
+                    </div><!--end .product-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--2">
+                    <div class="product product--small">
+                        <a href="">
+                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item3.jpg') }}" alt="Bolt Pen"></a>
+                        <p class="product__subtitle"><a href="https://gallantry.com/collections/karas-kustoms">Karas Kustoms</a></p>
+                        <h4 class="product__title"><a href="">Bolt Pen</a></h4>
+                    </div><!--end .product-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--2">
+                    <div class="product product--small" onclick="location.href='/products/the-ridge-wallet-carbon-fiber-cash-strap'">
+                        <a href="">
+                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item4.jpg') }}" alt="Carbon Fiber Wallet + Cash Strap"></a>
+                        <p class="product__subtitle"><a href="https://gallantry.com/collections/the-ridge">The Ridge</a></p>
+                        <h4 class="product__title"><a href="">Carbon Fiber Wallet + Cash Strap</a></h4>
+                    </div><!--end .product-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--2">
+                    <div class="product product--small" onclick="location.href='/products/lum-tec-combat-b28-military-24h'">
+                        <a href="">
+                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/show5.png') }}" alt="Combat B28 Military 24H"></a>
+                        <p class="product__subtitle"><a href="https://gallantry.com/collections/lum-tec">Lum-Tec</a></p>
+                        <h4 class="product__title"><a href="">Combat B28 Military 24H</a></h4>
+                    </div><!--end .product-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--2">
+                    <div class="product product--small" onclick="location.href='/products/the-james-brand-the-county-knife-walnut-and-stainless'">
+                        <a href="">
+                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/show6.png') }}" alt="The County Knife"></a>
+
+                        <p class="product__subtitle"><a href="https://gallantry.com/collections/the-james-brand">The James Brand</a></p>
+
+                        <h4 class="product__title"><a href="">The County Knife</a></h4>
+                    </div><!--end .product-->
+                </div><!--end .flex-row__col-->
+
+            </div><!--end .products-->
+        </div><!--end .site-section__content-->
+    </div>
+
+    <div class="site-section__inner site-section__inner--white">
+        <div class="site-section__content">
+            <h2 class="site-section__title">COLECCIONES TOP</h2>
+            <div class="flex-row flex-row--space collections grid--row-4">
+
+                <div class="flex-row__col flex-row__col--4">
+                    <a class="collection" href="">
+                        <img class="collection__thumb" src="{{ asset('bundles/chisnbal/img/item11.png') }}" alt="Cazadoras">
+                        <h4 class="collection__title">
+                            <span class="collection__title__txt">Cazadoras</span>
+                        </h4>
+                    </a><!--end .collection-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--4">
+                    <a class="collection" href="">
+                        <img class="collection__thumb" src="{{ asset('bundles/chisnbal/img/item8.jpg') }}" alt="Bolsos">
+                        <h4 class="collection__title">
+                            <span class="collection__title__txt">Bolsos</span>
+                        </h4>
+                    </a><!--end .collection-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--4">
+                    <a class="collection" href="">
+                        <img class="collection__thumb" src="{{ asset('bundles/chisnbal/img/item9.jpg') }}" alt="Watches">
+                        <h4 class="collection__title">
+                            <span class="collection__title__txt">Watches</span>
+                        </h4>
+                    </a><!--end .collection-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--4">
+                    <a class="collection" href="">
+                        <img class="collection__thumb" src="{{ asset('bundles/chisnbal/img/item10.jpg') }}" alt="Wallets">
+                        <h4 class="collection__title">
+                            <span class="collection__title__txt">Wallets</span>
+                        </h4>
+                    </a><!--end .collection-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--4">
+                    <a class="collection" href="">
+                        <img class="collection__thumb" src="{{ asset('bundles/chisnbal/img/item11.jpg') }}" alt="Keychains">
+                        <h4 class="collection__title">
+                            <span class="collection__title__txt">Keychains
+                            </span>
+                        </h4>
+                    </a><!--end .collection-->
+                </div><!--end .flex-row__col-->
+
+                <div class="flex-row__col flex-row__col--4">
+                    <a class="collection" href="">
+                        <img class="collection__thumb" src="{{ asset('bundles/chisnbal/img/item22.jpg') }}" alt="Bermudas">
+                        <h4 class="collection__title">
+                            <span class="collection__title__txt">Bermudas</span>
+                        </h4>
+                    </a><!--end .collection-->
+                </div><!--end .flex-row__col-->
+
+            </div><!--end .flex-row-->
+        </div><!--end .collections-->
+    </div>
+{% endblock %}
