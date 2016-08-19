@@ -12,11 +12,6 @@ class DefaultController extends Controller
         return $this->render('ChisnbalBundle:Default:index.html.twig');
     }
 
-    public function categoryListAction()
-    {
-        return $this->render('ChisnbalBundle:Default:categoryList.html.twig');
-    }
-
     public function productListAction()
     {
         return $this->render('ChisnbalBundle:Default:productList.html.twig');
@@ -30,5 +25,10 @@ class DefaultController extends Controller
     public function cartAction()
     {
         return $this->render('ChisnbalBundle:Default:cart.html.twig');
+    }
+    
+    public function orderinfoAction()
+    {
+        return $this->render('ChisnbalBundle:Default:orderinfo.html.twig');
     }
 }

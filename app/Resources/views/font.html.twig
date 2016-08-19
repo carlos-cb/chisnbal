@@ -6,6 +6,8 @@
         {% block stylesheets %}
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/style_index.css') }}"/>
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/hot.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/fonts.css') }}"/>
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/jquery.fancybox.css') }}" />
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -21,7 +23,7 @@
                         <a class="history level-1-link" id="level-1-maison" href="">Inicio</a>
                     </li>
                     <li class="menu-item open-level-2  unit">
-                        <span class="link-text level-1-link" id="level-1-collection">Contacto</span>
+                        <a class="link-text level-1-link fancybox" id="level-1-collection" href="#contacto">Contacto</a>
                     </li>
                     <li class="menu-item unit">
                         <a class="link-text level-1-link" id="level-1-m801" href="">Rebajas</a>
@@ -39,6 +41,33 @@
             </div><!-- .block-menu-level-1 -->
         </div>
         {% block content %}{% endblock %}
+        <section style="display:none" id="contacto" class="overlay-content client-services-overlay-content">
+            <div class="client-services-header">
+                <h1  class="title-bottom-line-diamond client-services-title">
+                    Contacta con nosotros <span class="client-services-country-copy">CHISNBAL España</span>
+                </h1>
+            </div>
+            <div class="client-services-container" data-module="clientServices">
+                <div class="client-services-items">
+                    <div class="client-services-section-title">
+                        Si tienes alguna duda, o quieres consultarnos algo<br> ¡te lo ponemos fácil!</div>
+                    <div class="client-services-item-container">
+                        <div class="client-services-item">
+                            <div class="client-services-service">
+                                <div class="client-services-service-description">
+                                    Calle la Bañeza, 46, 28947 Fuenlabrada, Madrid<br>
+                                    TEL: 91 425 88 14<br>
+                                    Email: info@chisnbal.es
+                                </div>
+                            </div>
+                            <div class="client-services-actions">
+                                <a href="mailto:celinaselection@hotmail.com" target="_self" class="button-gold-outline client-services-link" data-content="client-services-email-us-8796289811160">Enviar un correo electrónico</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Footer -->
         <footer>
             <div class="follow">
@@ -57,6 +86,8 @@
             <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
             <script src="{{ asset('bundles/chisnbal/js/bootstrap.min.js') }}"></script>
             <script src="{{ asset('bundles/chisnbal/js/scrolltop.js') }}"></script>
+            <script src="{{ asset('bundles/chisnbal/js/jquery.fancybox.pack.js') }}"></script>
+            <script src="{{ asset('bundles/chisnbal/js/chisnbal.js') }}"></script>
         {% endblock %}
     </body>
 </html>

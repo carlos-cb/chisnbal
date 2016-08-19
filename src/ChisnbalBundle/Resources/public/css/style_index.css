@@ -715,5 +715,82 @@ a.lien:hover span{
     font-weight:none;
 }
 
+/*fancybox*/
+.client-services-overlay-content {
+    font-family: 'Didot';
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 91px 69px 62px;
+    position: relative;
+    width: 770px;
+    transition: top,0.6s;
+    background-color: #fff;
+}
+.client-services-title {
+    letter-spacing: 4.5px;
+    margin-bottom: 0;
+    padding-bottom: 24px;
+}
+.title-bottom-line-diamond {
+    color: #313131;
+    border-bottom: 1px solid #e7e7e7;
+    letter-spacing: 2px;
+    line-height: 38px;
+    margin-bottom: 21px;
+    padding-bottom: 21px;
+    position: relative;
+    text-align: center;
+}
+.client-services-country-copy {
+    font-style: normal;
+    font-weight: 400;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 29px;
+    text-align: center;
+}
+.client-services-section-title {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 22px;
+    letter-spacing: 0.7px;
+    line-height: 24px;
+    margin: 28px 0 28px;
+}
+.client-services-item-container {
+    margin: 0 2px;
+}
+.client-services-item:last-of-type {
+    margin-bottom: 0;
+    padding-bottom: 12px;
+}
+.client-services-service {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 66.66667%;
+    padding-bottom: 12px;
+}
+.client-services-service-description {
+    margin-top: 40px;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+.client-services-actions{
+    font-size: 14px;
+}
+#contacto{
+    text-align: center;
+}
 
 
