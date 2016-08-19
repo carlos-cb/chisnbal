@@ -26,4 +26,9 @@ class DefaultController extends Controller
     {
         return $this->render('ChisnbalBundle:Default:productDetalle.html.twig');
     }
+
+    public function cartAction()
+    {
+        return $this->render('ChisnbalBundle:Default:cart.html.twig');
+    }
 }

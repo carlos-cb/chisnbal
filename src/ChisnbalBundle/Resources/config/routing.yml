@@ -9,3 +9,7 @@ chisnbal_product_list:
 chisnbal_fotodetalle_list:
     path:     /fotodetalle
     defaults: { _controller: ChisnbalBundle:Default:productDetalle }
+
+chisnbal_cart:
+    path:     /carrito
+    defaults: { _controller: ChisnbalBundle:Default:cart }

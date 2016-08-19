@@ -1,0 +1,87 @@
+{% extends 'font.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/cart.css') }}" />
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        {% endblock %}
+{% block content %}
+    <section id="main" class="content-main" role="main">
+
+        <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
+            <form action="//www.zara.com/es/es/shop/shipping/251514673" method="POST" class="_shopCartForm">
+                <table class="order-table">
+                    <thead>
+                    <tr class="thead"><th>PRODUCTO</th>
+                        <th class="description">DESCRIPCIÓN</th>
+                        <th>COLOR</th>
+                        <th>TALLA</th>
+                        <th class="quantity">UNIDADES</th>
+                        <th class="price" id="priceHeader">IMPORTE</th>
+                        <th class="delete">ELIMINAR</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr id="order-item-919231977" class="order-item  _order-item-919231977">
+                        <td class="_detail">
+                            <a href="//www.zara.com/es/es/-c0p3647098.html#selectedColor=800" alt="CAZADORA ANTELINA" target="_self">
+                                <img src="//static.zara.net/photos///2016/I/0/2/p/1792/306/800/2/w/135/1792306800_1_1_1.jpg?ts=1470216930257">
+                            </a>
+                        </td>
+                        <td class="description _detail">
+                            <a href="//www.zara.com/es/es/-c0p3647098.html#selectedColor=800" target="_self">
+                                <span>CAZADORA ANTELINA</span>Ref.&nbsp;1792/306
+                            </a>
+                        </td>
+                        <td class="color">Negro</td>
+                        <td class="size">XL</td>
+                        <td class="quantity">
+                            <span class="_quantity">4</span>
+                            <span>
+                                <button type="button" class="button fonticon gray-on-hover fonticon-plus _addUnitBtn   " alt="Añadir una unidad más - CAZADORA ANTELINA" title="Añadir una unidad más - CAZADORA ANTELINA"></button>
+                                <button type="button" class="button fonticon gray-on-hover fonticon-minus _subsUnitBtn" alt="Eliminar una unidad - CAZADORA ANTELINA" title="Eliminar una unidad - CAZADORA ANTELINA"></button>
+                            </span>
+                        </td>
+                        <td class="price">159,80 EUR</td>
+                        <td class="delete">
+                            <i style="float: right;padding-right: 10px;" class="fa fa-trash-o" aria-hidden="true"></i>
+                            <div class="no-stock-item" style="display: none;">
+                                <div class="arrow-up"></div>
+                                <span>Producto agotado</span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th colspan="6" class="order-items-total" scope="row">Total de productos:</th>
+                        <td class="order-items-total" headers="priceHeader">159,80 EUR</td>
+                    </tr>
+                    <tr>
+                        <th class="order-delivery-costs" colspan="6" scope="row">Gastos de envío estimados:</th>
+                        <td class="order-delivery-costs" headers="priceHeader">0,00 EUR</td>
+                    </tr>
+                    <tr class="total">
+                        <th colspan="6" scope="row"><strong>Total:</strong></th>
+                        <td class="order-total" headers="priceHeader">159,80 EUR</td>
+                    </tr>
+                    <tr class="order-vat-costs">
+                        <th colspan="6" scope="row">
+                            <span class="offleft">Impuestos</span>
+                        </th>
+                        <td headers="priceHeader"><em>* IVA incluido</em></td>
+                    </tr>
+                    </tfoot>
+                </table>
+                <div>
+                    <p>Devoluciones y reembolso Tienes 30 días para cancelar o devolver tu pedido. Los gastos de devolución son de 1,95€. Lee más sobre nuestra política de devoluciones y reembolso.</p>
+                </div>
+                <div class="anniu">
+                    <button class="button-secondary button-big FL _continue-shopping-btn" type="button"><span>SEGUIR COMPRANDO</span></button>
+                    <button class="button-primary button-big FR"><span>Continuar</span></button>
+                </div>
+            </form>
+        </section>
+    </section>
+{% endblock %}
