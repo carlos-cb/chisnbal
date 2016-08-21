@@ -1,0 +1,65 @@
+{% extends 'ChisnbalBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">产品管理</h1>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>产品名西语</th>
+            <th>产品名英语</th>
+            <th>单价</th>
+            <th>产品编号</th>
+            <th>图片</th>
+            <th>所属分类</th>
+            <th>备注</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.productNameEs }}</td>
+                <td>{{ product.productNameEn }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.codigo }}</td>
+                <td><a href="{{ asset('uploads/fotos/' ~ product.foto) }}"><img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="120px" width="100px"></a></td>
+                <td>{{ product.categoryName }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_edit', { 'id': product.id }) }}">查看修改</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fotodetalle_index', { 'productId': product.id }) }}">细节图管理</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('color_index', { 'productId': product.id }) }}">颜色管理</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_new') }}" class="button button-rounded">创建新产品</a>
+        </li>
+    </ul>
+{% endblock %}

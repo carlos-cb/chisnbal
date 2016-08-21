@@ -1,0 +1,31 @@
+{% extends 'ChisnbalBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">订单修改</h1>
+    <br>
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <br>
+    <input type="submit" class="button button-rounded" value="修改" />
+    <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回订单列表</a>
+    {{ form_end(edit_form) }}
+    <br>
+    <ul>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" class="button button-border button-rounded button-primary" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,24 @@
+color_index:
+    path:     /
+    defaults: { _controller: "ChisnbalBundle:Color:index" }
+    methods:  GET
+
+color_show:
+    path:     /{id}/show
+    defaults: { _controller: "ChisnbalBundle:Color:show" }
+    methods:  GET
+
+color_new:
+    path:     /new
+    defaults: { _controller: "ChisnbalBundle:Color:new" }
+    methods:  [GET, POST]
+
+color_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ChisnbalBundle:Color:edit" }
+    methods:  [GET, POST]
+
+color_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ChisnbalBundle:Color:delete" }
+    methods:  DELETE

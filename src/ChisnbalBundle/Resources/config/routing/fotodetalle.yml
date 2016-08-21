@@ -1,0 +1,24 @@
+fotodetalle_index:
+    path:     /
+    defaults: { _controller: "ChisnbalBundle:Fotodetalle:index" }
+    methods:  GET
+
+fotodetalle_show:
+    path:     /{id}/show
+    defaults: { _controller: "ChisnbalBundle:Fotodetalle:show" }
+    methods:  GET
+
+fotodetalle_new:
+    path:     /new
+    defaults: { _controller: "ChisnbalBundle:Fotodetalle:new" }
+    methods:  [GET, POST]
+
+fotodetalle_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ChisnbalBundle:Fotodetalle:edit" }
+    methods:  [GET, POST]
+
+fotodetalle_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ChisnbalBundle:Fotodetalle:delete" }
+    methods:  DELETE

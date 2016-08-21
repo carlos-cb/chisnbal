@@ -1,0 +1,97 @@
+{% extends 'ChisnbalBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">订单查看</h1>
+    <br>
+    <table class="table-bordered table-striped table-hover" width="400px" height="500px">
+        <tbody>
+        <tr>
+            <th>订单号</th>
+            <td>{{ orderInfo.id }}</td>
+        </tr>
+        <tr>
+            <th>订单生成时间</th>
+            <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>商品总价</th>
+            <td>{{ orderInfo.goodsFee }}</td>
+        </tr>
+        <tr>
+            <th>订单总价</th>
+            <td>{{ orderInfo.totalPrice }}</td>
+        </tr>
+        <tr>
+            <th>运费</th>
+            <td>{{ orderInfo.shipFee }}</td>
+        </tr>
+        <tr>
+            <th>付款方式</th>
+            <td>{{ orderInfo.payType }}</td>
+        </tr>
+        <tr>
+            <th>收货人姓名</th>
+            <td>{{ orderInfo.receiverName }}</td>
+        </tr>
+        <tr>
+            <th>收货人联系电话</th>
+            <td>{{ orderInfo.receiverPhone }}</td>
+        </tr>
+        <tr>
+            <th>收货地址</th>
+            <td>{{ orderInfo.receiverAdress }}</td>
+        </tr>
+        <tr>
+            <th>城市</th>
+            <td>{{ orderInfo.receiverCity }}</td>
+        </tr>
+        <tr>
+            <th>省份</th>
+            <td>{{ orderInfo.receiverProvince }}</td>
+        </tr>
+        <tr>
+            <th>邮编</th>
+            <td>{{ orderInfo.receiverPostcode }}</td>
+        </tr>
+        <tr>
+            <th>订单已确认</th>
+            <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
+        </tr>
+        <tr>
+            <th>订单已发货</th>
+            <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}</td>
+        </tr>
+        <tr>
+            <th>订单已归档</th>
+            <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}</td>
+        </tr>
+        <tr>
+            <th>订单状态</th>
+            <td>{{ orderInfo.state }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <ul>
+        <li>
+            <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回订单列表</a>
+        </li>
+        <br>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" class="button button-border button-rounded button-primary" value="删除">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

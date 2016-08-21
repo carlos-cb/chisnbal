@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Product</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ product.id }}</td>
+            </tr>
+            <tr>
+                <th>Productnamees</th>
+                <td>{{ product.productNameEs }}</td>
+            </tr>
+            <tr>
+                <th>Productnameen</th>
+                <td>{{ product.productNameEn }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ product.price }}</td>
+            </tr>
+            <tr>
+                <th>Codigo</th>
+                <td>{{ product.codigo }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ product.description }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ product.foto }}</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{% if product.size %}{{ product.size|join(', ') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Issale</th>
+                <td>{% if product.isSale %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Discountprice</th>
+                <td>{{ product.discountPrice }}</td>
+            </tr>
+            <tr>
+                <th>Isnew</th>
+                <td>{% if product.isNew %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Unit</th>
+                <td>{{ product.unit }}</td>
+            </tr>
+            <tr>
+                <th>Stock</th>
+                <td>{{ product.stock }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

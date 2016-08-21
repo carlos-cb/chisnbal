@@ -1,0 +1,51 @@
+{% extends 'ChisnbalBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">产品分类管理</h1>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>产品分类名西语</th>
+            <th>产品分类名英语</th>
+            <th>备注</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.categoryNameEs }}</td>
+                <td>{{ category.categoryNameEn }}</td>
+                <td>{{ category.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('category_edit', { 'id': category.id }) }}">修改</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('category_new') }}" class="button button-rounded">创建新产品分类</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'ChisnbalBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览 <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">订单管理</h1>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <th>订单号</th>
+            <th>收货人姓名</th>
+            <th>收货人手机</th>
+            <th>产品费用</th>
+            <th>运输费用</th>
+            <th>总费用</th>
+            <th>付款方式</th>
+            <th>订单生成时间</th>
+            <th>已经确认</th>
+            <th>已经发货</th>
+            <th>已经完成</th>
+            <th>订单状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for orderInfo in orderInfos %}
+            <tr>
+                <td>{{ orderInfo.id }}</a></td>
+                <td>{{ orderInfo.receiverName }}</td>
+                <td>{{ orderInfo.receiverPhone }}</td>
+                <td>{{ orderInfo.goodsFee }}</td>
+                <td>{{ orderInfo.shipFee }}</td>
+                <td>{{ orderInfo.totalPrice }}</td>
+                <td>{{ orderInfo.payType }}</td>
+                <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
+                <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}</td>
+                <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}</td>
+                <td>{{ orderInfo.state }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">查看订单详情</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('orderitem_index', { 'orderInfoId': orderInfo.id }) }}">查看货物列表</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

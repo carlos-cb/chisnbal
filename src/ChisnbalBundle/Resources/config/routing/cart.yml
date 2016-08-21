@@ -1,0 +1,24 @@
+cart_index:
+    path:     /
+    defaults: { _controller: "ChisnbalBundle:Cart:index" }
+    methods:  GET
+
+cart_show:
+    path:     /{id}/show
+    defaults: { _controller: "ChisnbalBundle:Cart:show" }
+    methods:  GET
+
+cart_new:
+    path:     /new
+    defaults: { _controller: "ChisnbalBundle:Cart:new" }
+    methods:  [GET, POST]
+
+cart_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ChisnbalBundle:Cart:edit" }
+    methods:  [GET, POST]
+
+cart_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ChisnbalBundle:Cart:delete" }
+    methods:  DELETE

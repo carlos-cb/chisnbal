@@ -11,7 +11,12 @@ class DefaultController extends Controller
     {
         return $this->render('ChisnbalBundle:Default:index.html.twig');
     }
-
+    
+    public function backEndAction()
+    {
+        return $this->render('ChisnbalBundle:BackEnd:overview.html.twig');
+    }
+    
     public function productListAction()
     {
         return $this->render('ChisnbalBundle:Default:productList.html.twig');

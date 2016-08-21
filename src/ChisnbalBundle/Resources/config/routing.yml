@@ -1,6 +1,46 @@
+chisnbal_user:
+    resource: "@ChisnbalBundle/Resources/config/routing/user.yml"
+    prefix:   /admin/user
+
+chisnbal_color:
+    resource: "@ChisnbalBundle/Resources/config/routing/color.yml"
+    prefix:   /admin/color
+
+chisnbal_category:
+    resource: "@ChisnbalBundle/Resources/config/routing/category.yml"
+    prefix:   /admin/category
+
+chisnbal_product:
+    resource: "@ChisnbalBundle/Resources/config/routing/product.yml"
+    prefix:   /admin/product
+
+chisnbal_fotodetalle:
+    resource: "@ChisnbalBundle/Resources/config/routing/fotodetalle.yml"
+    prefix:   /admin/fotodetalle
+
+chisnbal_cart:
+    resource: "@ChisnbalBundle/Resources/config/routing/cart.yml"
+    prefix:   /admin/cart
+
+chisnbal_cartitem:
+    resource: "@ChisnbalBundle/Resources/config/routing/cartitem.yml"
+    prefix:   /admin/cartitem
+
+chisnbal_orderinfo:
+    resource: "@ChisnbalBundle/Resources/config/routing/orderinfo.yml"
+    prefix:   /admin/orderinfo
+
+chisnbal_orderitem:
+    resource: "@ChisnbalBundle/Resources/config/routing/orderitem.yml"
+    prefix:   /admin/orderitem
+
 chisnbal_homepage:
     path:     /
     defaults: { _controller: ChisnbalBundle:Default:index }
+
+chisnbal_homepage_admin:
+    path:     /admin
+    defaults: { _controller: ChisnbalBundle:Default:backEnd }
 
 chisnbal_product_list:
     path:     /productList
