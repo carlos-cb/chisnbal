@@ -40,6 +40,10 @@ class ProductController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $product->getFoto();
+            $fileName = $this->get('chisnbal.foto_uploader')->upload($file);
+            $product->setFoto($fileName);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
@@ -73,16 +77,27 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
+        $fileOld = $product->getFoto();
         $deleteForm = $this->createDeleteForm($product);
         $editForm = $this->createForm('ChisnbalBundle\Form\ProductType', $product);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $product->getFoto();
+            if($file != $fileOld)
+            {
+                $isRemoved = $this->get('chisnbal.foto_uploader')->remove($fileOld);
+                if($isRemoved){
+                    $fileName = $this->get('chisnbal.foto_uploader')->upload($file);
+                    $product->setFoto($fileName);
+                }
+            }
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
 
-            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            return $this->redirectToRoute('product_index');
         }
 
         return $this->render('product/edit.html.twig', array(
@@ -98,11 +113,17 @@ class ProductController extends Controller
      */
     public function deleteAction(Request $request, Product $product)
     {
+        $em = $this->getDoctrine()->getManager();
         $form = $this->createDeleteForm($product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+            //删除本身照片一张
+            $file = $product->getFoto();
+            if($file){
+                $isRemoved = $this->get('chisnbal.foto_uploader')->remove($file);
+            }
+            
             $em->remove($product);
             $em->flush();
         }

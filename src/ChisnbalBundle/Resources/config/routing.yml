@@ -50,10 +50,10 @@ chisnbal_fotodetalle_list:
     path:     /fotodetalle
     defaults: { _controller: ChisnbalBundle:Default:productDetalle }
 
-chisnbal_cart:
+chisnbal_carrito:
     path:     /carrito
     defaults: { _controller: ChisnbalBundle:Default:cart }
 
-chisnbal_orderinfo:
+chisnbal_guestinfo:
     path:     /orderinfo
-    defaults: { _controller: ChisnbalBundle:Default:orderinfo }
+    defaults: { _controller: ChisnbalBundle:Default:guestinfo }

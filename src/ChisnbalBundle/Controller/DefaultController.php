@@ -32,8 +32,8 @@ class DefaultController extends Controller
         return $this->render('ChisnbalBundle:Default:cart.html.twig');
     }
     
-    public function orderinfoAction()
+    public function guestinfoAction()
     {
-        return $this->render('ChisnbalBundle:Default:orderinfo.html.twig');
+        return $this->render('ChisnbalBundle:Default:guestinfo.html.twig');
     }
 }

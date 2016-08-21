@@ -136,4 +136,8 @@ class Fotodetalle
     {
         return $this->product;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

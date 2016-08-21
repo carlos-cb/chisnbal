@@ -517,4 +517,8 @@ class OrderInfo
     {
         return $this->user;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
 }

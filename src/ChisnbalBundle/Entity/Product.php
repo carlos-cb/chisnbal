@@ -208,8 +208,9 @@ class Product
      */
     public function setFoto($foto)
     {
-        $this->foto = $foto;
-
+        if(!empty($foto)){
+            $this->foto = $foto;
+        }
         return $this;
     }
 
@@ -432,5 +433,19 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    public function __toString() {
+        return strval($this->id);
+    }
+
+    /**
+     * Get category
+     *
+     * @return \ChisnbalBundle\Entity\Category
+     */
+    public function getCategoryName()
+    {
+        return $this->category->getCategoryNameEs();
     }
 }
