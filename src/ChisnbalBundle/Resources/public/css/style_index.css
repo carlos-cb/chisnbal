@@ -656,7 +656,6 @@ img.grayscale:hover, .module-link:hover img.grayscale {
 
 
 footer {
-	font-family: Georgia,Serif;
 	font-size:0.9em;
     height:50px;
 	margin:70px auto 100px auto;
@@ -667,8 +666,10 @@ footer {
 	width: 65%;
     }
 footer .copyright{
+    font-family: Times, serif;
 	line-height: 20px;
-	padding-bottom: 20px;
+    padding-bottom: 20px;
+    letter-spacing: 0;
 }
 
 	

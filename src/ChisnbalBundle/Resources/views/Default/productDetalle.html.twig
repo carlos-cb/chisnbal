@@ -14,29 +14,11 @@
                     <i class="empty-divider" role="separator">&nbsp;</i>
                     <li class="mujer">HOMBRE</li>
                     <i class="empty-divider" role="separator">&nbsp;</i>
-
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">ABRIGOS Y TRENCH</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">CAZADORAS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">BLAZERS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">CAMISAS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">JEANS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">POLOS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">BOLSOS</a>
-                    </li>
-
+                    {% for category in categories %}
+                        <li class="_category-link" data-categoryid="{{ category.id }}" tabindex="0">
+                            <a href="{{ path('chisnbal_product_list', { 'categoryId': category.id }) }}">{{ category.categoryNameEs }}</a>
+                        </li>
+                    {% endfor %}
                     <li class="_category-link">
                         <a href="">REBAJAS</a>
                     </li>
@@ -44,6 +26,16 @@
             </div>
 
             <div class="col-sm-5 col-sm-offset-3 col-md-6 col-md-offset-2 imglist">
+
+                {% for fotodetalle in fotodetalles %}
+                    <div class='col-sm-12 col-md-12 col-lg-12'>
+                        <img src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" height="750px">
+                        <div class="product-info">
+                            <br>
+                            <a class="" href="">{{ fotodetalle.descriptionEs }}</a>
+                        </div>
+                    </div>
+                {% endfor %}
 
                     <div class='col-sm-12 col-md-12 col-lg-12'>
                         <img src="{{ asset('uploads/fotos/1792306800_1_1_1.jpg') }}" height="750px">
@@ -77,6 +69,17 @@
 
                         <div class="product-style-selector">
                             <div class="row">
+
+                                {% for color in colors %}
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <label class="color">
+                                            <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
+                                                <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEs }}" height="70px">
+                                            </a>
+                                            <span class="color-description">{{ color.colorNameEs }}</span>
+                                        </label>
+                                    </div>
+                                {% endfor %}
 
                                 <div class="col-lg-3 col-md-3 col-sm-3">
                                     <label class="color">

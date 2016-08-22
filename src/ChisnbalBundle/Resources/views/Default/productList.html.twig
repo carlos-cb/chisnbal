@@ -14,37 +14,33 @@
                     <i class="empty-divider" role="separator">&nbsp;</i>
                     <li class="mujer">HOMBRE</li>
                     <i class="empty-divider" role="separator">&nbsp;</i>
-
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">ABRIGOS Y TRENCH</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">CAZADORAS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">BLAZERS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">CAMISAS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">JEANS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">POLOS</a>
-                    </li>
-                    <li class="_category-link" data-categoryid="" tabindex="0">
-                        <a href="">BOLSOS</a>
-                    </li>
-
+                    {% for category in categories %}
+                        <li class="_category-link" data-categoryid="{{ category.id }}" tabindex="0">
+                            <a href="{{ path('chisnbal_product_list', { 'categoryId': category.id }) }}">{{ category.categoryNameEs }}</a>
+                        </li>
+                    {% endfor %}
                     <li class="_category-link">
                         <a href="">REBAJAS</a>
                     </li>
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 imglist">
+                {% for product in products %}
+                    <div class='col-sm-6 col-md-4 col-lg-3'>
+                        <a href="{{ path('chisnbal_fotodetalle_list', { 'productId': product.id }) }}">
+                            <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="320px">
+                        </a>
+                        <div class="product-info">
+                            <a class="" href="{{ path('chisnbal_fotodetalle_list', { 'productId': product.id }) }}">{{ product.productNameEs }}</a>
+                            <div class="price _product-price"><span>{{ product.price }} EUR</span></div>
+                        </div>
+                    </div>
+                {% endfor %}
+
                 <div class='col-sm-6 col-md-4 col-lg-3'>
-                    <a href="{{ path('chisnbal_fotodetalle_list') }}"><img src="{{ asset('uploads/fotos/1792306800_2_3_1.jpg') }}" height="320px"></a>
+                    <a href="">
+                        <img src="{{ asset('uploads/fotos/1792306800_2_3_1.jpg') }}" height="320px">
+                    </a>
                     <div class="product-info">
                         <a class="" href="">CAZADORA ANTELINA</a>
                         <div class="price _product-price"><span>39.95 EUR</span></div>
@@ -78,8 +74,6 @@
                         <div class="price _product-price"><span>39.95 EUR</span></div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>

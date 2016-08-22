@@ -17,14 +17,42 @@ class DefaultController extends Controller
         return $this->render('ChisnbalBundle:BackEnd:overview.html.twig');
     }
     
-    public function productListAction()
+    public function productListAction($categoryId)
     {
-        return $this->render('ChisnbalBundle:Default:productList.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.category=$categoryId and p.isSale=0");
+        $products = $query->getResult();
+
+        return $this->render('ChisnbalBundle:Default:productList.html.twig', array(
+            'products' => $products,
+            'categories' => $categories,
+        ));
     }
 
-    public function productDetalleAction()
+    public function productDetalleAction($productId)
     {
-        return $this->render('ChisnbalBundle:Default:productDetalle.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('CelinaBundle:Category')->findAll();
+
+        $product = $this->getProductInfo($productId);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Fotodetalle p WHERE p.product=$productId");
+        $fotodetalles = $query->getResult();
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Color p WHERE p.product=$productId");
+        $colors = $query->getResult();
+        
+        
+        return $this->render('ChisnbalBundle:Default:productDetalle.html.twig', array(
+            'fotodetalles' => $fotodetalles,
+            'colors' => $colors,
+            'product' => $product,
+            'categories' => $categories,
+        ));
     }
 
     public function cartAction()
@@ -35,5 +63,14 @@ class DefaultController extends Controller
     public function guestinfoAction()
     {
         return $this->render('ChisnbalBundle:Default:guestinfo.html.twig');
+    }
+
+    private function getProductInfo($productId)
+    {
+        //获取产品信息
+        $product = $this->getDoctrine()
+            ->getRepository('ChisnbalBundle:Product')
+            ->findOneById($productId);
+        return $product;
     }
 }
