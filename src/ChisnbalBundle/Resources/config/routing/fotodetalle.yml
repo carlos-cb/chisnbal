@@ -1,5 +1,5 @@
 fotodetalle_index:
-    path:     /
+    path:     /{productId}
     defaults: { _controller: "ChisnbalBundle:Fotodetalle:index" }
     methods:  GET
 
@@ -9,12 +9,12 @@ fotodetalle_show:
     methods:  GET
 
 fotodetalle_new:
-    path:     /new
+    path:     /{productId}/new
     defaults: { _controller: "ChisnbalBundle:Fotodetalle:new" }
     methods:  [GET, POST]
 
 fotodetalle_edit:
-    path:     /{id}/edit
+    path:     /{productId}/{id}/edit
     defaults: { _controller: "ChisnbalBundle:Fotodetalle:edit" }
     methods:  [GET, POST]
 

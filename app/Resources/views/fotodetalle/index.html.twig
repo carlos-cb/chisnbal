@@ -1,32 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'ChisnbalBundle:BackEnd:index.html.twig' %}
 
-{% block body %}
-    <h1>Fotodetalle list</h1>
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
 
-    <table>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">产品细节图管理</h1>
+    <h3><a href="{{ path('product_edit', { 'id': product.id }) }}">产品编号：{{ product.codigo }}</a></h3>
+    <table class="table table-bordered table-striped table-hover">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Fotodetalle</th>
-                <th>Descriptiones</th>
-                <th>Descriptionen</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>产品细节图</th>
+            <th>备注西语</th>
+            <th>备注英语</th>
+            <th>操作</th>
+        </tr>
         </thead>
         <tbody>
         {% for fotodetalle in fotodetalles %}
             <tr>
-                <td><a href="{{ path('fotodetalle_show', { 'id': fotodetalle.id }) }}">{{ fotodetalle.id }}</a></td>
-                <td>{{ fotodetalle.fotodetalle }}</td>
+                <td>{{ fotodetalle.id }}</td>
+                <td><a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}"><img src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" height="120px" width="100px"></a></td>
                 <td>{{ fotodetalle.descriptionEs }}</td>
                 <td>{{ fotodetalle.descriptionEn }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('fotodetalle_show', { 'id': fotodetalle.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('fotodetalle_edit', { 'id': fotodetalle.id }) }}">edit</a>
+                            <a href="{{ path('fotodetalle_edit', { 'id': fotodetalle.id, 'productId': product.id }) }}">修改</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +45,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('fotodetalle_new') }}">Create a new entry</a>
+            <a href="{{ path('fotodetalle_new', { 'productId': product.id }) }}" class="button button-rounded">创建新产品细节图</a>
         </li>
     </ul>
 {% endblock %}

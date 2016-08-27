@@ -48,8 +48,9 @@ class Fotodetalle
      */
     public function setFotodetalle($fotodetalle)
     {
-        $this->fotodetalle = $fotodetalle;
-
+        if(!empty($fotodetalle)) {
+            $this->fotodetalle = $fotodetalle;
+        }
         return $this;
     }
 

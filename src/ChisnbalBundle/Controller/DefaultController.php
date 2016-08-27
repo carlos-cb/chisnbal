@@ -36,7 +36,7 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('CelinaBundle:Category')->findAll();
+        $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
 
         $product = $this->getProductInfo($productId);
 
