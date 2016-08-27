@@ -38,8 +38,6 @@ ChisnbalBundle\Entity\Product:
             type: boolean
         unit:
             type: integer
-        stock:
-            type: integer
     oneToMany:
         colors:
             targetEntity: Color

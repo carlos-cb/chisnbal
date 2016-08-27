@@ -70,12 +70,6 @@ class Product
     private $unit;
 
     /**
-     * @var int
-     */
-    private $stock;
-
-
-    /**
      * Get id
      *
      * @return integer 

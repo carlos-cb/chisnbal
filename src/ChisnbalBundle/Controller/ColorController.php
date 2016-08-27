@@ -18,14 +18,19 @@ class ColorController extends Controller
      * Lists all Color entities.
      *
      */
-    public function indexAction()
+    public function indexAction($productId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $colors = $em->getRepository('ChisnbalBundle:Color')->findAll();
+        //获取产品信息
+        $product = $this->getProductInfo($productId);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Color p WHERE p.product=$productId");
+        $colors = $query->getResult();
 
         return $this->render('color/index.html.twig', array(
             'colors' => $colors,
+            'product' => $product
         ));
     }
 
@@ -33,23 +38,30 @@ class ColorController extends Controller
      * Creates a new Color entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $productId)
     {
         $color = new Color();
+        $product = $this->getProductInfo($productId);
+        $color->setProduct($product);
         $form = $this->createForm('ChisnbalBundle\Form\ColorType', $color);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $color->getColorFoto();
+            $fileName = $this->get('chisnbal.foto_uploader')->upload($file);
+            $color->setColorFoto($fileName);
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($color);
             $em->flush();
 
-            return $this->redirectToRoute('color_show', array('id' => $color->getId()));
+            return $this->redirectToRoute('color_index', array('productId' => $productId));
         }
 
         return $this->render('color/new.html.twig', array(
             'color' => $color,
             'form' => $form->createView(),
+            'product' => $product,
         ));
     }
 
@@ -71,24 +83,37 @@ class ColorController extends Controller
      * Displays a form to edit an existing Color entity.
      *
      */
-    public function editAction(Request $request, Color $color)
+    public function editAction(Request $request, Color $color, $productId)
     {
+        $fileOld = $color->getColorFoto();
         $deleteForm = $this->createDeleteForm($color);
         $editForm = $this->createForm('ChisnbalBundle\Form\ColorType', $color);
         $editForm->handleRequest($request);
+        $product = $this->getProductInfo($productId);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $color->getColorFoto();
+            if($file != $fileOld)
+            {
+                $isRemoved = $this->get('chisnbal.foto_uploader')->remove($fileOld);
+                if($isRemoved){
+                    $fileName = $this->get('chisnbal.foto_uploader')->upload($file);
+                    $color->setColorFoto($fileName);
+                }
+            }
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($color);
             $em->flush();
 
-            return $this->redirectToRoute('color_edit', array('id' => $color->getId()));
+            return $this->redirectToRoute('color_index', array('productId' => $productId));
         }
 
         return $this->render('color/edit.html.twig', array(
             'color' => $color,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'product' => $product,
         ));
     }
 
@@ -98,16 +123,24 @@ class ColorController extends Controller
      */
     public function deleteAction(Request $request, Color $color)
     {
+        $productId = $color->getProduct();
         $form = $this->createDeleteForm($color);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $color->getColorFoto();
+            if($file){
+                $isRemoved = $this->get('chisnbal.foto_uploader')->remove($file);
+            }
+            
             $em = $this->getDoctrine()->getManager();
             $em->remove($color);
             $em->flush();
         }
 
-        return $this->redirectToRoute('color_index');
+        return $this->redirectToRoute('color_index', array(
+            'productId' => $productId,
+        ));
     }
 
     /**
@@ -124,5 +157,14 @@ class ColorController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    private function getProductInfo($productId)
+    {
+        //获取产品信息
+        $product = $this->getDoctrine()
+            ->getRepository('ChisnbalBundle:Product')
+            ->findOneById($productId);
+        return $product;
     }
 }

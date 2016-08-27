@@ -53,7 +53,6 @@ class ProductType extends AbstractType
                 'required' => false,
             ))
             ->add('unit', null, array('label' => '单位'))
-            ->add('stock', null, array('label' => '库存'))
         ;
     }
     

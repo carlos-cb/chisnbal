@@ -328,3 +328,6 @@ label.color{
 img#imgzoom{
     max-width: none;
 }
+img#colorimg{
+    padding-bottom: 5px;
+}

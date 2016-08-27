@@ -1,5 +1,5 @@
 color_index:
-    path:     /
+    path:     /{productId}
     defaults: { _controller: "ChisnbalBundle:Color:index" }
     methods:  GET
 
@@ -9,12 +9,12 @@ color_show:
     methods:  GET
 
 color_new:
-    path:     /new
+    path:     /{productId}/new
     defaults: { _controller: "ChisnbalBundle:Color:new" }
     methods:  [GET, POST]
 
 color_edit:
-    path:     /{id}/edit
+    path:     /{productId}/{id}/edit
     defaults: { _controller: "ChisnbalBundle:Color:edit" }
     methods:  [GET, POST]
 

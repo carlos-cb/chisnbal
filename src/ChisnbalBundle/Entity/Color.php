@@ -48,7 +48,9 @@ class Color
      */
     public function setColorFoto($colorFoto)
     {
-        $this->colorFoto = $colorFoto;
+        if(!empty($colorFoto)) {
+            $this->colorFoto = $colorFoto;
+        }
 
         return $this;
     }
