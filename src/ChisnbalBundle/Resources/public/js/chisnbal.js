@@ -5,7 +5,7 @@ $(function(){
             .filter(":contains('"+( $(this).val() )+"')")
             .show();
     }).keyup();
-})
+});
 
 $(document).ready(function() {
 
@@ -20,3 +20,4 @@ $(document).ready(function() {
         'overlayShow'	:	false
     });
 });
+

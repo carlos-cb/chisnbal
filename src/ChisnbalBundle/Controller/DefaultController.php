@@ -23,7 +23,7 @@ class DefaultController extends Controller
 
         $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
 
-        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.category=$categoryId and p.isSale=0");
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.category=$categoryId and (p.isSale=0 or p.isSale='null')");
         $products = $query->getResult();
 
         return $this->render('ChisnbalBundle:Default:productList.html.twig', array(

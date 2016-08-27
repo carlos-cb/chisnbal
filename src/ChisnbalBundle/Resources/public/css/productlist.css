@@ -13,6 +13,7 @@ body{
         padding: 20px;
         overflow-x: hidden;
         overflow-y: hidden;
+    height: 100%;
 }
 ul.category {
     margin: 10px 0 25px 2px;
@@ -323,4 +324,7 @@ label.color{
     margin: 6px auto;
     padding: 15px;
     width: 100%;
+}
+img#imgzoom{
+    max-width: none;
 }

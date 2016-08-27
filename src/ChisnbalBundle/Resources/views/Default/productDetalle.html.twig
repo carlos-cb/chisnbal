@@ -4,11 +4,12 @@
             {{ parent() }}
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/productlist.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/jquery.jqzoom.css') }}" />
         {% endblock %}
 {% block content %}
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <div class="col-sm-3 col-md-2 col-lg-2 sidebar">
                 <ul class="category">
                     <li class="nuevo"><a href="">ÚLTIMA<br>SEMANA</a></li>
                     <i class="empty-divider" role="separator">&nbsp;</i>
@@ -25,35 +26,43 @@
                 </ul>
             </div>
 
-            <div class="col-sm-5 col-sm-offset-3 col-md-6 col-md-offset-2 imglist">
+            <div class="col-sm-5 col-md-4 col-lg-4 col-lg-offset-2 imglist">
 
                 {% for fotodetalle in fotodetalles %}
                     <div class='col-sm-12 col-md-12 col-lg-12'>
-                        <img src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" height="750px">
+                        <div class="container">
+                            <a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" class="imgzoom" title="Detalle de Foto">
+                                <img id="imgzoom" src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" height="750px">
+                            </a>
+                        </div>
                         <div class="product-info">
                             <br>
-                            <a class="" href="">{{ fotodetalle.descriptionEs }}</a>
+                            <a>{{ fotodetalle.descriptionEs }}</a>
                         </div>
                     </div>
                 {% endfor %}
 
                     <div class='col-sm-12 col-md-12 col-lg-12'>
-                        <img src="{{ asset('uploads/fotos/1792306800_1_1_1.jpg') }}" height="750px">
-                        <div class="product-info">
+                        <div class="container">
+                        <a href="{{ asset('uploads/fotos/1792306800_1_1_1.jpg') }}" class="imgzoom" title="Detalle de Foto">
+                            <img src="{{ asset('uploads/fotos/1792306800_1_1_1.jpg') }}" height="750px">
+                        </a>
+                        </div>
+                        <div class="product-info" style="float: left;">
                             <br>
                             <a class="" href="">TEJIDO PRINCIPAL - 90% poliéster, 10% elastano</a>
                         </div>
                     </div>
                 <div class='col-sm-12 col-md-12 col-lg-12'>
                     <img src="{{ asset('uploads/fotos/color1.jpg') }}" height="750px">
-                    <div class="product-info">
+                    <div class="product-info" >
                         <a class="" href=""></a>
                     </div>
                 </div>
 
             </div>
 
-            <div class="col-sm-4 col-md-4 purchase-column">
+            <div class="col-sm-4 col-md-4 col-md-offset-2 col-lg-4 purchase-column">
                 <section class="product-detail-purchase" data-module="productDetail, productDetailScrollSpy">
                     <h1 class="product-name product-detail-product-name">{{ product.productNameEs }}</h1>
                     <div class="product-price product-detail-price">
@@ -180,4 +189,10 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{ asset('bundles/chisnbal/js/jquery.jqzoom-core.js') }}"></script>
+    <script src="{{ asset('bundles/chisnbal/js/jqzoom.js') }}"></script>
 {% endblock %}
