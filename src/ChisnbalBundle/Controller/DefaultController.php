@@ -46,10 +46,14 @@ class DefaultController extends Controller
         $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Color p WHERE p.product=$productId");
         $colors = $query->getResult();
         
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Size p WHERE p.product=$productId");
+        $sizes = $query->getResult();
+        
         
         return $this->render('ChisnbalBundle:Default:productDetalle.html.twig', array(
             'fotodetalles' => $fotodetalles,
             'colors' => $colors,
+            'sizes' => $sizes,
             'product' => $product,
             'categories' => $categories,
         ));
