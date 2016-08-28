@@ -27,8 +27,6 @@ ChisnbalBundle\Entity\Product:
         foto:
             type: string
             length: 255
-        size:
-            type: array
         isSale:
             type: boolean
         discountPrice:
@@ -38,9 +36,17 @@ ChisnbalBundle\Entity\Product:
             type: boolean
         unit:
             type: integer
+        isShow:
+            type: boolean
+        isHunzhuang:
+            type: boolean
     oneToMany:
         colors:
             targetEntity: Color
+            mappedBy: product
+    oneToMany:
+        sizes:
+            targetEntity: Size
             mappedBy: product
     oneToMany:
         fotodetalles:

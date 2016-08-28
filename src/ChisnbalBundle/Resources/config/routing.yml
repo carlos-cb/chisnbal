@@ -6,6 +6,10 @@ chisnbal_color:
     resource: "@ChisnbalBundle/Resources/config/routing/color.yml"
     prefix:   /admin/color
 
+chisnbal_size:
+    resource: "@ChisnbalBundle/Resources/config/routing/size.yml"
+    prefix:   /admin/size
+
 chisnbal_category:
     resource: "@ChisnbalBundle/Resources/config/routing/category.yml"
     prefix:   /admin/category

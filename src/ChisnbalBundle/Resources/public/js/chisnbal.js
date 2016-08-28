@@ -1,5 +1,5 @@
 $(function(){
-    $(".form-control").keyup(function(){
+    $(".navbar-form .form-control").keyup(function(){
         $("table tbody tr")
             .hide()
             .filter(":contains('"+( $(this).val() )+"')")

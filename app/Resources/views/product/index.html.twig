@@ -25,6 +25,8 @@
             <th>图片</th>
             <th>所属分类</th>
             <th>备注</th>
+            <th>是否显示</th>
+            <th>全色混装</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -39,6 +41,8 @@
                 <td><a href="{{ asset('uploads/fotos/' ~ product.foto) }}"><img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="120px" width="100px"></a></td>
                 <td>{{ product.categoryName }}</td>
                 <td>{{ product.description }}</td>
+                <td>{{ product.isShow }}</td>
+                <td>{{ product.isHunzhuang }}</td>
                 <td>
                     <ul>
                         <li>
@@ -49,6 +53,9 @@
                         </li>
                         <li>
                             <a href="{{ path('color_index', { 'productId': product.id }) }}">颜色管理</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('size_index', { 'productId': product.id }) }}">尺码配比管理</a>
                         </li>
                     </ul>
                 </td>

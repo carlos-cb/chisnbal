@@ -1,0 +1,85 @@
+{% extends 'ChisnbalBundle:BackEnd:index.html.twig' %}
+
+{% block menuslide %}
+    <ul class="nav nav-sidebar">
+        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">报告</a></li>
+        <li><a href="#">分析</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <h1 class="sub-header">尺码配比管理</h1>
+    <h3><a href="{{ path('product_edit', { 'id': product.id }) }}">产品编号：{{ product.codigo }}</a></h3>
+    <form class="form-inline" action="{{ path('size_add') }}" method="post">
+        <div class="form-group" style="display: none">
+            <label for="id">id</label>
+            <input type="text" class="form-control" id="id" name="id" required="required" value="{{ product.id }}">
+        </div>
+        <div class="form-group">
+            <label for="codigo">尺码号</label>
+            <input type="text" class="form-control" id="codigo" name="codigo" placeholder="XL" required="required">
+        </div>
+        <div class="form-group">
+            <label for="price">配比</label>
+            <input type="number" step="1" class="form-control" id="price" name="price" placeholder="2" required="required">
+        </div>
+        <button type="submit" class="btn btn-default">添加尺码配比</button>
+    </form>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>尺码配比表</th>
+                {% for size in sizes %}
+                    <th>{{ size.sizeName }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">配比</th>
+                {% for size in sizes %}
+                    <th>{{ size.quantity }}</th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th scope="row">操作</th>
+                {% for size in sizes %}
+                    <th>
+                        <ul>
+                            <li>
+                                <a href="{{ path('size_edit', { 'id': size.id, 'productId': product.id }) }}">修改</a>
+                            </li>
+                        </ul>
+                    </th>
+                {% endfor %}
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('size_new', { 'productId': product.id }) }}" class="button button-rounded">创建尺码配比</a> 请按照从小到大的尺码添加！
+        </li>
+    </ul>
+{% endblock %}

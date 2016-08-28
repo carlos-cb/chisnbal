@@ -1,0 +1,24 @@
+ChisnbalBundle\Entity\Size:
+    type: entity
+    table: null
+    repositoryClass: ChisnbalBundle\Repository\SizeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        sizeName:
+            type: string
+            length: 255
+        quantity:
+            type: integer
+    manyToOne:
+        product:
+            targetEntity: Product
+            inversedBy: sizes
+            joinColumn:
+                name: product_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -442,4 +442,60 @@ class Product
     {
         return $this->category->getCategoryNameEs();
     }
+    /**
+     * @var boolean
+     */
+    private $isShow;
+
+    /**
+     * @var boolean
+     */
+    private $isHunzhuang;
+
+
+    /**
+     * Set isShow
+     *
+     * @param boolean $isShow
+     * @return Product
+     */
+    public function setIsShow($isShow)
+    {
+        $this->isShow = $isShow;
+
+        return $this;
+    }
+
+    /**
+     * Get isShow
+     *
+     * @return boolean 
+     */
+    public function getIsShow()
+    {
+        return $this->isShow;
+    }
+
+    /**
+     * Set isHunzhuang
+     *
+     * @param boolean $isHunzhuang
+     * @return Product
+     */
+    public function setIsHunzhuang($isHunzhuang)
+    {
+        $this->isHunzhuang = $isHunzhuang;
+
+        return $this;
+    }
+
+    /**
+     * Get isHunzhuang
+     *
+     * @return boolean 
+     */
+    public function getIsHunzhuang()
+    {
+        return $this->isHunzhuang;
+    }
 }

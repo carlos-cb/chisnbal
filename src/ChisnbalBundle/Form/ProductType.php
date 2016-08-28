@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ProductType extends AbstractType
 {
@@ -33,26 +34,14 @@ class ProductType extends AbstractType
                 'data_class' => null,
                 'required' => false,
             ))
-            ->add('size', 'choice', array(
-                'choices' => array(
-                    'Única' => 'Única',
-                    'XS' => 'XS',
-                    'S' => 'S',
-                    'M' => 'M',
-                    'L' => 'L',
-                    'XL' => 'XL',
-                    'XXL' => 'XXL',
-                ),
-                'label' => '尺寸',
-                'multiple' => true,
-                'expanded' => true,
-                'required' => false,
-            ))
             ->add('description', 'text', array(
                 'label' => '备注',
                 'required' => false,
             ))
-            ->add('unit', null, array('label' => '单位'))
+            ->add('isHunzhuang', CheckboxType::class, array(
+                'label'    => '是否全颜色混装',
+                'required' => false,
+            ))
         ;
     }
     

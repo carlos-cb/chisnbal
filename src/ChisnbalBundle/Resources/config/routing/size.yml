@@ -1,0 +1,28 @@
+size_index:
+    path:     /{productId}
+    defaults: { _controller: "ChisnbalBundle:Size:index" }
+    methods:  GET
+
+size_show:
+    path:     /{id}/show
+    defaults: { _controller: "ChisnbalBundle:Size:show" }
+    methods:  GET
+
+size_new:
+    path:     /{productId}/new
+    defaults: { _controller: "ChisnbalBundle:Size:new" }
+    methods:  [GET, POST]
+
+size_edit:
+    path:     /{productId}/{id}/edit
+    defaults: { _controller: "ChisnbalBundle:Size:edit" }
+    methods:  [GET, POST]
+
+size_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ChisnbalBundle:Size:delete" }
+    methods:  DELETE
+
+size_add:
+    path:     /sizeAdd
+    defaults: { _controller: "ChisnbalBundle:Size:sizeAdd" }
