@@ -130,6 +130,25 @@ input {
     font-size: 15px;
     font-weight: 500;
 }
+.panel1 input[type='password'] {
+    background-color: #22232a;
+    -webkit-border-radius: 45px;
+    -moz-border-radius: 45px;
+    border-radius: 45px;
+    font-size: 15px;
+    height: 45px;
+    border: none;
+    padding-left: 15px;
+    width: -webkit-calc(100% - 15px);
+    width: -moz-calc(100% - 15px);
+    width: calc(100% - 15px);
+    margin-bottom: 10px;
+}
+.panel1 input[type='password'][placeholder] {
+    color: #656d79;
+    font-size: 15px;
+    font-weight: 500;
+}
 .panel1 .fack {
     margin-top: 30px;
     font-size: 14px;

@@ -5,8 +5,4 @@ $(document).ready(function(){
         },
         closeBtn: false
     });
-    $("div.login").click(function(){
-        var path = $(this).attr("data-path");
-        window.location.replace(path);
-    })
 });
