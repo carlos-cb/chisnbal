@@ -44,11 +44,9 @@ ChisnbalBundle\Entity\Product:
         colors:
             targetEntity: Color
             mappedBy: product
-    oneToMany:
         sizes:
             targetEntity: Size
             mappedBy: product
-    oneToMany:
         fotodetalles:
             targetEntity: Fotodetalle
             mappedBy: product

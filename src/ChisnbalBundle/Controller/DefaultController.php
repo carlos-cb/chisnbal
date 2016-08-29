@@ -4,11 +4,29 @@ namespace ChisnbalBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ChisnbalBundle\Entity\Product;
+use ChisnbalBundle\Entity\Cart;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $cart = $this->getUser()->getCart();
+        if(!$cart) {
+            $cart = new Cart();
+            $cart->setCartState('buying')
+                ->setCreateDate(new \DateTime('now'))
+                ->setUser($this->getUser());
+            $em->persist($cart);
+            $em->flush();
+        }
+        else if($cart->getCartState() == 'over')
+        {
+            $cart->setCartState('buying')
+                ->setCreateDate(new \DateTime('now'));
+            $em->persist($cart);
+            $em->flush();
+        }
         return $this->render('ChisnbalBundle:Default:index.html.twig');
     }
     
@@ -39,21 +57,8 @@ class DefaultController extends Controller
         $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
 
         $product = $this->getProductInfo($productId);
-
-        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Fotodetalle p WHERE p.product=$productId");
-        $fotodetalles = $query->getResult();
-
-        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Color p WHERE p.product=$productId");
-        $colors = $query->getResult();
-        
-        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Size p WHERE p.product=$productId");
-        $sizes = $query->getResult();
-        
         
         return $this->render('ChisnbalBundle:Default:productDetalle.html.twig', array(
-            'fotodetalles' => $fotodetalles,
-            'colors' => $colors,
-            'sizes' => $sizes,
             'product' => $product,
             'categories' => $categories,
         ));
@@ -61,7 +66,12 @@ class DefaultController extends Controller
 
     public function cartAction()
     {
-        return $this->render('ChisnbalBundle:Default:cart.html.twig');
+        $cart = $this->getUser()->getCart();
+        $cartItems = $cart->getCartItems();
+
+        return $this->render('ChisnbalBundle:Default:cart.html.twig', array(
+            'cartItems' => $cartItems,
+        ));
     }
     
     public function guestinfoAction()

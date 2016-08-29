@@ -498,4 +498,80 @@ class Product
     {
         return $this->isHunzhuang;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $sizes;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $fotodetalles;
+
+
+    /**
+     * Add sizes
+     *
+     * @param \ChisnbalBundle\Entity\Size $sizes
+     * @return Product
+     */
+    public function addSize(\ChisnbalBundle\Entity\Size $sizes)
+    {
+        $this->sizes[] = $sizes;
+
+        return $this;
+    }
+
+    /**
+     * Remove sizes
+     *
+     * @param \ChisnbalBundle\Entity\Size $sizes
+     */
+    public function removeSize(\ChisnbalBundle\Entity\Size $sizes)
+    {
+        $this->sizes->removeElement($sizes);
+    }
+
+    /**
+     * Get sizes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSizes()
+    {
+        return $this->sizes;
+    }
+
+    /**
+     * Add fotodetalles
+     *
+     * @param \ChisnbalBundle\Entity\Fotodetalle $fotodetalles
+     * @return Product
+     */
+    public function addFotodetalle(\ChisnbalBundle\Entity\Fotodetalle $fotodetalles)
+    {
+        $this->fotodetalles[] = $fotodetalles;
+
+        return $this;
+    }
+
+    /**
+     * Remove fotodetalles
+     *
+     * @param \ChisnbalBundle\Entity\Fotodetalle $fotodetalles
+     */
+    public function removeFotodetalle(\ChisnbalBundle\Entity\Fotodetalle $fotodetalles)
+    {
+        $this->fotodetalles->removeElement($fotodetalles);
+    }
+
+    /**
+     * Get fotodetalles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFotodetalles()
+    {
+        return $this->fotodetalles;
+    }
 }

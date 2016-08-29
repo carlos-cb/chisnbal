@@ -28,7 +28,7 @@
 
             <div class="col-sm-5 col-md-4 col-lg-4 col-lg-offset-2 imglist">
 
-                {% for fotodetalle in fotodetalles %}
+                {% for fotodetalle in product.fotodetalles %}
                     <div class='col-sm-12 col-md-12 col-lg-12'>
                         <div class="container">
                             <a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" class="imgzoom" title="Detalle de Foto">
@@ -79,7 +79,7 @@
                         <div class="product-style-selector">
                             <div class="row">
 
-                                {% for color in colors %}
+                                {% for color in product.colors %}
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="color">
                                             <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
@@ -133,7 +133,7 @@
                                     <thead>
                                     <tr>
                                         <th>尺码配比表</th>
-                                        {% for size in sizes %}
+                                        {% for size in product.sizes %}
                                             <th>{{ size.sizeName }}</th>
                                         {% endfor %}
                                     </tr>
@@ -141,7 +141,7 @@
                                     <tbody>
                                     <tr>
                                         <th scope="row">配比</th>
-                                        {% for size in sizes %}
+                                        {% for size in product.sizes %}
                                             <th>{{ size.quantity }}</th>
                                         {% endfor %}
                                     </tr>

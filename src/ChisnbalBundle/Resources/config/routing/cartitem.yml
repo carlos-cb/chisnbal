@@ -22,3 +22,7 @@ cartitem_delete:
     path:     /{id}/delete
     defaults: { _controller: "ChisnbalBundle:CartItem:delete" }
     methods:  DELETE
+
+cartitem_cart_delete:
+    path:     /{id}/cartdelete
+    defaults: { _controller: "ChisnbalBundle:CartItem:cartdelete" }

@@ -11,6 +11,11 @@ ChisnbalBundle\Entity\CartItem:
     fields:
         quantity:
             type: integer
+        unit:
+            type: integer
+        color:
+            type: string
+            length: 255
     manyToOne:
         cart:
             targetEntity: Cart

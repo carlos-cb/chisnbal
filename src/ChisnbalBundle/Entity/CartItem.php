@@ -112,4 +112,60 @@ class CartItem
     public function __toString() {
         return strval($this->id);
     }
+    /**
+     * @var integer
+     */
+    private $unit;
+
+    /**
+     * @var string
+     */
+    private $color;
+
+
+    /**
+     * Set unit
+     *
+     * @param integer $unit
+     * @return CartItem
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return integer 
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set color
+     *
+     * @param string $color
+     * @return CartItem
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    /**
+     * Get color
+     *
+     * @return string 
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
 }

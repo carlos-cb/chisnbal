@@ -111,6 +111,22 @@ class CartItemController extends Controller
     }
 
     /**
+     * Deletes a CartItem entity.
+     *
+     */
+    public function cartdeleteAction(CartItem $cartItem)
+    {
+        $cart = $this->getUser()->getCart();
+        $cart->removeCartItem($cartItem);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($cartItem);
+        $em->flush();
+
+        return $this->redirectToRoute('chisnbal_carrito');
+    }
+
+    /**
      * Creates a form to delete a CartItem entity.
      *
      * @param CartItem $cartItem The CartItem entity

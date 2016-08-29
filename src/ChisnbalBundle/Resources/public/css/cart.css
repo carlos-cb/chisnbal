@@ -101,9 +101,7 @@ a {
     font-size: 10px;
     background: url('../img/dotted-line.png') repeat-x bottom left;
 }
-.order-table tbody td.quantity {
-    text-align: center;
-}
+
 .order-table tbody .price {
     text-align: right;
     white-space: nowrap;
@@ -121,6 +119,10 @@ a {
     display: inline-block;
     margin-left: 5px;
     vertical-align: middle;
+}
+.order-table tbody td.quantity a {
+    margin-right: 10px;
+    font-size: 15px;
 }
 .order-table tbody td.quantity button {
     background-color: white;
