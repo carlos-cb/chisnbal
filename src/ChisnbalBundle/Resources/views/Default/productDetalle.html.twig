@@ -5,6 +5,7 @@
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/productlist.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/jquery.jqzoom.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/detalle.css') }}" />
         {% endblock %}
 {% block content %}
     <div class="container-fluid">
@@ -78,42 +79,40 @@
 
                         <div class="product-style-selector">
                             <div class="row">
-
-                                {% for color in product.colors %}
-                                    <div class="col-lg-3 col-md-3 col-sm-3">
-                                        <label class="color">
-                                            <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
-                                                <img id="colorimg" src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEs }}" height="70px">
+                                <ul>
+                                    <li>
+                                        <div class="circle">
+                                            <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/color1.jpg') }}">
+                                                <img src="{{ asset('uploads/fotos/color1.jpg') }}" alt="colorName" height="70px">
                                             </a>
-                                            <span class="color-description">{{ color.colorNameEs }}</span>
-                                        </label>
-                                    </div>
+                                        </div>
+                                        <h4>NEGRO</h4>
+                                        <input id="check-1" type="checkbox"/>
+                                        <label for="check-1"><i class="fa fa-check"></i></label>
+                                    </li>
+                                    <li>
+                                        <div class="circle">
+                                            <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/color2.jpg') }}">
+                                                <img src="{{ asset('uploads/fotos/color2.jpg') }}" alt="colorName" height="70px">
+                                            </a>
+                                        </div>
+                                        <h4>ROJO</h4>
+                                        <input id="check-2" type="checkbox"/>
+                                        <label for="check-2"><i class="fa fa-check"></i></label>
+                                    </li>
+                                    <li>
+                                        <div class="circle">
+                                            <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/color3.jpg') }}">
+                                                <img src="{{ asset('uploads/fotos/color3.jpg') }}" alt="colorName" height="70px">
+                                            </a>
+                                        </div>
+                                        <h4>OSCURO</h4>
+                                        <input id="check-3" type="checkbox"/>
+                                        <label for="check-3"><i class="fa fa-check"></i></label>
+                                    </li>
+                                </ul>
+                                {% for color in product.colors %}
                                 {% endfor %}
-
-                                <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <label class="color">
-                                        <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/color1.jpg') }}">
-                                            <img src="{{ asset('uploads/fotos/color1.jpg') }}" alt="colorName" height="70px">
-                                        </a>
-                                        <span class="color-description">negro</span>
-                                    </label>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <label class="color">
-                                        <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/color2.jpg') }}">
-                                            <img src="{{ asset('uploads/fotos/color2.jpg') }}" alt="colorName" height="70px">
-                                        </a>
-                                        <span class="color-description">rojo</span>
-                                    </label>
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3">
-                                    <label class="color">
-                                        <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/color3.jpg') }}">
-                                            <img src="{{ asset('uploads/fotos/color3.jpg') }}" alt="colorName" height="70px">
-                                        </a>
-                                        <span class="color-description">oscuro</span>
-                                    </label>
-                                </div>
 
                             </div>
                         </div>
@@ -149,7 +148,7 @@
                                 </table>
                             </div>
                         </div>
-                        <button class="shopping-bag-cta add-to-shopping-bag" onclick="window.location.href='{{ path('chisnbal_carrito') }}'" type="submit" style="display: block;">
+                        <button class="shopping-bag-cta add-to-shopping-bag various" type="submit" href="#inline" style="display: block;">
                             Añadir a Bolsa de Compras</button>
                         <div class="save-help guardar" data-module="tooltip">
                             <ul>
@@ -207,5 +206,6 @@
     {{ parent() }}
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{{ asset('bundles/chisnbal/js/jquery.jqzoom-core.js') }}"></script>
+    <script src="{{ asset('bundles/chisnbal/js/detalle.js') }}"></script>
     <script src="{{ asset('bundles/chisnbal/js/jqzoom.js') }}"></script>
 {% endblock %}

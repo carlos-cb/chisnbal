@@ -88,7 +88,6 @@ a{
     display: block;
     padding: 20px;
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 
@@ -161,7 +160,6 @@ a{
     font-size: 12px;
     margin-top: 10px;
     margin-bottom: 20px;
-    text-align: center;
 }
 
 
