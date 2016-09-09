@@ -42,13 +42,13 @@
                             {%endfor%}
                             </td>
                             <td class="quantity">
-                                <span class="_quantity" id="_unit">{{ cartItem.product.unit }} </span> x <span class="_quantity" id="_quantity">{{ cartItem.quantity }}</span>
+                                <span class="_quantity" id="_unit">{{ cartItem.unit }} </span> x <span class="_quantity" id="_quantity">{{ cartItem.quantity }}</span>
                                 <br><br>
                                 <span id="cartItemId" style="display: none">{{ cartItem.id }}</span>
                                 <span id="priceunit" style="display: none">{{ cartItem.product.price }}</span>
                                 <span>
-                                    <a class="button button-large button-plain button-border button-box minnum" data-path=""><i class="fa fa-minus" aria-hidden="true"></i></a>
-                                    <a class="button button-large button-plain button-border button-box addnum" data-path=""><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                    <a class="button button-large button-plain button-border button-box minnum" data-path="{{ path('cart_update') }}"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                                    <a class="button button-large button-plain button-border button-box addnum" data-path="{{ path('cart_update') }}"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                 </span>
                             </td>
                             <td class="price"><span id="heji"></span> EUR</td>

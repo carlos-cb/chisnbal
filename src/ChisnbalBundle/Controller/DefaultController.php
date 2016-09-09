@@ -5,6 +5,8 @@ namespace ChisnbalBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ChisnbalBundle\Entity\Product;
 use ChisnbalBundle\Entity\Cart;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -72,6 +74,19 @@ class DefaultController extends Controller
         return $this->render('ChisnbalBundle:Default:cart.html.twig', array(
             'cartItems' => $cartItems,
         ));
+    }
+
+    public function ajaxUpdateAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $isAdd = $request->get('val1');
+        $cartItemId = $request->get('val2');
+        $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:CartItem');
+        $cartItem = $repository->find($cartItemId);
+        $cartItem->setQuantity($cartItem->getQuantity()+$isAdd);
+        $em->persist($cartItem);
+        $em->flush();
+        return new Response();
     }
     
     public function guestinfoAction()

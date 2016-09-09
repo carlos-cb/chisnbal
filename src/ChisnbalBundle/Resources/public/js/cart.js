@@ -19,7 +19,7 @@ $(function(){
     });
     $("a.minnum").click(function(){
         var t=$(this).parent().parent().find('span#_quantity');
-        t.html(parseInt(t.text())-1)
+        t.html(parseInt(t.text())-1);
         if(parseInt(t.text())<1){
             t.html(1);
         }else{
