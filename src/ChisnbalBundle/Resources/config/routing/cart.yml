@@ -22,7 +22,3 @@ cart_delete:
     path:     /{id}/delete
     defaults: { _controller: "ChisnbalBundle:Cart:delete" }
     methods:  DELETE
-
-cart_update:
-    path:     /cartupdate
-    defaults: { _controller: "ChisnbalBundle:Default:ajaxUpdate" }

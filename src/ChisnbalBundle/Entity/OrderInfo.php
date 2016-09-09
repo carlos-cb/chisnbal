@@ -521,4 +521,32 @@ class OrderInfo
     public function __toString() {
         return strval($this->id);
     }
+    /**
+     * @var string
+     */
+    private $receiverEmail;
+
+
+    /**
+     * Set receiverEmail
+     *
+     * @param string $receiverEmail
+     * @return OrderInfo
+     */
+    public function setReceiverEmail($receiverEmail)
+    {
+        $this->receiverEmail = $receiverEmail;
+
+        return $this;
+    }
+
+    /**
+     * Get receiverEmail
+     *
+     * @return string 
+     */
+    public function getReceiverEmail()
+    {
+        return $this->receiverEmail;
+    }
 }

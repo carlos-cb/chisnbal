@@ -61,3 +61,11 @@ chisnbal_carrito:
 chisnbal_guestinfo:
     path:     /orderinfo
     defaults: { _controller: ChisnbalBundle:Default:guestinfo }
+
+cart_update:
+    path:     /cartupdate
+    defaults: { _controller: ChisnbalBundle:Default:ajaxUpdate }
+
+chisnbal_cartToOrderinfo:
+    path:     /cartToOrderinfo
+    defaults: { _controller: ChisnbalBundle:Order:cartToOrderinfo }

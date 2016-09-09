@@ -35,70 +35,65 @@
         <div class="line mod">
             <div class="radioGroup">
                 <h2>DATOS DE CONTACTO</h2>
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ path('chisnbal_cartToOrderinfo') }}" name="orderinfo">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-8">
-                            <input type="email" class="form-control" id="inputemail" placeholder="Email">
+                            <input name="email" type="email" class="form-control" id="inputemail" required="required" placeholder="Email" >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputtel" class="col-sm-2 control-label">Teléfono</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputtel" placeholder="Teléfono">
+                            <input name="phonenumber" type="text" class="form-control" id="inputtel" required="required" placeholder="Teléfono">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputname" class="col-sm-2 control-label">Nombre</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputname" placeholder="Nombre">
+                            <input name="name" type="text" class="form-control" id="inputname" required="required" placeholder="Nombre">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Dirección</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputaddress" placeholder="Dirección">
+                            <input name="address" type="text" class="form-control" id="inputaddress" required="required" placeholder="Dirección">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputpost" class="col-sm-2 control-label">Código postal</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputpost" placeholder="Código postal">
+                            <input name="postcode" type="text" class="form-control" id="inputpost" required="required" placeholder="Código postal">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Localidad</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="inputlocal" placeholder="Localidad">
+                            <input name="city" type="text" class="form-control" id="inputlocal" required="required" placeholder="Localidad">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Método de pago</label>
                         <div class="col-sm-8">
-                            <select class="form-control">
-                                <option>1</option>
-                                <option>2</option>
+                            <select name="paytype" class="form-control" required="required">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
                             </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group" style="display: none">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Seguir</button>
                         </div>
                     </div>
                     <br><br>
                     <div class="">
                         <div class="unit size1of1">
                             <div class="actions fLeft">
-                                <button id="backCheckoutShippingBt" type="button" value="Volver" class="button butBack butWhite gaViewEvent" data-ga-props="{action:'Volver'}">
+                                <button id="backCheckoutShippingBt" type="button" value="Volver" class="button butBack butWhite gaViewEvent">
                                     <i class="icon icon-arrow-left"></i>
                                     <span>Volver</span>
                                 </button>
                             </div>
                             <div class="actions fRight">
-                                <button id="checkoutPaymentBt" type="submit" value="FINALIZAR PEDIDO" class="button butBlack authPayment gaTrack gaViewEvent" data-ga-props="{action:'Autorizar_Pago'}">
+                                <button id="checkoutPaymentBt" type="submit" value="FINALIZAR PEDIDO"
+                                        class="button butBlack authPayment gaTrack gaViewEvent" onclick="return checkform()">
                                     <span>FINALIZAR PEDIDO</span>
                                 </button>
                             </div>
@@ -109,3 +104,7 @@
         </div>
     </div>
 {% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            <script src="{{ asset('bundles/chisnbal/js/validation.js') }}"></script>
+        {% endblock %}

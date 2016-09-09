@@ -32,7 +32,7 @@ ChisnbalBundle\Entity\OrderInfo:
         receiverCity:
             type: string
             length: 255
-        receiverProvince:
+        receiverEmail:
             type: string
             length: 255
         receiverPostcode:
