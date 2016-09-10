@@ -61,3 +61,7 @@ chisnbal_carrito:
 chisnbal_guestinfo:
     path:     /orderinfo
     defaults: { _controller: ChisnbalBundle:Default:guestinfo }
+
+chisnbal_addToCart:
+    path:     /addToCart
+    defaults: { _controller: ChisnbalBundle:Default:addToCart }
