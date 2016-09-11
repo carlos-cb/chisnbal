@@ -69,3 +69,7 @@ cart_update:
 chisnbal_cartToOrderinfo:
     path:     /cartToOrderinfo
     defaults: { _controller: ChisnbalBundle:Order:cartToOrderinfo }
+
+chisnbal_addToCart:
+    path:     /addToCart
+    defaults: { _controller: ChisnbalBundle:Default:addToCart }

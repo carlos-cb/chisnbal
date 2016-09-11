@@ -168,4 +168,5 @@ class CartItem
     {
         return $this->color;
     }
+
 }

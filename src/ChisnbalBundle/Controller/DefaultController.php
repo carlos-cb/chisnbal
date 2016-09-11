@@ -5,6 +5,7 @@ namespace ChisnbalBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ChisnbalBundle\Entity\Product;
 use ChisnbalBundle\Entity\Cart;
+use ChisnbalBundle\Entity\CartItem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -101,5 +102,38 @@ class DefaultController extends Controller
             ->getRepository('ChisnbalBundle:Product')
             ->findOneById($productId);
         return $product;
+    }
+
+    public function addToCartAction(Request $request)
+    {
+        $cart = $this->getUser()->getCart();
+        $em = $this->getDoctrine()->getManager();
+
+        //获取ajax参数
+        $productid = $request->get('id');
+        $productunit = $request->get('unit');
+        $colors = $request->get('info');
+
+        //获取product实体
+        $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:Product');
+        $product = $repository->find($productid);
+
+        foreach($colors as $color){
+            $exsiteColor = $this->getDoctrine()->getRepository('ChisnbalBundle:CartItem')->findOneBy(array('cart' => $cart, 'product' => $product, 'color' => $color));
+            if($exsiteColor)
+            {
+                $exsiteColor->setQuantity($exsiteColor->getQuantity()+1);
+                $em->persist($exsiteColor);
+                $em->flush();
+            }else
+            {
+                $newCartItem = new CartItem();
+                $newCartItem->setCart($cart)->setProduct($product)->setQuantity(1)->setUnit($productunit)->setColor($color);
+                $cart->addCartItem($newCartItem);
+                $em->persist($newCartItem);
+                $em->flush();
+            }
+        }
+        return $this->render('ChisnbalBundle:Default:guestinfo.html.twig');
     }
 }
