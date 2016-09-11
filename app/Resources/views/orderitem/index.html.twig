@@ -17,23 +17,40 @@
 
 {% block content %}
     <h1 class="sub-header">订单货物列表</h1>
-    <h3>订单编号：{{ orderInfo.id }}</h3>
+    <h3><a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">订单编号：{{ orderInfo.id }}</a></h3>
+    <br>
     <table class="table table-bordered table-striped table-hover">
         <thead>
         <tr>
             <th>ID</th>
-            <th>数量(包/箱)</th>
             <th>产品编号</th>
+            <th>产品名</th>
+            <th>颜色</th>
+            <th>数量(包/箱)</th>
+            <th>单位</th>
+            <th>总件数</th>
         </tr>
         </thead>
         <tbody>
         {% for orderItem in orderItems %}
             <tr>
-                <td>{{ orderItem.id }}</a></td>
+                <td>{{ loop.length }}</a></td>
+                <td>{{ orderItem.product.codigo }}</td>
+                <td>{{ orderItem.product.productNameEs }}</td>
                 <td>{{ orderItem.quantity }}</td>
-                <td>{{ orderItem.product.code }}</td>
+                <td>{{ orderItem.product.unit }}</td>
+                {% set foo = orderItem.quantity * orderItem.product.unit %}
+                <td>{{ foo }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <br>
+    <ul>
+        <li>
+            <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回订单列表</a>
+            <button class="button button-rounded button-primary" onclick="window.print();"><i class="fa fa-print"></i> 打印</button>
+        </li>
+        <br>
+    </ul>
 {% endblock %}

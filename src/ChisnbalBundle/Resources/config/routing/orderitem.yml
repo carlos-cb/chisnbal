@@ -1,5 +1,5 @@
 orderitem_index:
-    path:     /
+    path:     /{orderInfoId}
     defaults: { _controller: "ChisnbalBundle:OrderItem:index" }
     methods:  GET
 

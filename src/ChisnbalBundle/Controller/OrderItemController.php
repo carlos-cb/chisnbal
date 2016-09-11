@@ -18,14 +18,18 @@ class OrderItemController extends Controller
      * Lists all OrderItem entities.
      *
      */
-    public function indexAction()
+    public function indexAction($orderInfoId)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $orderItems = $em->getRepository('ChisnbalBundle:OrderItem')->findAll();
+        $orderInfo = $this->getOrderInfo($orderInfoId);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:OrderItem p WHERE p.orderInfo=$orderInfoId");
+        $orderItems = $query->getResult();
 
         return $this->render('orderitem/index.html.twig', array(
             'orderItems' => $orderItems,
+            'orderInfo' => $orderInfo,
         ));
     }
 
@@ -124,5 +128,13 @@ class OrderItemController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    
+    private function getOrderInfo($orderInfoId)
+    {
+        $orderInfo = $this->getDoctrine()
+            ->getRepository('ChisnbalBundle:OrderInfo')
+            ->find($orderInfoId);
+        return $orderInfo;
     }
 }

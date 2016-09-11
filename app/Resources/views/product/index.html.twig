@@ -25,10 +25,10 @@
             <th>产品名西语</th>
             <th>产品名英语</th>
             <th>单价</th>
+            <th>单位</th>
             <th>产品编号</th>
             <th>图片</th>
             <th>所属分类</th>
-            <th>备注</th>
             <th>是否显示</th>
             <th>全色混装</th>
             <th>操作</th>
@@ -41,14 +41,14 @@
                 <td>{{ product.productNameEs }}</td>
                 <td>{{ product.productNameEn }}</td>
                 <td>{{ product.price }}</td>
+                <td>{{ product.unit }}</td>
                 <td>{{ product.codigo }}</td>
                 <td><a href="{{ asset('uploads/fotos/' ~ product.foto) }}"><img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="120px" width="100px"></a></td>
                 <td>{{ product.categoryName }}</td>
-                <td>{{ product.description }}</td>
                 <td>{% if product.isShow %}显示{% else %}不显示{% endif %}<br>
                     <a href="{{ path('product_changeShow', { 'id': product.id }) }}">显示切换</a>
                 </td>
-                <td>{{ product.isHunzhuang }}</td>
+                <td>{% if product.isHunzhuang %}混装{% else %}单色{% endif %}</td>
                 <td>
                     <ul>
                         <li>

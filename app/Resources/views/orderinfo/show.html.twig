@@ -90,12 +90,8 @@
     <ul>
         <li>
             <a href="{{ path('orderinfo_index') }}" class="button button-rounded">返回订单列表</a>
+            <button class="button button-rounded button-primary" onclick="window.print();"><i class="fa fa-print"></i> 打印</button>
         </li>
         <br>
-        <li>
-            {{ form_start(delete_form) }}
-            <input type="submit" class="button button-border button-rounded button-primary" value="删除">
-            {{ form_end(delete_form) }}
-        </li>
     </ul>
 {% endblock %}
