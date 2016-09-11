@@ -115,7 +115,23 @@ class DefaultController extends Controller
     
     public function guestinfoAction()
     {
-        return $this->render('ChisnbalBundle:Default:guestinfo.html.twig');
+        $priceall = $this->countAll();
+        return $this->render('ChisnbalBundle:Default:guestinfo.html.twig', array(
+            'priceAll' => $priceall,
+        ));
+    }
+
+    private function countAll()
+    {
+        $user = $this->getUser();
+        $cartItems = $user->getCart()->getCartItems();
+        $priceall = 0;
+
+        foreach($cartItems as $cartItem)
+        {
+            $priceall += ($cartItem->getQuantity() * $cartItem->getUnit() * $cartItem->getProduct()->getPrice());
+        }
+        return $priceall;
     }
 
     private function getProductInfo($productId)
@@ -135,14 +151,18 @@ class DefaultController extends Controller
         //获取ajax参数
         $productid = $request->get('id');
         $productunit = $request->get('unit');
-        $colors = $request->get('info');
+        $colorIds = $request->get('info');
 
         //获取product实体
         $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:Product');
         $product = $repository->find($productid);
+        
 
-        foreach($colors as $color){
-            $exsiteColor = $this->getDoctrine()->getRepository('ChisnbalBundle:CartItem')->findOneBy(array('cart' => $cart, 'product' => $product, 'color' => $color));
+        foreach($colorIds as $colorId){
+            $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:Color');
+            $colorshiti = $repository->find($colorId);
+            $exsiteColor = $this->getDoctrine()->getRepository('ChisnbalBundle:CartItem')->findOneBy(array('cart' => $cart, 'product' => $product, 'colorId' => $colorId));
+            
             if($exsiteColor)
             {
                 $exsiteColor->setQuantity($exsiteColor->getQuantity()+1);
@@ -151,12 +171,18 @@ class DefaultController extends Controller
             }else
             {
                 $newCartItem = new CartItem();
-                $newCartItem->setCart($cart)->setProduct($product)->setQuantity(1)->setUnit($productunit)->setColor($color);
+                $newCartItem->setCart($cart)
+                            ->setProduct($product)
+                            ->setQuantity(1)
+                            ->setUnit($productunit)
+                            ->setColorId($colorId)
+                            ->setColorName($colorshiti->getColorNameEs())
+                            ->setFoto($colorshiti->getColorFoto());
                 $cart->addCartItem($newCartItem);
                 $em->persist($newCartItem);
                 $em->flush();
             }
         }
-        return $this->render('ChisnbalBundle:Default:guestinfo.html.twig');
+        return new Response();
     }
 }

@@ -27,7 +27,7 @@
                         <tr id="order-item" class="order-item  _order-item-919231977">
                             <td class="_detail">
                                 <a href="{{ path('chisnbal_fotodetalle_list', { 'productId': cartItem.product.id }) }}" target="_self">
-                                    <img src="{{ asset('uploads/fotos/' ~ cartItem.product.foto) }}" width="135px;">
+                                    <img src="{{ asset('uploads/fotos/' ~ cartItem.foto) }}" width="135px;">
                                 </a>
                             </td>
                             <td class="description _detail">
@@ -35,7 +35,7 @@
                                     <span>{{ cartItem.product.productNameEs }}</span><br>Ref.&nbsp;{{ cartItem.product.codigo }}
                                 </a>
                             </td>
-                            <td class="color">{{ cartItem.color }}</td>
+                            <td class="color">{{ cartItem.colorName }}</td>
                             <td class="size">
                             {%for role in cartItem.product.sizes %}
                                 {{ role.sizeName }}&nbsp;&nbsp;

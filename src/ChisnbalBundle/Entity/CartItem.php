@@ -169,4 +169,88 @@ class CartItem
         return $this->color;
     }
 
+    /**
+     * @var string
+     */
+    private $foto;
+
+
+    /**
+     * Set foto
+     *
+     * @param string $foto
+     * @return CartItem
+     */
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+
+        return $this;
+    }
+
+    /**
+     * Get foto
+     *
+     * @return string 
+     */
+    public function getFoto()
+    {
+        return $this->foto;
+    }
+    /**
+     * @var integer
+     */
+    private $colorId;
+
+    /**
+     * @var string
+     */
+    private $colorName;
+
+
+    /**
+     * Set colorId
+     *
+     * @param integer $colorId
+     * @return CartItem
+     */
+    public function setColorId($colorId)
+    {
+        $this->colorId = $colorId;
+
+        return $this;
+    }
+
+    /**
+     * Get colorId
+     *
+     * @return integer 
+     */
+    public function getColorId()
+    {
+        return $this->colorId;
+    }
+
+    /**
+     * Set colorName
+     *
+     * @param string $colorName
+     * @return CartItem
+     */
+    public function setColorName($colorName)
+    {
+        $this->colorName = $colorName;
+
+        return $this;
+    }
+
+    /**
+     * Get colorName
+     *
+     * @return string 
+     */
+    public function getColorName()
+    {
+        return $this->colorName;
+    }
 }

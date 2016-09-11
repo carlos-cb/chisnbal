@@ -8,7 +8,7 @@ $(function() {
         if(t.length > 0){
             var info = new Array(t.length);
             for(var i=0; i<t.length; i++){
-                info[i] = $(t[i]).find("h4#colorname").text();
+                info[i] = $(t[i]).find("div.colorid").text();
             }
             var path = $(this).attr("data-path");
             var productid = $("div.productid").text();
