@@ -46,6 +46,10 @@ chisnbal_homepage_admin:
     path:     /admin
     defaults: { _controller: ChisnbalBundle:Default:backEnd }
 
+chisnbal_quiensomos:
+    path:     /quiensomos
+    defaults: { _controller: ChisnbalBundle:Default:quiensomos }
+
 chisnbal_product_list:
     path:     /productList/{categoryId}
     defaults: { _controller: ChisnbalBundle:Default:productList }

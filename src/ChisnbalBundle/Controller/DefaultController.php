@@ -32,7 +32,12 @@ class DefaultController extends Controller
         }
         return $this->render('ChisnbalBundle:Default:index.html.twig');
     }
-    
+
+    public function quiensomosAction()
+    {
+        return $this->render('ChisnbalBundle:Default:quiensomos.html.twig');
+    }
+
     public function backEndAction()
     {
         return $this->render('ChisnbalBundle:BackEnd:overview.html.twig');

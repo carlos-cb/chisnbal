@@ -793,5 +793,11 @@ a.lien:hover span{
 #contacto{
     text-align: center;
 }
+.fancyGoldenSeperator
+{width: 159px;
+    height: 19px;
+    display: block;
+    margin: 33px auto;
+    background: url(../img/fancyGoldenseperator.png);}
 
 

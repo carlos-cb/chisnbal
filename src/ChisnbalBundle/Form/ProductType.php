@@ -28,6 +28,10 @@ class ProductType extends AbstractType
                 'label' => '单价',
                 'required' => false,
             ))
+            ->add('unit', null, array(
+                'label' => '单位',
+                'required' => false,
+            ))
             ->add('codigo', 'text', array('label' => '产品编号'))
             ->add('foto', FileType::class, array(
                 'label' => '图片',

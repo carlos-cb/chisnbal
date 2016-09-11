@@ -43,7 +43,9 @@ class ProductController extends Controller
             $file = $product->getFoto();
             $fileName = $this->get('chisnbal.foto_uploader')->upload($file);
             $product->setFoto($fileName);
-            
+
+            $product->setIsNew(0)->setIsSale(0)->setIsShow(1);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($product);
             $em->flush();
