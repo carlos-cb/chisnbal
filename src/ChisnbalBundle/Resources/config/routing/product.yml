@@ -22,3 +22,7 @@ product_delete:
     path:     /{id}/delete
     defaults: { _controller: "ChisnbalBundle:Product:delete" }
     methods:  DELETE
+
+product_changeShow:
+    path:     /{id}/changeShow
+    defaults: { _controller: "ChisnbalBundle:Product:changeShow" }

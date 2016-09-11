@@ -148,4 +148,15 @@ class ProductController extends Controller
             ->getForm()
         ;
     }
+
+    public function changeShowAction(Product $product)
+    {
+        $product->setIsShow(!$product->getIsShow());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($product);
+        $em->flush();
+
+        return $this->redirectToRoute('product_index');
+    }
 }

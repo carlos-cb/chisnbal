@@ -49,7 +49,7 @@ class DefaultController extends Controller
 
         $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
 
-        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.category=$categoryId and (p.isSale=0 or p.isSale='null')");
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.category=$categoryId and p.isShow=1");
         $products = $query->getResult();
 
         return $this->render('ChisnbalBundle:Default:productList.html.twig', array(
@@ -63,7 +63,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
 
-        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.isNew=1");
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.isNew=1 and p.isShow=1");
         $products = $query->getResult();
         return $this->render('ChisnbalBundle:Default:new.html.twig', array(
             'products' => $products,
