@@ -7,7 +7,11 @@
         <li><a href="#">分析</a></li>
     </ul>
     <ul class="nav nav-sidebar">
-
+        <li><a href="{{ path('user_index') }}">用户管理</a></li>
+        <li><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li class="active"><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li><a href="{{ path('select_new') }}">新品选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
     </ul>
 {% endblock %}
 

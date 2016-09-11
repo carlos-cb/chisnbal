@@ -58,6 +58,19 @@ class DefaultController extends Controller
         ));
     }
 
+    public function productListNewAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.isNew=1");
+        $products = $query->getResult();
+        return $this->render('ChisnbalBundle:Default:new.html.twig', array(
+            'products' => $products,
+            'categories' => $categories,
+        ));
+    }
+
     public function productDetalleAction($productId)
     {
         $em = $this->getDoctrine()->getManager();

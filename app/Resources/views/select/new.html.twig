@@ -9,14 +9,36 @@
     <ul class="nav nav-sidebar">
         <li><a href="{{ path('user_index') }}">用户管理</a></li>
         <li><a href="{{ path('category_index') }}">分类管理</a></li>
-        <li class="active"><a href="{{ path('product_index') }}">产品管理</a></li>
-        <li><a href="{{ path('select_new') }}">新品选择</a></li>
+        <li><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li class="active"><a href="{{ path('select_new') }}">新品选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
     </ul>
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">产品管理</h1>
+    <h1 class="sub-header">新品选择</h1>
+    <br>
+    <form class="form-inline" action="{{ path('add_new') }}" method="post">
+        <div class="form-group">
+            <label for="codigo">产品编号</label>
+            <input type="text" class="form-control" id="codigo" name="codigo" placeholder="codigo" required="required">
+        </div>
+        <button type="submit" class="btn btn-default" id="addnew">添加新品</button>
+    </form>
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+
+        <div class="alert alert-danger">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('success') %}
+
+        <div class="alert alert-success">
+            {{ flashMessage }}
+        </div>
+
+    {% endfor %}
     <br>
     <table class="table table-bordered table-striped table-hover">
         <thead>
@@ -29,8 +51,6 @@
             <th>图片</th>
             <th>所属分类</th>
             <th>备注</th>
-            <th>是否显示</th>
-            <th>全色混装</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -45,32 +65,11 @@
                 <td><a href="{{ asset('uploads/fotos/' ~ product.foto) }}"><img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="120px" width="100px"></a></td>
                 <td>{{ product.categoryName }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.isShow }}</td>
-                <td>{{ product.isHunzhuang }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('product_edit', { 'id': product.id }) }}">查看修改</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('fotodetalle_index', { 'productId': product.id }) }}">细节图管理</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('color_index', { 'productId': product.id }) }}">颜色管理</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('size_index', { 'productId': product.id }) }}">尺码配比管理</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('delete_new', { 'id': product.id }) }}">取消新品</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('product_new') }}" class="button button-rounded">创建新产品</a>
-        </li>
-    </ul>
 {% endblock %}
