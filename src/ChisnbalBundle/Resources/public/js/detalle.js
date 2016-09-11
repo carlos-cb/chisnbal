@@ -18,7 +18,10 @@ $(function() {
                 url: path,
                 data: {unit: productunit, id: productid, info: info},
                 success: function(){
-                    alert('success');
+                    var numselected = $("span.badge").text();
+                    var numselect = t.length;
+                    $("span.badge").html(parseInt(numselected) + numselect);
+                    alert("Ya ha añadido en tu carrito.");
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown)
                 {

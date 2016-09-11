@@ -60,10 +60,15 @@ class DefaultController extends Controller
         $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
 
         $product = $this->getProductInfo($productId);
+
+        $cart = $this->getUser()->getCart();
+        $cartItems = $cart->getCartItems();
+        $numItems = count($cartItems);
         
         return $this->render('ChisnbalBundle:Default:productDetalle.html.twig', array(
             'product' => $product,
             'categories' => $categories,
+            'numItems' => $numItems,
         ));
     }
 

@@ -9,11 +9,11 @@ use ChisnbalBundle\Entity\OrderItem;
 
 class OrderController extends Controller
 {
-    public function carritoOrderinfoAction(Request $request)
+    public function cartToOrderinfoAction(Request $request)
     {
         $priceAll = $this->countAll();
         $priceIni = $priceAll;
-        if($request->get('paytype')=='transfer'){
+        if($request->get('paytype') == 'transfer'){
             $priceAll= round($priceAll*1.21, 2);
         }
         //根据用户填写的表格新建订单
@@ -99,7 +99,7 @@ class OrderController extends Controller
 
         foreach($cartItems as $cartItem)
         {
-            $priceall += ($cartItem->getQuantity() * $cartItem->getProduct()->getUnit() * $cartItem->getProduct()->getPrice());
+            $priceall += ($cartItem->getQuantity() * $cartItem->getUnit() * $cartItem->getProduct()->getPrice());
         }
         return $priceall;
     }
