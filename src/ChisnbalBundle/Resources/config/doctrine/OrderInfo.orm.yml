@@ -47,6 +47,9 @@ ChisnbalBundle\Entity\OrderInfo:
         state:
             type: string
             length: 255
+        envio:
+            type: string
+            length: 255
     oneToMany:
         orderItems:
             targetEntity: OrderItem

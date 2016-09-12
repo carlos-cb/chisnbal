@@ -38,7 +38,7 @@ class OrderController extends Controller
                 ->setIsConfirmed(true)
                 ->setIsSended(false)
                 ->setIsOver(false)
-                ->setState("运行中");
+                ->setState("Being prepared");
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($orderInfo);
@@ -57,9 +57,7 @@ class OrderController extends Controller
             return $this->redirectToRoute('chisnbal_carrito');
         }
 
-        return $this->render('ChisnbalBundle:Default:cartToOrderinfo.html.twig', array(
-            'orderInfo' => $orderInfo,
-        ));
+        return $this->redirectToRoute('chisnbal_orderclient');  
     }
 
     private function itemToOrder(OrderInfo $orderInfo)
@@ -73,6 +71,10 @@ class OrderController extends Controller
             $orderItem = new OrderItem();
             $orderItem->setQuantity($cartItem->getQuantity())
                 ->setOrderInfo($orderInfo)
+                ->setUnit($cartItem->getUnit())
+                ->setColorId($cartItem->getColorId())
+                ->setColorName($cartItem->getColorName())
+                ->setFoto($cartItem->getFoto())
                 ->setProduct($cartItem->getProduct());
             $orderInfo->addOrderItem($orderItem);
 
@@ -105,5 +107,40 @@ class OrderController extends Controller
             $priceall += ($cartItem->getQuantity() * $cartItem->getUnit() * $cartItem->getProduct()->getPrice());
         }
         return $priceall;
+    }
+
+    public function orderclientAction()
+    {
+        $user = $this->getUser();
+
+        $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:OrderInfo');
+        $orderInfos = $repository->findByUser($user);
+
+        return $this->render('ChisnbalBundle:Default:orderclient.html.twig', array(
+            'orderInfos' => $orderInfos,
+        ));
+    }
+    
+    public function productlistclientAction($orderInfoId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $orderInfo = $this->getOrderInfo($orderInfoId);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:OrderItem p WHERE p.orderInfo=$orderInfoId");
+        $orderItems = $query->getResult();
+
+        return $this->render('ChisnbalBundle:Default:productlistclient.html.twig', array(
+            'orderItems' => $orderItems,
+            'orderInfo' => $orderInfo,
+        ));
+    }
+
+    private function getOrderInfo($orderInfoId)
+    {
+        $orderInfo = $this->getDoctrine()
+            ->getRepository('ChisnbalBundle:OrderInfo')
+            ->find($orderInfoId);
+        return $orderInfo;
     }
 }

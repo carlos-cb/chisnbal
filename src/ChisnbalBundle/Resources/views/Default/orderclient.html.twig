@@ -1,0 +1,46 @@
+{% extends 'font.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/cart.css') }}" />
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        {% endblock %}
+{% block content %}
+    <section id="main" class="content-main" role="main">
+        <h2>Mis pedidos</h2>
+        <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
+            <form action="//www.zara.com/es/es/shop/shipping/251514673" method="POST" class="_shopCartForm">
+                <table class="order-table">
+                    <thead>
+                    <tr class="thead"><th>NÚMERO</th>
+                        <th class="description">FECHA</th>
+                        <th>ESTADO</th>
+                        <th>IMPORTE</th>
+                        <th>CóDIGO DE ENVíO</th>
+                        <th>ACCIONES</th>
+                    </tr>
+                    </thead>
+                    <tbody id="shangpin">
+                    {% for orderInfo in orderInfos %}
+                        <tr id="order-item" class="order-item  _order-item-919231977">
+                            <td class="_detail">{{ orderInfo.id }}</td>
+                            <td class="description _detail">{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d') }}{% endif %}</td>
+                            <td class="color">{{ orderInfo.state }}</td>
+                            <td>{{ orderInfo.totalPrice }} EUR</td>
+                            <td>{% if orderInfo.envio %}{{ orderInfo.envio }}{% endif %}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('chisnbal_productlistclient', { 'orderInfoId': orderInfo.id }) }}">Ver lista de productos</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </section>
+    </section>
+{% endblock %}

@@ -140,4 +140,116 @@ class OrderItem
     public function __toString() {
         return strval($this->id);
     }
+    /**
+     * @var integer
+     */
+    private $unit;
+
+    /**
+     * @var integer
+     */
+    private $colorId;
+
+    /**
+     * @var string
+     */
+    private $colorName;
+
+    /**
+     * @var string
+     */
+    private $foto;
+
+
+    /**
+     * Set unit
+     *
+     * @param integer $unit
+     * @return OrderItem
+     */
+    public function setUnit($unit)
+    {
+        $this->unit = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Get unit
+     *
+     * @return integer 
+     */
+    public function getUnit()
+    {
+        return $this->unit;
+    }
+
+    /**
+     * Set colorId
+     *
+     * @param integer $colorId
+     * @return OrderItem
+     */
+    public function setColorId($colorId)
+    {
+        $this->colorId = $colorId;
+
+        return $this;
+    }
+
+    /**
+     * Get colorId
+     *
+     * @return integer 
+     */
+    public function getColorId()
+    {
+        return $this->colorId;
+    }
+
+    /**
+     * Set colorName
+     *
+     * @param string $colorName
+     * @return OrderItem
+     */
+    public function setColorName($colorName)
+    {
+        $this->colorName = $colorName;
+
+        return $this;
+    }
+
+    /**
+     * Get colorName
+     *
+     * @return string 
+     */
+    public function getColorName()
+    {
+        return $this->colorName;
+    }
+
+    /**
+     * Set foto
+     *
+     * @param string $foto
+     * @return OrderItem
+     */
+    public function setFoto($foto)
+    {
+        $this->foto = $foto;
+
+        return $this;
+    }
+
+    /**
+     * Get foto
+     *
+     * @return string 
+     */
+    public function getFoto()
+    {
+        return $this->foto;
+    }
 }

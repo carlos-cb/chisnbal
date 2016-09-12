@@ -549,4 +549,32 @@ class OrderInfo
     {
         return $this->receiverEmail;
     }
+    /**
+     * @var string
+     */
+    private $envio;
+
+
+    /**
+     * Set envio
+     *
+     * @param string $envio
+     * @return OrderInfo
+     */
+    public function setEnvio($envio)
+    {
+        $this->envio = $envio;
+
+        return $this;
+    }
+
+    /**
+     * Get envio
+     *
+     * @return string 
+     */
+    public function getEnvio()
+    {
+        return $this->envio;
+    }
 }

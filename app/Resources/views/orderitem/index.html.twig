@@ -37,8 +37,9 @@
                 <td>{{ loop.length }}</a></td>
                 <td>{{ orderItem.product.codigo }}</td>
                 <td>{{ orderItem.product.productNameEs }}</td>
+                <td>{{ orderItem.colorName }}</td>
                 <td>{{ orderItem.quantity }}</td>
-                <td>{{ orderItem.product.unit }}</td>
+                <td>{{ orderItem.unit }}</td>
                 {% set foo = orderItem.quantity * orderItem.product.unit %}
                 <td>{{ foo }}</td>
             </tr>

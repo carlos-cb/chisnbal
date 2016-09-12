@@ -85,3 +85,11 @@ chisnbal_cartToOrderinfo:
 chisnbal_addToCart:
     path:     /addToCart
     defaults: { _controller: ChisnbalBundle:Default:addToCart }
+
+chisnbal_orderclient:
+    path:     /orderclient
+    defaults: { _controller: ChisnbalBundle:Order:orderclient }
+
+chisnbal_productlistclient:
+    path:     /orderclient/orderitems/{orderInfoId}
+    defaults: { _controller: ChisnbalBundle:Order:productlistclient }
