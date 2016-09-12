@@ -86,6 +86,10 @@ chisnbal_addToCart:
     path:     /addToCart
     defaults: { _controller: ChisnbalBundle:Default:addToCart }
 
+chisnbal_addToCartHunzhuang:
+    path:     /addToCartHunzhuang
+    defaults: { _controller: ChisnbalBundle:Default:addToCartHunzhuang }
+
 chisnbal_orderclient:
     path:     /orderclient
     defaults: { _controller: ChisnbalBundle:Order:orderclient }

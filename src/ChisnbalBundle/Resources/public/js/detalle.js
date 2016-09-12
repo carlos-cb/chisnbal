@@ -4,23 +4,19 @@ $('label').click(function() {
 
 $(function() {
     $("button#buy").click(function () {
-        var t = $("ul#colorselect").find("li.active");
-        if(t.length > 0){
-            var info = new Array(t.length);
-            for(var i=0; i<t.length; i++){
-                info[i] = $(t[i]).find("div.colorid").text();
-            }
-            var path = $(this).attr("data-path");
-            var productid = $("div.productid").text();
-            var productunit = $("div.productunit").text();
+        var path = $(this).attr("data-path");
+        var productid = $("div.productid").text();
+        var productunit = $("div.productunit").text();
+        var hunzhuang = $("div.ishunzhuang").text();
+        if(hunzhuang){
+            var color = "Mezclado";
             $.ajax({
                 type: 'POST',
                 url: path,
-                data: {unit: productunit, id: productid, info: info},
+                data: {unit: productunit, id: productid, color: color},
                 success: function(){
                     var numselected = $("span.badge").text();
-                    var numselect = t.length;
-                    $("span.badge").html(parseInt(numselected) + numselect);
+                    $("span.badge").html(parseInt(numselected) + 1);
                     alert("Ya ha añadido en tu carrito.");
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown)
@@ -29,7 +25,30 @@ $(function() {
                 }
             });
         }else{
-            alert("Hay que seleccionar por lo menos un color.");
+            var t = $("ul#colorselect").find("li.active");
+            if(t.length > 0){
+                var info = new Array(t.length);
+                for(var i=0; i<t.length; i++){
+                    info[i] = $(t[i]).find("div.colorid").text();
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: path,
+                    data: {unit: productunit, id: productid, info: info},
+                    success: function(){
+                        var numselected = $("span.badge").text();
+                        var numselect = t.length;
+                        $("span.badge").html(parseInt(numselected) + numselect);
+                        alert("Ya ha añadido en tu carrito.");
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown)
+                    {
+                        alert('Error: ' +  errorThrown);
+                    }
+                });
+            }else{
+                alert("Hay que seleccionar por lo menos un color.");
+            }
         }
     });
 });

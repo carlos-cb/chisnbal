@@ -197,4 +197,42 @@ class DefaultController extends Controller
         }
         return new Response();
     }
+
+    public function addToCartHunzhuangAction(Request $request)
+    {
+        $cart = $this->getUser()->getCart();
+        $em = $this->getDoctrine()->getManager();
+
+        //获取ajax参数
+        $productid = $request->get('id');
+        $productunit = $request->get('unit');
+        $hunzhuang = $request->get('color');
+
+        //获取product实体
+        $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:Product');
+        $product = $repository->find($productid);
+
+            $exsiteColor = $this->getDoctrine()->getRepository('ChisnbalBundle:CartItem')->findOneBy(array('cart' => $cart, 'product' => $product));
+
+            if($exsiteColor)
+            {
+                $exsiteColor->setQuantity($exsiteColor->getQuantity()+1);
+                $em->persist($exsiteColor);
+                $em->flush();
+            }else
+            {
+                $newCartItem = new CartItem();
+                $newCartItem->setCart($cart)
+                    ->setProduct($product)
+                    ->setQuantity(1)
+                    ->setUnit($productunit)
+                    ->setColorId(0)
+                    ->setColorName($hunzhuang)
+                    ->setFoto($product->getFoto());
+                $cart->addCartItem($newCartItem);
+                $em->persist($newCartItem);
+                $em->flush();
+            }
+        return new Response();
+    }
 }

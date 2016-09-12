@@ -69,6 +69,22 @@
                         <div class="product-style-selector">
                             <div class="row">
                                 <ul id="colorselect">
+                                    {% if product.isHunzhuang %}
+                                        {% for color in product.colors %}
+                                            <li>
+                                                <div class="circle">
+                                                    <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
+                                                        <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEs }}" height="70px">
+                                                    </a>
+                                                </div>
+                                                <div style="display: none" class="colorid">{{ color.id }}</div>
+                                                <div style="display: none" class="ishunzhuang">{{ product.isHunzhuang }}</div>
+                                                <h4 id="colorname" style="text-transform: uppercase;">{{ color.colorNameEs }}</h4>
+                                                <input id="check-{{ color.id }}" type="checkbox" checked="checked" disabled="disabled"/>
+                                                <label for="check-{{ color.id }}"><i class="fa fa-check"></i></label>
+                                            </li>
+                                        {% endfor %}
+                                    {% else %}
                                     {% for color in product.colors %}
                                         <li>
                                             <div class="circle">
@@ -77,15 +93,19 @@
                                                 </a>
                                             </div>
                                             <div style="display: none" class="colorid">{{ color.id }}</div>
+                                            <div style="display: none" class="ishunzhuang">{{ product.isHunzhuang }}</div>
                                             <h4 id="colorname" style="text-transform: uppercase;">{{ color.colorNameEs }}</h4>
                                             <input id="check-{{ color.id }}" type="checkbox"/>
                                             <label for="check-{{ color.id }}"><i class="fa fa-check"></i></label>
                                         </li>
                                     {% endfor %}
+                                    {% endif %}
                                 </ul>
                             </div>
                         </div>
                         <!-- .add-to-shopping-bag-form -->
+                        <p>* 本产品为全颜色混装，无法选择颜色。</p>
+                        <br>
                         <div class="save-help talla" data-module="tooltip">
                             <div class="selectric">
                                 <p class="label">Tallas</p>
@@ -117,7 +137,7 @@
                                 </table>
                             </div>
                         </div>
-                        <button class="shopping-bag-cta add-to-shopping-bag various" type="submit" id="buy" data-path="{{ path('chisnbal_addToCart') }}">
+                        <button class="shopping-bag-cta add-to-shopping-bag various" type="submit" id="buy" data-path="{% if product.isHunzhuang %}{{ path('chisnbal_addToCartHunzhuang') }}{% else %}{{ path('chisnbal_addToCart') }}{% endif %}">
                             Añadir a Bolsa de Compras</button>
                         <div class="save-help guardar" data-module="tooltip">
                             <ul>
