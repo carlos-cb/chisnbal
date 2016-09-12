@@ -6,6 +6,11 @@
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/productlist.css') }}" />
         {% endblock %}
 {% block content %}
+    <div class="cartlogo" style="position: absolute; right: 120px; top:100px;">
+        <ul>
+            <li><a href="{{ path('chisnbal_carrito') }}" id="cart"><i class="fa fa-shopping-cart" style="font-size: 20px; position: relative; top: 3px"></i> Carrito <span class="badge">{{ numItems }}</span></a></li>
+        </ul>
+    </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
