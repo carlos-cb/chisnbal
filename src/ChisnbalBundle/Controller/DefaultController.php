@@ -117,7 +117,7 @@ class DefaultController extends Controller
     {
         $priceall = $this->countAll();
         return $this->render('ChisnbalBundle:Default:guestinfo.html.twig', array(
-            'priceAll' => $priceall,
+            'priceall' => $priceall,
         ));
     }
 

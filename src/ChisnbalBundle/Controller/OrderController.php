@@ -13,8 +13,11 @@ class OrderController extends Controller
     {
         $priceAll = $this->countAll();
         $priceIni = $priceAll;
-        if($request->get('paytype') == 'transfer'){
+        if($request->get('paytype') == '2'){
             $priceAll= round($priceAll*1.21, 2);
+        }
+        if($request->get('paytype') == '3'){
+            $priceAll= round($priceAll*1.05, 2);
         }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST' && ($priceAll!=0) ){

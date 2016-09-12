@@ -45,7 +45,7 @@
                 <td>{{ orderInfo.goodsFee }}</td>
                 <td>{{ orderInfo.shipFee }}</td>
                 <td>{{ orderInfo.totalPrice }}</td>
-                <td>{{ orderInfo.payType }}</td>
+                <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}到付{% endif %}</td>
                 <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
                 <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}</td>

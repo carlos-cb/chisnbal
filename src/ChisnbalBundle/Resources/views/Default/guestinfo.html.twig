@@ -76,15 +76,18 @@
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-2 control-label">Método de pago</label>
                         <div class="col-sm-8">
-                            <select name="paytype" class="form-control" required="required">
+                            <select id="paytype" name="paytype" class="form-control" required="required">
                                 <option value="1">门店付款</option>
                                 <option value="2">转账(+21%IVA)</option>
                                 <option value="3">到付(+5%)</option>
                             </select>
                         </div>
                     </div>
-                    <div class="total">
-                        <p><strong>Precion Final:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="final" style="font-weight: bold;">{{ priceall }}</span>&nbsp;&nbsp;&nbsp;EUR</p>
+                    <div class="form-group">
+                        <label for="preciofnal" class="col-sm-2 control-label">Precio Final</label>
+                        <div class="col-sm-8">
+                            <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinal">{{ priceall }}</span>&nbsp;&nbsp; EUR</p>
+                        </div>
                     </div>
                     <br><br>
                     <div class="">

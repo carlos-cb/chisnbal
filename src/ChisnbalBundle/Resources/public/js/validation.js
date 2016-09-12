@@ -21,4 +21,24 @@ function checkform(){
     }else{
         return true;
     }
-} 
+}
+$(document).ready(function() {
+    var qianinicial = parseFloat($("span#preciofinal").text());
+    var qian = 0;
+    $('select#paytype').change(function () {
+        var p1 = $(this).children('option:selected').val();//这就是selected的值
+        if(p1 == 1)
+        {
+            qian = qianinicial;
+        }
+        if(p1 == 2)
+        {
+            qian = qianinicial * 1.21;
+        }
+        if(p1 == 3)
+        {
+            qian = qianinicial * 1.05;
+        }
+        $("span#preciofinal").html(qian.toFixed(2));
+    });
+});
