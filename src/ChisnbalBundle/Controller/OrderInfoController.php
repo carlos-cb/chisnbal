@@ -125,4 +125,42 @@ class OrderInfoController extends Controller
             ->getForm()
         ;
     }
+
+    public function deliveredAction(Request $request)
+    {
+        if($request->getMethod() == 'POST'){
+            $em = $this->getDoctrine()->getManager();
+
+            $orderInfoId = $request->get('orderInfoId');
+            $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:OrderInfo');
+            $orderInfo = $repository->find($orderInfoId);
+
+            $orderInfo->setIsSended(1)
+                      ->setState("Delivered")
+                      ->setEnvio($request->get('numeroEnvio'));
+            $em->persist($orderInfo);
+            $em->flush();
+        }
+        return $this->redirectToRoute('orderinfo_index');
+    }
+
+    public function successAction(OrderInfo $orderInfo)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $orderInfo->setIsOver(1)->setState("Success");
+        $em->persist($orderInfo);
+        $em->flush();
+
+        return $this->redirectToRoute('orderinfo_index');
+    }
+
+    public function cancelledAction(OrderInfo $orderInfo)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $orderInfo->setIsOver(1)->setState("Cancelled");
+        $em->persist($orderInfo);
+        $em->flush();
+
+        return $this->redirectToRoute('orderinfo_index');
+    }
 }

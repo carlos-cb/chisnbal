@@ -22,3 +22,15 @@ orderinfo_delete:
     path:     /{id}/delete
     defaults: { _controller: "ChisnbalBundle:OrderInfo:delete" }
     methods:  DELETE
+
+orderinfo_delivered:
+    path:     /delivered
+    defaults: { _controller: "ChisnbalBundle:OrderInfo:delivered" }
+
+orderinfo_success:
+    path:     /{id}/success
+    defaults: { _controller: "ChisnbalBundle:OrderInfo:success" }
+
+orderitem_cancelled:
+    path:     /{id}/cancelled
+    defaults: { _controller: "ChisnbalBundle:OrderInfo:cancelled" }

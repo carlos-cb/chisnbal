@@ -48,8 +48,14 @@
                 <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}到付{% endif %}</td>
                 <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
-                <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}</td>
-                <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}</td>
+                <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}<br>
+                    <a href="{{ path('orderinfo_delivered', { 'id': orderInfo.id }) }}"></a>
+                    <a type="button" data-toggle="modal" data-target="#myModal" style="cursor: pointer;">
+                        已发货
+                    </a>
+                <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}<br>
+                    <a href="{{ path('orderinfo_success', { 'id': orderInfo.id }) }}" onclick="return confirm('确定订单已完成?')">已完成</a>
+                </td>
                 <td>{{ orderInfo.state }}</td>
                 <td>
                     <ul>
@@ -59,10 +65,35 @@
                         <li>
                             <a href="{{ path('orderitem_index', { 'orderInfoId': orderInfo.id }) }}">查看货物列表</a>
                         </li>
+                        <li>
+                            <a href="{{ path('orderitem_cancelled', { 'id': orderInfo.id }) }}"  onclick="return confirm('确定取消订单?')">取消订单</a>
+                        </li>
                     </ul>
                 </td>
             </tr>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="myModalLabel">发货信息</h4>
+                        </div>
+                        <form method="post" action="{{ path('orderinfo_delivered') }}">
+                        <div class="modal-body">
+                            <input name="numeroEnvio" type="text" class="form-control" required="required" placeholder="快递单号">
+                            <input type="hidden" name="orderInfoId" value="{{ orderInfo.id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn btn-primary">确定</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
         </tbody>
     </table>
+
 {% endblock %}
