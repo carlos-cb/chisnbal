@@ -8,34 +8,34 @@
         {% endblock %}
 {% block content %}
 
-    <div class="container" style="padding-left: calc(12% + 0px);
-    padding-right: calc(12% + 0px);">
+    <div class="container" style="padding-left: calc(5% + 0px);
+    padding-right: calc(5% + 0px);">
         <div class="line mod">
             <div class="unit size1of1">
                 <h2>Tramita pedido</h2>
             </div>
         </div>
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ path('chisnbal_cartToOrderinfo') }}" name="orderinfo">
         <div class="line mod">
             <div class="radioGroup">
                 <h2>Método de envío</h2>
                 <div>
-                    <input id="radio-1" class="radio-custom" name="radio-group" type="radio" checked>
-                    <label for="radio-1" class="radio-custom-label">Recoger en tienda: En la tienda que elijas en 2-3 días laborables. Gratuito</label>
+                    <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1" checked>
+                    <label for="radio-1" class="radio-custom-label">Recoger en tienda: CALLE LA BAÑEZA, 46, 28947 FUENLABRADA, Madrid. Gratuito</label>
                 </div>
                 <div>
-                    <input id="radio-2" class="radio-custom" name="radio-group" type="radio">
-                    <label for="radio-2" class="radio-custom-label">Estándar: En 2-3 días laborables. 3,95 EUR Gratuito (PEDIDOS A PARTIR DE 30 EUR)</label>
+                    <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2">
+                    <label for="radio-2" class="radio-custom-label">Estándar: En 2-3 días laborables. 10 EUR (PEDIDOS A PARTIR DE X EUR, Gratuito)</label>
                 </div>
                 <div>
-                    <input id="radio-3" class="radio-custom" name="radio-group" type="radio">
-                    <label for="radio-3" class="radio-custom-label">Express: En 24-48 horas (días laborables). 5,95 EUR</label>
+                    <input id="radio-3" class="radio-custom" name="radio-group" type="radio" value="3">
+                    <label for="radio-3" class="radio-custom-label">Express: En 24 horas (días laborables). 15 EUR</label>
                 </div>
             </div>
         </div>
         <div class="line mod">
             <div class="radioGroup">
                 <h2>DATOS DE CONTACTO</h2>
-                <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ path('chisnbal_cartToOrderinfo') }}" name="orderinfo">
                     <div class="form-group">
                         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                         <div class="col-sm-8">
@@ -77,18 +77,34 @@
                         <label for="inputPassword3" class="col-sm-2 control-label">Método de pago</label>
                         <div class="col-sm-8">
                             <select id="paytype" name="paytype" class="form-control" required="required">
-                                <option value="1">门店付款</option>
-                                <option value="2">转账(+21%IVA)</option>
-                                <option value="3">到付(+5%)</option>
+                                <option value="1">PAGAR EN TIENDA</option>
+                                <option value="2">TRANSFERENCIA ONLINE</option>
+                                <option value="3">REEMBOLSO(+5%)</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="preciofnal" class="col-sm-2 control-label">Precio Final</label>
+                        <label for="preciofnal" class="col-sm-2 control-label">Importe Neto</label>
                         <div class="col-sm-8">
                             <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinal">{{ priceall }}</span>&nbsp;&nbsp; EUR</p>
                         </div>
                     </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">IMPORTE CON IVA</label>
+                    <div class="col-sm-8">
+                        <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinaliva"></span>&nbsp;&nbsp; EUR</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="" class="col-sm-2 control-label">IMPORTE FINAL</label>
+                    <div class="col-sm-8">
+                        <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinalzuizhong"></span>&nbsp;&nbsp; EUR</p>
+                    </div>
+                </div>
+                <div style="position: relative; left: 150px;">
+                    <p style="display:inline-block;">* Si eres particular, tienes que añadir 5.2% recargp de equivalencia.(R.E)</p>
+                    <input type="checkbox" id="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px; position: relative; top: 12px;">
+                </div>
                     <br><br>
                     <div class="">
                         <div class="unit size1of1">
@@ -106,9 +122,9 @@
                             </div>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
+        </form>
     </div>
 {% endblock %}
         {% block javascripts %}

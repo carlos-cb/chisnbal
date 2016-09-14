@@ -104,7 +104,11 @@
                             </div>
                         </div>
                         <!-- .add-to-shopping-bag-form -->
-                        <p>* 本产品为全颜色混装，无法选择颜色。</p>
+                        {% if product.isHunzhuang %}
+                            <p style="font-size: 1.4rem;">* Artículo se vende en pack. No se elige el color y talla.</p>
+                        {% else %}
+                            <p style="font-size: 1.4rem;">* Artículo se vende en pack de color individual. No se admite elegir talla.</p>
+                        {% endif %}
                         <br>
                         <div class="save-help talla" data-module="tooltip">
                             <div class="selectric">
@@ -112,7 +116,7 @@
                             </div>
                             <div class="guia" style="width: auto;">
                                 <div class="size-guide " style="">
-                                    <a class="size-guide-link overlay-open" href="">
+                                    <a class="size-guide-link overlay-open" href="" style="display: none">
                                         Guía de Tallas</a>
                                 </div>
                             </div>
@@ -120,7 +124,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>尺码配比表</th>
+                                        <th>Talla</th>
                                         {% for size in product.sizes %}
                                             <th>{{ size.sizeName }}</th>
                                         {% endfor %}
@@ -128,7 +132,7 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <th scope="row">配比</th>
+                                        <th scope="row">Proporción</th>
                                         {% for size in product.sizes %}
                                             <th>{{ size.quantity }}</th>
                                         {% endfor %}
@@ -168,12 +172,6 @@
                                     <a class="product-details-nav-product-details" href="#">
                                         Detalles del producto</a>
                                 </li>
-                            </ul>
-                        </div>
-                        <div class="find-promo">
-                            <ul>
-                                <li class="promo-free">
-                                    Envío &amp; devolución gratuitos</li>
                             </ul>
                         </div>
                     </div>
