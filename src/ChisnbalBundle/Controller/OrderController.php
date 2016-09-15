@@ -15,6 +15,7 @@ class OrderController extends Controller
         $priceIni = $priceAll;
         $priceAllIva = $priceAll * 1.21;
         $yunfei = 0;
+        $shipmode = "Recoger en tienda";
         if($request->get('paytype') == '3'){
             $priceAllIva= round($priceAllIva*1.05, 2);
         }
@@ -23,10 +24,12 @@ class OrderController extends Controller
         }
         if($request->get('shipfee') == '2'){
             $yunfei = 10;
+            $shipmode = "Estándar";
             $priceAllIva= $priceAllIva + $yunfei;
         }
         if($request->get('shipfee') == '3'){
             $yunfei = 15;
+            $shipmode = "Express";
             $priceAllIva= $priceAllIva + $yunfei;
         }
         //根据用户填写的表格新建订单
@@ -47,6 +50,7 @@ class OrderController extends Controller
                 ->setReceiverCity($request->get('city'))
                 ->setReceiverEmail($request->get('email'))
                 ->setReceiverPostcode($request->get('postcode'))
+                ->setShipmode($shipmode)
                 ->setIsConfirmed(true)
                 ->setIsSended(false)
                 ->setIsOver(false)

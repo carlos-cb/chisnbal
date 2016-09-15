@@ -53,6 +53,9 @@ ChisnbalBundle\Entity\OrderInfo:
             type: string
             length: 255
             nullable: true
+        shipmode:
+            type: string
+            length: 255
         isGeren:
             type: boolean
     oneToMany:

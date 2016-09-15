@@ -633,4 +633,32 @@ class OrderInfo
     {
         return $this->goodsFeeIva;
     }
+    /**
+     * @var string
+     */
+    private $shipmode;
+
+
+    /**
+     * Set shipmode
+     *
+     * @param string $shipmode
+     * @return OrderInfo
+     */
+    public function setShipmode($shipmode)
+    {
+        $this->shipmode = $shipmode;
+
+        return $this;
+    }
+
+    /**
+     * Get shipmode
+     *
+     * @return string 
+     */
+    public function getShipmode()
+    {
+        return $this->shipmode;
+    }
 }

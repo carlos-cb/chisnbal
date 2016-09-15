@@ -58,10 +58,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">查看订单详情</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('orderitem_index', { 'orderInfoId': orderInfo.id }) }}">查看货物列表</a>
+                            <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">订单发货明细</a>
                         </li>
                         <li>
                             <a href="{{ path('orderitem_cancelled', { 'id': orderInfo.id }) }}"  onclick="return confirm('确定取消订单?')">取消订单</a>

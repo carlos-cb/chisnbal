@@ -16,78 +16,76 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">订单查看</h1>
+    <div style="text-align: center;">
+        <h1 class="sub-header">订单发货明细</h1>
+    </div>
     <br>
-    <table class="table-bordered table-striped table-hover" width="400px" height="500px">
+    <table class="table-striped" width="100%">
         <tbody>
         <tr>
-            <th>订单号</th>
-            <td>{{ orderInfo.id }}</td>
-        </tr>
-        <tr>
-            <th>订单生成时间</th>
-            <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-        </tr>
-        <tr>
+            <th>订单号Order</th>
             <th>商品总价</th>
-            <td>{{ orderInfo.goodsFee }}</td>
-        </tr>
-        <tr>
             <th>商品含税总价</th>
+            <th>订单总价Price</th>
+            <th>是否个体户R.E</th>
+            <th>运费Ship</th>
+            <th>订单生成时间Order Time</th>
+        </tr>
+        <tr>
+            <td height="100">{{ orderInfo.id }}</td>
+            <td>{{ orderInfo.goodsFee }}</td>
             <td>{{ orderInfo.goodsFeeIva }}</td>
-        </tr>
-        <tr>
-            <th>是否个体户</th>
-            <td>{% if orderInfo.isGeren %}Yes{% else %}No{% endif %}</td>
-        </tr>
-        <tr>
-            <th>运费</th>
-            <td>{{ orderInfo.shipFee }}</td>
-        </tr>
-        <tr>
-            <th>订单总价</th>
             <td>{{ orderInfo.totalPrice }}</td>
+            <td>{% if orderInfo.isGeren %}Yes{% else %}No{% endif %}</td>
+            <td>{{ orderInfo.shipFee }}</td>
+            <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i') }}{% endif %}</td>
         </tr>
         <tr>
             <th>付款方式</th>
-            <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}快递到付{% endif %}</td>
+            <th>邮递方式Ship</th>
+            <th>收货人姓名Name</th>
+            <th>联系电话Tel</th>
+            <th>城市City</th>
+            <th>邮编PostCode</th>
+            <th>收货地址Address</th>
         </tr>
         <tr>
-            <th>收货人姓名</th>
+            <td height="100">{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}快递到付{% endif %}</td>
+            <td>{{ orderInfo.shipmode }}</td>
             <td>{{ orderInfo.receiverName }}</td>
-        </tr>
-        <tr>
-            <th>收货人联系电话</th>
             <td>{{ orderInfo.receiverPhone }}</td>
-        </tr>
-        <tr>
-            <th>收货地址</th>
+            <td>{{ orderInfo.receiverCity }}</td>
+            <td>{{ orderInfo.receiverPostcode }}</td>
             <td>{{ orderInfo.receiverAdress }}</td>
         </tr>
+        </tbody>
+    </table>
+    <br>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
         <tr>
-            <th>城市</th>
-            <td>{{ orderInfo.receiverCity }}</td>
+            <th>ID</th>
+            <th>产品编号Code</th>
+            <th>产品名Name</th>
+            <th>颜色Color</th>
+            <th>数量Quantity</th>
+            <th>单位Unit</th>
+            <th>总件数Total</th>
         </tr>
-        <tr>
-            <th>邮编</th>
-            <td>{{ orderInfo.receiverPostcode }}</td>
-        </tr>
-        <tr>
-            <th>订单已确认</th>
-            <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
-        </tr>
-        <tr>
-            <th>订单已发货</th>
-            <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}</td>
-        </tr>
-        <tr>
-            <th>订单已归档</th>
-            <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}</td>
-        </tr>
-        <tr>
-            <th>订单状态</th>
-            <td>{{ orderInfo.state }}</td>
-        </tr>
+        </thead>
+        <tbody>
+        {% for orderItem in orderItems %}
+            <tr>
+                <td>{{ loop.index }}</a></td>
+                <td>{{ orderItem.product.codigo }}</td>
+                <td>{{ orderItem.product.productNameEs }}</td>
+                <td>{{ orderItem.colorName }}</td>
+                <td>{{ orderItem.quantity }}</td>
+                <td>{{ orderItem.unit }}</td>
+                {% set foo = orderItem.quantity * orderItem.product.unit %}
+                <td>{{ foo }}</td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
     <br><br>
@@ -98,4 +96,5 @@
         </li>
         <br>
     </ul>
+
 {% endblock %}

@@ -59,10 +59,16 @@ class OrderInfoController extends Controller
      */
     public function showAction(OrderInfo $orderInfo)
     {
+        $em = $this->getDoctrine()->getManager();
+
         $deleteForm = $this->createDeleteForm($orderInfo);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:OrderItem p WHERE p.orderInfo=$orderInfo");
+        $orderItems = $query->getResult();
 
         return $this->render('orderinfo/show.html.twig', array(
             'orderInfo' => $orderInfo,
+            'orderItems' => $orderItems,
             'delete_form' => $deleteForm->createView(),
         ));
     }
