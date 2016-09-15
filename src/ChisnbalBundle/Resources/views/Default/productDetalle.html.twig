@@ -4,7 +4,6 @@
             {{ parent() }}
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/productlist.css') }}" />
-            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/jquery.jqzoom.css') }}" />
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/detalle.css') }}" />
         {% endblock %}
 {% block content %}
@@ -32,15 +31,13 @@
                 </ul>
             </div>
 
-            <div class="col-sm-5 col-md-4 col-lg-4 col-lg-offset-2 imglist">
+            <div class="col-sm-5 col-md-4 col-md-offset-2 col-lg-4 col-lg-offset-2 imglist">
 
                 {% for fotodetalle in product.fotodetalles %}
                     <div class='col-sm-12 col-md-12 col-lg-12'>
-                        <div class="container">
-                            <a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" class="imgzoom" title="Detalle de Foto">
+                            <a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" class="imgzoom" title="Detalle de Foto" target="_blank">
                                 <img id="imgzoom" src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" height="750px">
                             </a>
-                        </div>
                         <div class="product-info">
                             <br>
                             <a>{{ fotodetalle.descriptionEs }}</a>
@@ -50,7 +47,7 @@
 
             </div>
 
-            <div class="col-sm-4 col-md-4 col-md-offset-2 col-lg-4 purchase-column">
+            <div class="col-sm-4 col-md-4 col-lg-4 purchase-column">
                 <section class="product-detail-purchase" data-module="productDetail, productDetailScrollSpy">
                     <h1 class="product-name product-detail-product-name">{{ product.productNameEs }}</h1>
                     <div class="product-price product-detail-price">
@@ -194,5 +191,4 @@
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="{{ asset('bundles/chisnbal/js/jquery.jqzoom-core.js') }}"></script>
     <script src="{{ asset('bundles/chisnbal/js/detalle.js') }}"></script>
-    <script src="{{ asset('bundles/chisnbal/js/jqzoom.js') }}"></script>
 {% endblock %}
