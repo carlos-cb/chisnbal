@@ -25,58 +25,47 @@ function checkform(){
 $(document).ready(function() {
     var qianinicial = parseFloat($("span#preciofinal").text());
     var qianiva = qianinicial * 1.21;
+    var k3 = $("input#shipfee").val();
     $("span#preciofinaliva").html(qianiva.toFixed(2));
-    $("span#preciofinalzuizhong").html(qianiva.toFixed(2));
-    var qian = 0;
-    var yunshufei = 0;
     //读取运输方式
     $("input[name='radio-group']").change(function () {
-        if($(this).val() == 1) {
-            yunshufei = 0;
-        }
-        if($(this).val() == 2) {
-            yunshufei = 10;
-        }
-        if($(this).val() == 3) {
-            yunshufei = 15;
-        }
-        var jj1 = $('select#paytype').children('option:selected').val();
-        if(jj1 == 3){
-            var jj2 = parseFloat($("span#preciofinaliva").text())*1.05 + yunshufei;
-        }else{
-            var jj2 = parseFloat($("span#preciofinaliva").text()) + yunshufei;
-        }
-        $("span#preciofinalzuizhong").html(jj2.toFixed(2));
-        setgerenshui()
+        k3 = parseInt($(this).val());
+        $("input#shipfee").val(k3);
+        setAll();
     });
-    //最终价格
     $('select#paytype').change(function () {
-        var p1 = $(this).children('option:selected').val();//这就是selected的值
-        if(p1 == 1)
-        {
-            qian = qianiva + yunshufei;
-        }
-        if(p1 == 2)
-        {
-            qian = qianiva + yunshufei;
-        }
-        if(p1 == 3)
-        {
-            qian = qianiva*1.05 + yunshufei;
-        }
-        $("span#preciofinalzuizhong").html(qian.toFixed(2));
-        setgerenshui()
+        setAll();
     });
     $("input#gerenshui").change(function(){
-        setgerenshui();
+        setAll();
     });
-    setgerenshui();
-    function setgerenshui(){
-        var n = $("input#gerenshui:checked").length;
-        if(n){
-            var h = parseFloat($("span#preciofinalzuizhong").text())*1.052;
-            $("span#preciofinalzuizhong").html(h.toFixed(2));
+    function setAll(){
+        var k1 = $('select#paytype').children('option:selected').val();
+        var k2 = $("input#gerenshui:checked").length;
+        if(k1 == 3){
+            v1 = 1.05;
+        }else{
+            v1 = 1;
         }
+
+        if(k2 == 1){
+            v2 = 1.052;
+        }else{
+            v2 = 1;
+        }
+        switch(k3)
+        {
+            case 2:
+                v3 = 10;
+                break;
+            case 3:
+                v3 = 15;
+                break;
+            default:
+                v3 = 0;
+        }
+        var f1 = qianiva * v1 * v2 +v3;
+        $("span#preciofinalzuizhong").html(f1.toFixed(2));
     }
-    
+    setAll();
 });

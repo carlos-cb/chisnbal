@@ -13,6 +13,8 @@ ChisnbalBundle\Entity\OrderInfo:
             type: datetime
         goodsFee:
             type: float
+        goodsFeeIva:
+            type: float
         shipFee:
             type: float
         totalPrice:
@@ -50,6 +52,9 @@ ChisnbalBundle\Entity\OrderInfo:
         envio:
             type: string
             length: 255
+            nullable: true
+        isGeren:
+            type: boolean
     oneToMany:
         orderItems:
             targetEntity: OrderItem

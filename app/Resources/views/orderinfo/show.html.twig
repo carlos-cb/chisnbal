@@ -33,16 +33,24 @@
             <td>{{ orderInfo.goodsFee }}</td>
         </tr>
         <tr>
-            <th>订单总价</th>
-            <td>{{ orderInfo.totalPrice }}</td>
+            <th>商品含税总价</th>
+            <td>{{ orderInfo.goodsFeeIva }}</td>
+        </tr>
+        <tr>
+            <th>是否个体户</th>
+            <td>{% if orderInfo.isGeren %}Yes{% else %}No{% endif %}</td>
         </tr>
         <tr>
             <th>运费</th>
             <td>{{ orderInfo.shipFee }}</td>
         </tr>
         <tr>
+            <th>订单总价</th>
+            <td>{{ orderInfo.totalPrice }}</td>
+        </tr>
+        <tr>
             <th>付款方式</th>
-            <td>{{ orderInfo.payType }}</td>
+            <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}快递到付{% endif %}</td>
         </tr>
         <tr>
             <th>收货人姓名</th>
@@ -59,10 +67,6 @@
         <tr>
             <th>城市</th>
             <td>{{ orderInfo.receiverCity }}</td>
-        </tr>
-        <tr>
-            <th>省份</th>
-            <td>{{ orderInfo.receiverProvince }}</td>
         </tr>
         <tr>
             <th>邮编</th>

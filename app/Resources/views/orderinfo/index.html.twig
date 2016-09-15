@@ -23,7 +23,6 @@
         <tr>
             <th>订单号</th>
             <th>收货人姓名</th>
-            <th>收货人手机</th>
             <th>产品费用</th>
             <th>运输费用</th>
             <th>总费用</th>
@@ -41,12 +40,11 @@
             <tr>
                 <td>{{ orderInfo.id }}</a></td>
                 <td>{{ orderInfo.receiverName }}</td>
-                <td>{{ orderInfo.receiverPhone }}</td>
                 <td>{{ orderInfo.goodsFee }}</td>
                 <td>{{ orderInfo.shipFee }}</td>
                 <td>{{ orderInfo.totalPrice }}</td>
-                <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}到付{% endif %}</td>
-                <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}快递到付{% endif %}</td>
+                <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i') }}{% endif %}</td>
                 <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
                 <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}<br>
                     <a href="{{ path('orderinfo_delivered', { 'id': orderInfo.id }) }}"></a>

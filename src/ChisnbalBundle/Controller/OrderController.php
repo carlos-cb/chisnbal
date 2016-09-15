@@ -13,11 +13,21 @@ class OrderController extends Controller
     {
         $priceAll = $this->countAll();
         $priceIni = $priceAll;
-        if($request->get('paytype') == '2'){
-            $priceAll= round($priceAll*1.21, 2);
-        }
+        $priceAllIva = $priceAll * 1.21;
+        $yunfei = 0;
         if($request->get('paytype') == '3'){
-            $priceAll= round($priceAll*1.05, 2);
+            $priceAllIva= round($priceAllIva*1.05, 2);
+        }
+        if($request->get('gerenshui') == '1'){
+            $priceAllIva= round($priceAllIva*1.052, 2);
+        }
+        if($request->get('shipfee') == '2'){
+            $yunfei = 10;
+            $priceAllIva= $priceAllIva + $yunfei;
+        }
+        if($request->get('shipfee') == '3'){
+            $yunfei = 15;
+            $priceAllIva= $priceAllIva + $yunfei;
         }
         //根据用户填写的表格新建订单
         if($request->getMethod() == 'POST' && ($priceAll!=0) ){
@@ -26,9 +36,11 @@ class OrderController extends Controller
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
                 ->setGoodsFee($priceIni)
-                ->setShipFee(0)
-                ->setTotalPrice($priceAll)
+                ->setGoodsFeeIva(round($priceAll*1.21, 2))
+                ->setShipFee($yunfei)
                 ->setPayType($request->get('paytype'))
+                ->setIsGeren($request->get('gerenshui'))
+                ->setTotalPrice($priceAllIva)
                 ->setReceiverName($request->get('name'))
                 ->setReceiverPhone($request->get('phonenumber'))
                 ->setReceiverAdress($request->get('address'))

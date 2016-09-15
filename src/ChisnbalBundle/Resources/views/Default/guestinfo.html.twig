@@ -87,6 +87,7 @@
                         <label for="preciofnal" class="col-sm-2 control-label">Importe Neto</label>
                         <div class="col-sm-8">
                             <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinal">{{ priceall }}</span>&nbsp;&nbsp; EUR</p>
+                            <input name="shipfee" type="hidden" class="form-control" id="shipfee" required="required" value="1">
                         </div>
                     </div>
                 <div class="form-group">
@@ -103,7 +104,7 @@
                 </div>
                 <div style="position: relative; left: 150px;">
                     <p style="display:inline-block;">* Si eres particular, tienes que añadir 5.2% recargp de equivalencia.(R.E)</p>
-                    <input type="checkbox" id="gerenshui" style="-webkit-appearance: checkbox!important;height: 30px; position: relative; top: 12px;">
+                    <input type="checkbox" id="gerenshui" name="gerenshui" value="1" style="-webkit-appearance: checkbox!important;height: 30px; position: relative; top: 12px;">
                 </div>
                     <br><br>
                     <div class="">

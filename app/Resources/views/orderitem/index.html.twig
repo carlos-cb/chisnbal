@@ -34,7 +34,7 @@
         <tbody>
         {% for orderItem in orderItems %}
             <tr>
-                <td>{{ loop.length }}</a></td>
+                <td>{{ loop.index }}</a></td>
                 <td>{{ orderItem.product.codigo }}</td>
                 <td>{{ orderItem.product.productNameEs }}</td>
                 <td>{{ orderItem.colorName }}</td>

@@ -577,4 +577,60 @@ class OrderInfo
     {
         return $this->envio;
     }
+    /**
+     * @var boolean
+     */
+    private $isGeren;
+
+
+    /**
+     * Set isGeren
+     *
+     * @param boolean $isGeren
+     * @return OrderInfo
+     */
+    public function setIsGeren($isGeren)
+    {
+        $this->isGeren = $isGeren;
+
+        return $this;
+    }
+
+    /**
+     * Get isGeren
+     *
+     * @return boolean 
+     */
+    public function getIsGeren()
+    {
+        return $this->isGeren;
+    }
+    /**
+     * @var float
+     */
+    private $goodsFeeIva;
+
+
+    /**
+     * Set goodsFeeIva
+     *
+     * @param float $goodsFeeIva
+     * @return OrderInfo
+     */
+    public function setGoodsFeeIva($goodsFeeIva)
+    {
+        $this->goodsFeeIva = $goodsFeeIva;
+
+        return $this;
+    }
+
+    /**
+     * Get goodsFeeIva
+     *
+     * @return float 
+     */
+    public function getGoodsFeeIva()
+    {
+        return $this->goodsFeeIva;
+    }
 }
