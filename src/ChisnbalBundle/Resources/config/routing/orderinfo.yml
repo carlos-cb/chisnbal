@@ -31,6 +31,10 @@ orderinfo_success:
     path:     /{id}/success
     defaults: { _controller: "ChisnbalBundle:OrderInfo:success" }
 
-orderitem_cancelled:
+orderinfo_cancelled:
     path:     /{id}/cancelled
     defaults: { _controller: "ChisnbalBundle:OrderInfo:cancelled" }
+
+orderinfo_mianyunfei:
+    path:     /{id}/mianyunfei
+    defaults: { _controller: "ChisnbalBundle:OrderInfo:mianyunfei" }

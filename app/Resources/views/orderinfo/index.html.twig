@@ -41,7 +41,9 @@
                 <td>{{ orderInfo.id }}</a></td>
                 <td>{{ orderInfo.receiverName }}</td>
                 <td>{{ orderInfo.goodsFee }}</td>
-                <td>{{ orderInfo.shipFee }}</td>
+                <td>{{ orderInfo.shipFee }}<br>
+                    <a href="{{ path('orderinfo_mianyunfei', { 'id': orderInfo.id }) }}" onclick="return confirm('确定此订单免除运费?')">免运费</a>
+                </td>
                 <td>{{ orderInfo.totalPrice }}</td>
                 <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}快递到付{% endif %}</td>
                 <td>{% if orderInfo.orderDate %}{{ orderInfo.orderDate|date('Y-m-d H:i') }}{% endif %}</td>
@@ -61,7 +63,7 @@
                             <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">订单发货明细</a>
                         </li>
                         <li>
-                            <a href="{{ path('orderitem_cancelled', { 'id': orderInfo.id }) }}"  onclick="return confirm('确定取消订单?')">取消订单</a>
+                            <a href="{{ path('orderinfo_cancelled', { 'id': orderInfo.id }) }}"  onclick="return confirm('确定取消订单?')">取消订单</a>
                         </li>
                     </ul>
                 </td>

@@ -169,4 +169,15 @@ class OrderInfoController extends Controller
 
         return $this->redirectToRoute('orderinfo_index');
     }
+
+    public function mianyunfeiAction(OrderInfo $orderInfo)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $orderInfo->setTotalPrice($orderInfo->getTotalPrice() - $orderInfo->getShipFee());
+        $orderInfo->setShipFee(0);
+        $em->persist($orderInfo);
+        $em->flush();
+
+        return $this->redirectToRoute('orderinfo_index');
+    }
 }
