@@ -125,4 +125,14 @@ class UserController extends Controller
             ->getForm()
         ;
     }
+    
+    public function enableAction(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user->setEnabled(true);
+        $em->persist($user);
+        $em->flush();
+
+        return $this->redirectToRoute('user_index');
+    }
 }
