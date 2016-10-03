@@ -85,5 +85,13 @@
         <li>
             <a href="{{ path('size_new', { 'productId': product.id }) }}" class="button button-rounded">创建尺码配比</a> 请按照从小到大的尺码添加！
         </li>
+        <br>
+        <li>
+            <a href="{{ path('size_default1', { 'productId': product.id }) }}" class="button button-rounded">使用固定配比A</a> (S-XXL 1:1)
+        </li>
+        <br>
+        <li>
+            <a href="{{ path('size_default2', { 'productId': product.id }) }}" class="button button-rounded">使用固定配比B</a> (M-XXXL 1:1)
+        </li>
     </ul>
 {% endblock %}

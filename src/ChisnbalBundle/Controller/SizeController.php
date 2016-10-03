@@ -178,4 +178,70 @@ class SizeController extends Controller
         }
         return $this->redirectToRoute('size_index', array('productId' => $productId));
     }
+
+    public function default1Action($productId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $this->getProductInfo($productId);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Size p WHERE p.product=$productId");
+        $size = $query->getResult();
+
+        if($size){
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                '请清空本产品的配比表再使用固定配比');
+        }else{
+            $newSizes = ['S', 'M', 'L', 'XL', 'XXL'];
+
+            foreach ($newSizes as $newSize)
+            {
+                $nuevoSize = new Size();
+                $nuevoSize->setSizeName($newSize)
+                    ->setQuantity(1)
+                    ->setProduct($product);
+                $em->persist($nuevoSize);
+            }
+
+            $em->flush();
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                '添加固定配比A成功'
+            );
+        }
+        return $this->redirectToRoute('size_index', array('productId' => $productId));
+    }
+
+    public function default2Action($productId)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $product = $this->getProductInfo($productId);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Size p WHERE p.product=$productId");
+        $size = $query->getResult();
+
+        if($size){
+            $this->get('session')->getFlashBag()->add(
+                'notice',
+                '请清空本产品的配比表再使用固定配比');
+        }else{
+            $newSizes = ['M', 'L', 'XL', 'XXL', 'XXXL'];
+
+            foreach ($newSizes as $newSize)
+            {
+                $nuevoSize = new Size();
+                $nuevoSize->setSizeName($newSize)
+                    ->setQuantity(1)
+                    ->setProduct($product);
+                $em->persist($nuevoSize);
+            }
+
+            $em->flush();
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                '添加固定配比B成功'
+            );
+        }
+        return $this->redirectToRoute('size_index', array('productId' => $productId));
+    }
 }

@@ -26,3 +26,11 @@ size_delete:
 size_add:
     path:     /sizeAdd
     defaults: { _controller: "ChisnbalBundle:Size:sizeAdd" }
+
+size_default1:
+    path:     /{productId}/sizeAdd/default1
+    defaults: { _controller: "ChisnbalBundle:Size:default1" }
+
+size_default2:
+    path:     /{productId}/sizeAdd/default2
+    defaults: { _controller: "ChisnbalBundle:Size:default2" }

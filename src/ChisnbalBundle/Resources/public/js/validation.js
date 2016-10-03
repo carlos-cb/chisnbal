@@ -1,12 +1,3 @@
-function check(){
-    var Vcode=parseInt(document.fos_user_registration_form.Vcode.value);
-    if(Vcode!='123'){
-        alert("El código es incorrecto, por favor, póngase en contacto con el administrador");
-        return false;
-    }else{
-        return true;
-    }
-}
 
 function checkform(){
     var name = document.orderinfo.name.value;
