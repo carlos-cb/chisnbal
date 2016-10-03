@@ -70,9 +70,13 @@
                                         {% for color in product.colors %}
                                             <li>
                                                 <div class="circle">
-                                                    <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
+                                                    {% if product.colors|length > 1 %}
+                                                        <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
+                                                            <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEs }}" height="70px">
+                                                        </a>
+                                                    {% else %}
                                                         <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEs }}" height="70px">
-                                                    </a>
+                                                    {% endif %}
                                                 </div>
                                                 <div style="display: none" class="colorid">{{ color.id }}</div>
                                                 <div style="display: none" class="ishunzhuang">{{ product.isHunzhuang }}</div>
@@ -85,9 +89,13 @@
                                     {% for color in product.colors %}
                                         <li>
                                             <div class="circle">
+                                                {% if product.colors|length > 1 %}
                                                 <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
                                                     <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEs }}" height="70px">
                                                 </a>
+                                                {% else %}
+                                                    <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEs }}" height="70px">
+                                                {% endif %}
                                             </div>
                                             <div style="display: none" class="colorid">{{ color.id }}</div>
                                             <div style="display: none" class="ishunzhuang">{{ product.isHunzhuang }}</div>

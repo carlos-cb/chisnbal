@@ -73,6 +73,7 @@ a{
 }
 .price {
     margin-top: 5px;
+    font-weight: bold;
     color: black;
     overflow: hidden;
 }
@@ -99,7 +100,7 @@ a{
 .product-detail-product-name {
     font-family: Futura-200-normal, Helvetica,Arial,san-serif;
     font-style: normal;
-    font-weight: 200;
+    font-weight: bold;
     font-size: 24px;
     letter-spacing: 4px;
     line-height: 32px;
