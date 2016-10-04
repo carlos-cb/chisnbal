@@ -15,7 +15,7 @@ function checkform(){
 }
 $(document).ready(function() {
     var qianinicial = parseFloat($("span#preciofinal").text());
-    var qianiva = qianinicial * 1.21;
+    var qianiva = qianinicial * 0.21;
     var k3 = $("input#shipfee").val();
     $("span#preciofinaliva").html(qianiva.toFixed(2));
     //读取运输方式
@@ -34,7 +34,7 @@ $(document).ready(function() {
         var k1 = $('select#paytype').children('option:selected').val();
         var k2 = $("input#gerenshui:checked").length;
         if(k1 == 3){
-            v1 = 1.05;
+            v1 = 1.03;
         }else{
             v1 = 1;
         }
@@ -55,8 +55,13 @@ $(document).ready(function() {
             default:
                 v3 = 0;
         }
-        var f1 = qianiva * v1 * v2 +v3;
-        $("span#preciofinalzuizhong").html(f1.toFixed(2));
+        var f00 = qianinicial * 1.21;
+        var f0 = f00 * v2;
+        var f1 = f0 * v1;
+        var f2 = f1 + v3;
+        $("span#preciore").html((f0 - f00).toFixed(2));
+        $("span#preciogasto").html((f2 - f0).toFixed(2));
+        $("span#preciofinalzuizhong").html(f2.toFixed(2));
     }
     setAll();
 });

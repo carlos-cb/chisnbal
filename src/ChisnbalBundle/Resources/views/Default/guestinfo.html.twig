@@ -79,38 +79,43 @@
                             <select id="paytype" name="paytype" class="form-control" required="required">
                                 <option value="1">PAGAR EN TIENDA</option>
                                 <option value="2">TRANSFERENCIA ONLINE</option>
-                                <option value="3">REEMBOLSO(+5%)</option>
+                                <option value="3">REEMBOLSO(+3%)</option>
                             </select>
                         </div>
                     </div>
+                    <br>
+                    <div style="position: relative; left: 15px; font-size: 30px;">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>IMPORTE NETO</th>
+                                <th>IVA(21%)</th>
+                                <th>R.E.(5.2%)</th>
+                                <th>GASTO ADICIONAL</th>
+                            </tr>
+                            <tr>
+                                <th><span id="preciofinal">{{ priceall }}</span>&nbsp;&nbsp; EUR</th>
+                                <th><span id="preciofinaliva"></span>&nbsp;&nbsp; EUR</th>
+                                <th><span id="preciore"></span>&nbsp;&nbsp; EUR</th>
+                                <th><span id="preciogasto"></span>&nbsp;&nbsp; EUR</th>
+                            </tr>
+                        </table>
+                    </div>
                     <div class="form-group">
-                        <label for="preciofnal" class="col-sm-2 control-label">Importe Neto</label>
+                        <label for="" class="col-sm-2 control-label">IMPORTE FINAL</label>
                         <div class="col-sm-8">
-                            <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinal">{{ priceall }}</span>&nbsp;&nbsp; EUR</p>
-                            <input name="shipfee" type="hidden" class="form-control" id="shipfee" required="required" value="1">
+                            <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinalzuizhong"></span>&nbsp;&nbsp; EUR</p>
                         </div>
                     </div>
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">IMPORTE CON IVA</label>
-                    <div class="col-sm-8">
-                        <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinaliva"></span>&nbsp;&nbsp; EUR</p>
+                    <div style="position: relative; left: 150px;">
+                        <p style="display:inline-block;">* Si eres particular, tienes que añadir 5.2% recargp de equivalencia.(R.E)</p>
+                        <input type="checkbox" id="gerenshui" name="gerenshui" value="1" style="-webkit-appearance: checkbox!important;height: 30px; position: relative; top: 12px;">
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="" class="col-sm-2 control-label">IMPORTE FINAL</label>
-                    <div class="col-sm-8">
-                        <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinalzuizhong"></span>&nbsp;&nbsp; EUR</p>
-                    </div>
-                </div>
-                <div style="position: relative; left: 150px;">
-                    <p style="display:inline-block;">* Si eres particular, tienes que añadir 5.2% recargp de equivalencia.(R.E)</p>
-                    <input type="checkbox" id="gerenshui" name="gerenshui" value="1" style="-webkit-appearance: checkbox!important;height: 30px; position: relative; top: 12px;">
-                </div>
                     <br><br>
                     <div class="">
                         <div class="unit size1of1">
                             <div class="actions fLeft">
-                                <button id="backCheckoutShippingBt" type="button" value="Volver" class="button butBack butWhite gaViewEvent">
+                                <button id="backCheckoutShippingBt" type="button" value="Volver" class="button butBack butWhite gaViewEvent"
+                                        onclick="window.location.href='{{ path('chisnbal_carrito') }}'">
                                     <i class="icon icon-arrow-left"></i>
                                     <span>Volver</span>
                                 </button>

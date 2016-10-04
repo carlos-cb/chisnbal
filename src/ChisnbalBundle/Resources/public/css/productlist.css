@@ -333,5 +333,7 @@ img#colorimg{
 .sizetable{
     width: 300px;
     margin-top: 10px;
-
+}
+.sizetable th{
+    text-align: center;!important;
 }

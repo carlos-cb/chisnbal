@@ -142,7 +142,7 @@ class OrderInfoController extends Controller
             $orderInfo = $repository->find($orderInfoId);
 
             $orderInfo->setIsSended(1)
-                      ->setState("Delivered")
+                      ->setState("Entregando")
                       ->setEnvio($request->get('numeroEnvio'));
             $em->persist($orderInfo);
             $em->flush();
@@ -153,7 +153,7 @@ class OrderInfoController extends Controller
     public function successAction(OrderInfo $orderInfo)
     {
         $em = $this->getDoctrine()->getManager();
-        $orderInfo->setIsOver(1)->setState("Success");
+        $orderInfo->setIsOver(1)->setState("Terminado");
         $em->persist($orderInfo);
         $em->flush();
 
@@ -163,7 +163,7 @@ class OrderInfoController extends Controller
     public function cancelledAction(OrderInfo $orderInfo)
     {
         $em = $this->getDoctrine()->getManager();
-        $orderInfo->setIsOver(1)->setState("Cancelled");
+        $orderInfo->setIsOver(1)->setState("Cancelado");
         $em->persist($orderInfo);
         $em->flush();
 

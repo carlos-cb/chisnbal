@@ -17,17 +17,17 @@ class OrderController extends Controller
         $yunfei = 0;
         $shipmode = "Recoger en tienda";
         if($request->get('paytype') == '3'){
-            $priceAllIva= round($priceAllIva*1.05, 2);
+            $priceAllIva= round($priceAllIva*1.03, 2);
         }
         if($request->get('gerenshui') == '1'){
             $priceAllIva= round($priceAllIva*1.052, 2);
         }
-        if($request->get('shipfee') == '2'){
+        if($request->get('radio-group') == '2'){
             $yunfei = 10;
             $shipmode = "Estándar";
             $priceAllIva= $priceAllIva + $yunfei;
         }
-        if($request->get('shipfee') == '3'){
+        if($request->get('radio-group') == '3'){
             $yunfei = 15;
             $shipmode = "Express";
             $priceAllIva= $priceAllIva + $yunfei;
@@ -38,12 +38,12 @@ class OrderController extends Controller
             $orderInfo = new OrderInfo();
             $orderInfo->setUser($this->getUser())
                 ->setOrderDate(new \DateTime('now'))
-                ->setGoodsFee($priceIni)
+                ->setGoodsFee(round($priceIni, 2))
                 ->setGoodsFeeIva(round($priceAll*1.21, 2))
                 ->setShipFee($yunfei)
                 ->setPayType($request->get('paytype'))
                 ->setIsGeren($request->get('gerenshui'))
-                ->setTotalPrice($priceAllIva)
+                ->setTotalPrice(round($priceAllIva, 2))
                 ->setReceiverName($request->get('name'))
                 ->setReceiverPhone($request->get('phonenumber'))
                 ->setReceiverAdress($request->get('address'))
@@ -54,7 +54,7 @@ class OrderController extends Controller
                 ->setIsConfirmed(true)
                 ->setIsSended(false)
                 ->setIsOver(false)
-                ->setState("Being prepared");
+                ->setState("Preparando");
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($orderInfo);

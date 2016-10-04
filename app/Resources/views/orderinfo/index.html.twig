@@ -50,7 +50,7 @@
                 <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
                 <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}<br>
                     <a href="{{ path('orderinfo_delivered', { 'id': orderInfo.id }) }}"></a>
-                    <a type="button" data-toggle="modal" data-target="#myModal" style="cursor: pointer;">
+                    <a type="button" data-toggle="modal" data-target="#myModal{{ orderInfo.id }}" style="cursor: pointer;">
                         已发货
                     </a>
                 <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}<br>
@@ -69,7 +69,7 @@
                 </td>
             </tr>
             <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal fade" id="myModal{{ orderInfo.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
