@@ -11,10 +11,8 @@ body{
         left: 80px;
         display: block;
         padding: 20px;
-        overflow-x: hidden;
-        overflow-y: hidden;
         height: 100%;
-    z-index: 101;
+        z-index: 101;
 }
 ul.category {
     margin: 10px 0 25px 2px;
@@ -91,7 +89,6 @@ a{
     right: 0;
     display: block;
     padding: 20px;
-    overflow-x: hidden;
 }
 
 
