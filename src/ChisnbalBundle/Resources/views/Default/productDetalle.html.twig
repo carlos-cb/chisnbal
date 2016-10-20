@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-1 col-md-1 col-lg-1 sidebar">
-                <ul class="category">
+                <ul class="category" id="category">
                     <li class="nuevo"><a href="{{ path('chisnbal_product_list_new') }}">ÚLTIMA<br>SEMANA</a></li>
                     <i class="empty-divider" role="separator">&nbsp;</i>
                     <li class="mujer">HOMBRE</li>
@@ -47,7 +47,7 @@
 
             </div>
 
-            <div class="col-sm-5 col-md-4 col-lg-4 purchase-column">
+            <div class="col-sm-5 col-md-4 col-lg-4 purchase-column" id="purchase-column">
                 <section class="product-detail-purchase" data-module="productDetail, productDetailScrollSpy">
                     <h1 class="product-name product-detail-product-name">{{ product.productNameEs }}</h1>
                     <div class="product-price product-detail-price">
