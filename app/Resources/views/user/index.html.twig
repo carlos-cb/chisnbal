@@ -26,8 +26,8 @@
             <th>邮箱</th>
             <th>可使用</th>
             <th>最后登录时间</th>
-            <th>锁定</th>
-            <th>过期</th>
+            <th>电话</th>
+            <th>证明</th>
             <th>用户规则</th>
         </tr>
         </thead>
@@ -42,8 +42,8 @@
                     <a href="{{ path('user_enable', { 'id': user.id }) }}" onclick="return confirm('确定开通此用户权限?')">开通权限</a>
                 </td>
                 <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ user.locked }}</td>
-                <td>{{ user.expired }}</td>
+                <td>{{ user.tel }}</td>
+                <td><a href="{{ asset('uploads/fotos/' ~ user.liciencia) }}" target="_blank">查看</a></td>
                 <td>
                     <ul class="list">
                         {%for role in user.roles %}

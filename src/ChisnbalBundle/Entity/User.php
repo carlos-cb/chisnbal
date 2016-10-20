@@ -15,6 +15,10 @@ class User extends BaseUser
      */
     protected $id;
 
+    protected $liciencia;
+
+    protected $tel;
+
 
     /**
      * Get id
@@ -102,5 +106,51 @@ class User extends BaseUser
 
     public function __toString() {
         return strval($this->id);
+    }
+
+    /**
+     * Set liciencia
+     *
+     * @param string $liciencia
+     * @return User
+     */
+    public function setLiciencia($liciencia)
+    {
+        $this->liciencia = $liciencia;
+
+        return $this;
+    }
+
+    /**
+     * Get liciencia
+     *
+     * @return string 
+     */
+    public function getLiciencia()
+    {
+        return $this->liciencia;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param string $tel
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
+     *
+     * @return string 
+     */
+    public function getTel()
+    {
+        return $this->tel;
     }
 }

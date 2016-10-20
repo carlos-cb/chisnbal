@@ -8,6 +8,13 @@ ChisnbalBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+    fields:
+        liciencia:
+            type: string
+            length: 255
+        tel:
+            type: string
+            length: 255
     oneToOne:
         cart:
             targetEntity: Cart
