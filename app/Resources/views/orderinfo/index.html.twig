@@ -42,7 +42,7 @@
                 <td>{{ orderInfo.receiverName }}</td>
                 <td>{{ orderInfo.goodsFee }}</td>
                 <td>{{ orderInfo.shipFee }}<br>
-                    <a href="{{ path('orderinfo_mianyunfei', { 'id': orderInfo.id }) }}" onclick="return confirm('确定此订单免除运费?')">免运费</a>
+                    <a href="{{ path('orderinfo_mianyunfei', { 'id': orderInfo.id }) }}" onclick="return confirm('确定此订单免除运费?')" class="button button-tiny button-rounded button-highlight">免运费</a>
                 </td>
                 <td>{{ orderInfo.totalPrice }}</td>
                 <td>{% if orderInfo.payType==1 %}门店付款{% endif %}{% if orderInfo.payType==2 %}银行转账{% endif %}{% if orderInfo.payType==3 %}快递到付{% endif %}</td>
@@ -50,20 +50,21 @@
                 <td>{% if orderInfo.isConfirmed %}Yes{% else %}No{% endif %}</td>
                 <td>{% if orderInfo.isSended %}Yes{% else %}No{% endif %}<br>
                     <a href="{{ path('orderinfo_delivered', { 'id': orderInfo.id }) }}"></a>
-                    <a type="button" data-toggle="modal" data-target="#myModal{{ orderInfo.id }}" style="cursor: pointer;">
+                    <a type="button" data-toggle="modal" data-target="#myModal{{ orderInfo.id }}" style="cursor: pointer;" class="button button-tiny button-rounded button-inverse">
                         已发货
                     </a>
                 <td>{% if orderInfo.isOver %}Yes{% else %}No{% endif %}<br>
-                    <a href="{{ path('orderinfo_success', { 'id': orderInfo.id }) }}" onclick="return confirm('确定订单已完成?')">已完成</a>
+                    <a href="{{ path('orderinfo_success', { 'id': orderInfo.id }) }}" onclick="return confirm('确定订单已完成?')" class="button button-tiny button-rounded button-action">已完成</a>
                 </td>
                 <td>{{ orderInfo.state }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}">订单发货明细</a>
+                            <a href="{{ path('orderinfo_show', { 'id': orderInfo.id }) }}" class="button button-tiny button-border button-rounded button-inverse">订单发货明细</a>
                         </li>
+                        <br>
                         <li>
-                            <a href="{{ path('orderinfo_cancelled', { 'id': orderInfo.id }) }}"  onclick="return confirm('确定取消订单?')">取消订单</a>
+                            <a href="{{ path('orderinfo_cancelled', { 'id': orderInfo.id }) }}" class="button button-tiny button-border button-rounded button-caution" onclick="return confirm('确定取消订单?')">取消订单</a>
                         </li>
                     </ul>
                 </td>

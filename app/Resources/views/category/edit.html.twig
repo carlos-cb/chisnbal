@@ -21,14 +21,14 @@
     {{ form_start(edit_form) }}
     {{ form_widget(edit_form) }}
     <br>
-    <input type="submit" class="button button-rounded" value="修改" />
-    <a href="{{ path('category_index') }}" class="button button-rounded">返回产品分类列表</a>
+    <input type="submit" class="button button-inverse" value="修改" />
+    <a href="{{ path('category_index') }}" class="button button-inverse">返回产品分类列表</a>
     {{ form_end(edit_form) }}
     <br>
     <ul>
         <li>
             {{ form_start(delete_form) }}
-            <input type="submit" class="button button-border button-rounded button-primary" onclick="return confirm('确定删除?')" value="删除">
+            <input type="submit" class="button button-border button-rounded button-caution" onclick="return confirm('确定删除?')" value="删除">
             {{ form_end(delete_form) }}
         </li>
     </ul>

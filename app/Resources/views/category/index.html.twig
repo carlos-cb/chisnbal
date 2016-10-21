@@ -18,6 +18,12 @@
 {% block content %}
     <h1 class="sub-header">产品分类管理</h1>
     <br>
+    <ul>
+        <li>
+            <a href="{{ path('category_new') }}" class="button button-rounded button-inverse">创建新产品分类</a>
+        </li>
+    </ul>
+    <br>
     <table class="table table-bordered table-striped table-hover">
         <thead>
         <tr>
@@ -38,7 +44,7 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('category_edit', { 'id': category.id }) }}">修改</a>
+                            <a href="{{ path('category_edit', { 'id': category.id }) }}" class="button button-tiny button-primary">修改</a>
                         </li>
                     </ul>
                 </td>
@@ -47,9 +53,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('category_new') }}" class="button button-rounded">创建新产品分类</a>
-        </li>
-    </ul>
+
 {% endblock %}
