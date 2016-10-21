@@ -97,3 +97,7 @@ chisnbal_orderclient:
 chisnbal_productlistclient:
     path:     /orderclient/orderitems/{orderInfoId}
     defaults: { _controller: ChisnbalBundle:Order:productlistclient }
+
+chisnbal_en:
+    resource: "@ChisnbalBundle/Resources/config/routing/en.yml"
+    prefix:   /en

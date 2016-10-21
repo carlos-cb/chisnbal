@@ -1,0 +1,194 @@
+{% extends 'fontEn.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/productlist.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/detalle.css') }}" />
+        {% endblock %}
+{% block content %}
+    <div class="cartlogo" style="position: absolute; right: 120px; top:100px;">
+        <ul>
+            <li><a href="{{ path('chisnbal_carrito_en') }}" id="cart"><i class="fa fa-shopping-cart" style="font-size: 20px; position: relative; top: 3px"></i> My Cart <span class="badge">{{ numItems }}</span></a></li>
+        </ul>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1 col-md-1 col-lg-1 sidebar">
+                <ul class="category" id="category">
+                    <li class="nuevo"><a href="{{ path('chisnbal_product_list_new_en') }}">LAST<br>WEEK</a></li>
+                    <i class="empty-divider" role="separator">&nbsp;</i>
+                    <li class="mujer">MAN</li>
+                    <i class="empty-divider" role="separator">&nbsp;</i>
+                    {% for category in categories %}
+                        <li class="_category-link" data-categoryid="{{ category.id }}" tabindex="0">
+                            <a href="{{ path('chisnbal_product_list_en', { 'categoryId': category.id }) }}">{{ category.categoryNameEn }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="_category-link" style="display: none">
+                        <a href="">SALES</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-sm-4 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-2 imglist" id="imglist">
+
+                {% for fotodetalle in product.fotodetalles %}
+                    <div class='col-sm-12 col-md-12 col-lg-12'>
+                            <a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" class="imgzoom" title="Detalle de Foto" target="_blank">
+                                <img id="imgzoom" src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" height="750px">
+                            </a>
+                        <div class="product-info">
+                            <br>
+                            <a>{{ fotodetalle.descriptionEn }}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="col-sm-5 col-md-4 col-lg-4 purchase-column" id="purchase-column">
+                <section class="product-detail-purchase" data-module="productDetail, productDetailScrollSpy">
+                    <h1 class="product-name product-detail-product-name">{{ product.productNameEn }}</h1>
+                    <div class="product-price product-detail-price">
+                        <div class="price-column product-detail-price-column">
+                            <!-- // BUGFIX GR-3357  PDP - Fix mixed currency signs -->
+                            <span id="markedDown_full_Price" class="price">€ {{ product.price }}</span>
+                        </div>
+                    </div>
+                    <div class="product-info-wrapper">
+                        <div class="style-number-title">
+                            Ref: <span> {{ product.codigo }}</span>
+                        </div>
+                        <div style="display: none" class="productid">{{ product.id }}</div>
+                        <div style="display: none" class="productunit">{{ product.unit }}</div>
+
+                        <div class="product-style-selector">
+                            <div class="row">
+                                <ul id="colorselect">
+                                    {% if product.isHunzhuang %}
+                                        {% for color in product.colors %}
+                                            <li>
+                                                <div class="circle">
+                                                    {% if product.colors|length > 1 %}
+                                                        <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
+                                                            <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEn }}" height="70px">
+                                                        </a>
+                                                    {% else %}
+                                                        <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEn }}" height="70px">
+                                                    {% endif %}
+                                                </div>
+                                                <div style="display: none" class="colorid">{{ color.id }}</div>
+                                                <div style="display: none" class="ishunzhuang">{{ product.isHunzhuang }}</div>
+                                                <h4 id="colorname" style="text-transform: uppercase;">{{ color.colorNameEn }}</h4>
+                                                <input id="check-{{ color.id }}" type="checkbox" checked="checked" disabled="disabled"/>
+                                                <label for="check-{{ color.id }}"><i class="fa fa-check"></i></label>
+                                            </li>
+                                        {% endfor %}
+                                    {% else %}
+                                    {% for color in product.colors %}
+                                        <li>
+                                            <div class="circle">
+                                                {% if product.colors|length > 1 %}
+                                                <a class="group" rel="gallery1" href="{{ asset('uploads/fotos/' ~ color.colorFoto) }}">
+                                                    <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEn }}" height="70px">
+                                                </a>
+                                                {% else %}
+                                                    <img src="{{ asset('uploads/fotos/' ~ color.colorFoto) }}" alt="{{ color.colorNameEn }}" height="70px">
+                                                {% endif %}
+                                            </div>
+                                            <div style="display: none" class="colorid">{{ color.id }}</div>
+                                            <div style="display: none" class="ishunzhuang">{{ product.isHunzhuang }}</div>
+                                            <h4 id="colorname" style="text-transform: uppercase;">{{ color.colorNameEn }}</h4>
+                                            <input id="check-{{ color.id }}" type="checkbox"/>
+                                            <label for="check-{{ color.id }}"><i class="fa fa-check"></i></label>
+                                        </li>
+                                    {% endfor %}
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- .add-to-shopping-bag-form -->
+                        {% if product.isHunzhuang %}
+                            <p style="font-size: 1.4rem;">* Item is sold in pack. Do not choose the color and size.</p>
+                        {% else %}
+                            <p style="font-size: 1.4rem;">* Item is sold in packs of single color. Not supported choose size.</p>
+                        {% endif %}
+                        <br>
+                        <div class="save-help talla" data-module="tooltip">
+                            <div class="selectric">
+                                <p class="label">Sizes</p>
+                            </div>
+                            <div class="guia" style="width: auto;">
+                                <div class="size-guide " style="">
+                                    <a class="size-guide-link overlay-open" href="" style="display: none">
+                                        Size Guide</a>
+                                </div>
+                            </div>
+                            <div class="table-responsive sizetable">
+                                <table class="table table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Size</th>
+                                        {% for size in product.sizes %}
+                                            <th>{{ size.sizeName }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Proportion</th>
+                                        {% for size in product.sizes %}
+                                            <th>{{ size.quantity }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <button class="shopping-bag-cta add-to-shopping-bag various" type="submit" id="buy" data-path="{% if product.isHunzhuang %}{{ path('chisnbal_addToCartHunzhuang') }}{% else %}{{ path('chisnbal_addToCart') }}{% endif %}">
+                            Add to Shopping Cart</button>
+                        <div class="save-help guardar" data-module="tooltip">
+                            <ul>
+                                <li>
+                                    <a class="save overlay-open main-product" href="#" tabindex="-1" data-save-item="432489ZHZ813215">Save this article</a>
+                                </li>
+
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="help  may-we-help fancybox" href="#contacto">¿Need help?</a>
+                                    <!-- <div id="tooltip-help" class="tooltip tooltip-help tooltip-mwh">
+                                        <ul>
+                                            <li class="email">
+                                                <a class="overlay-open simple-tabs-opener" href="#may-we-help-overlay" data-simple-tab-open="tab3">
+                                                    ENVIAR UN CORREO ELECTRÓNICO</a>
+                                            </li>
+                                            <li class="chat">
+                                        <a class="overlay-open simple-tabs-opener" href="#may-we-help-overlay" data-simple-tab-open="tab1">LIVE CHAT</a>
+                                    </li>
+                                        </ul>
+                                    </div>-->
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- .product-info-wrapper -->
+                    <input type="hidden" class="gucciProductName" value="Bomber de seda con estampado de rosa">
+                    <input type="hidden" class="gucciProductCode" value="432489ZHZ813215">
+                    <input type="hidden" class="gucciProductPrice" value="2980.0">
+                    <input type="hidden" class="gucciProductCategory" value="Women/Womens-Ready-to-Wear/Womens-Outerwear">
+                    <input type="hidden" class="gucciProductVariation" value="estampado de rosa">
+                    <input type="hidden" class="gucciProductPostion" value="3">
+                    <input type="hidden" class="gucciProductBrand" value="">
+                    <input type="hidden" class="gucciProductList" value="ProductGridComponent">
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="{{ asset('bundles/chisnbal/js/jquery.jqzoom-core.js') }}"></script>
+    <script src="{{ asset('bundles/chisnbal/js/detalle.js') }}"></script>
+{% endblock %}

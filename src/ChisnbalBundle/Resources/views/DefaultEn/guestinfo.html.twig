@@ -1,0 +1,139 @@
+{% extends 'fontEn.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/orderinfo.css') }}" />
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        {% endblock %}
+{% block content %}
+
+    <div class="container" style="padding-left: calc(5% + 0px);
+    padding-right: calc(5% + 0px);">
+        <div class="line mod">
+            <div class="unit size1of1">
+                <h2>Transact order</h2>
+            </div>
+        </div>
+        <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ path('chisnbal_cartToOrderinfo') }}" name="orderinfo">
+        <div class="line mod">
+            <div class="radioGroup">
+                <h2>Shipping method</h2>
+                <div>
+                    <input id="radio-1" class="radio-custom" name="radio-group" type="radio" value="1" checked>
+                    <label for="radio-1" class="radio-custom-label">Pick up en store: CALLE LA BAÑEZA, 46, 28947 FUENLABRADA, Madrid. free</label>
+                </div>
+                <div>
+                    <input id="radio-2" class="radio-custom" name="radio-group" type="radio" value="2">
+                    <label for="radio-2" class="radio-custom-label">Standard: In 2-3 working days. 10 EUR (ORDERS FROM X EUR, Free)</label>
+                </div>
+                <div>
+                    <input id="radio-3" class="radio-custom" name="radio-group" type="radio" value="3">
+                    <label for="radio-3" class="radio-custom-label">Express: Within 24 hours (weekdays). 15 EUR</label>
+                </div>
+            </div>
+        </div>
+        <div class="line mod">
+            <div class="radioGroup">
+                <h2>CONTACT INFORMATION</h2>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-8">
+                            <input name="email" type="email" class="form-control" id="inputemail" required="required" placeholder="Email" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputtel" class="col-sm-2 control-label">Phone number</label>
+                        <div class="col-sm-8">
+                            <input name="phonenumber" type="text" class="form-control" id="inputtel" required="required" placeholder="Teléfono">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputname" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-8">
+                            <input name="name" type="text" class="form-control" id="inputname" required="required" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Adress</label>
+                        <div class="col-sm-8">
+                            <input name="address" type="text" class="form-control" id="inputaddress" required="required" placeholder="Dirección">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputpost" class="col-sm-2 control-label">Postal Code</label>
+                        <div class="col-sm-8">
+                            <input name="postcode" type="text" class="form-control" id="inputpost" required="required" placeholder="Código postal">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Location</label>
+                        <div class="col-sm-8">
+                            <input name="city" type="text" class="form-control" id="inputlocal" required="required" placeholder="Localidad">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Payment method</label>
+                        <div class="col-sm-8">
+                            <select id="paytype" name="paytype" class="form-control" required="required">
+                                <option value="1">PAY IN STORE</option>
+                                <option value="2">TRANSFER ONLINE</option>
+                                <option value="3">EXPRESS TO PAY(+3%)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="position: relative; left: 15px; font-size: 30px;">
+                        <table class="table table-borderless">
+                            <tr>
+                                <th>AMOUNT</th>
+                                <th>VAT(21%)</th>
+                                <th>R.E.(5.2%)</th>
+                                <th>ADDITIONAL</th>
+                            </tr>
+                            <tr>
+                                <th><span id="preciofinal">{{ priceall }}</span>&nbsp;&nbsp; EUR</th>
+                                <th><span id="preciofinaliva"></span>&nbsp;&nbsp; EUR</th>
+                                <th><span id="preciore"></span>&nbsp;&nbsp; EUR</th>
+                                <th><span id="preciogasto"></span>&nbsp;&nbsp; EUR</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">FINAL AMOUNT</label>
+                        <div class="col-sm-8">
+                            <p style="font-weight: bold; padding-top: 5px;"><span id="preciofinalzuizhong"></span>&nbsp;&nbsp; EUR</p>
+                        </div>
+                    </div>
+                    <div style="position: relative; left: 150px;">
+                        <p style="display:inline-block;">* If you're particular, you have to add 5.2% surcharge equivalence.(R.E)</p>
+                        <input type="checkbox" id="gerenshui" name="gerenshui" value="1" style="-webkit-appearance: checkbox!important;height: 30px; position: relative; top: 12px;">
+                    </div>
+                    <br><br>
+                    <div class="">
+                        <div class="unit size1of1">
+                            <div class="actions fLeft">
+                                <button id="backCheckoutShippingBt" type="button" value="Volver" class="button butBack butWhite gaViewEvent"
+                                        onclick="window.location.href='{{ path('chisnbal_carrito_en') }}'">
+                                    <i class="icon icon-arrow-left"></i>
+                                    <span>Back</span>
+                                </button>
+                            </div>
+                            <div class="actions fRight">
+                                <button id="checkoutPaymentBt" type="submit" value="FINALIZAR PEDIDO"
+                                        class="button butBlack authPayment gaTrack gaViewEvent" onclick="return checkform()">
+                                    <span>Checkout</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        </form>
+    </div>
+{% endblock %}
+        {% block javascripts %}
+            {{ parent() }}
+            <script src="{{ asset('bundles/chisnbal/js/validation.js') }}"></script>
+        {% endblock %}

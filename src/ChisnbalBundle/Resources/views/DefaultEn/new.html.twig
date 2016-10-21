@@ -1,0 +1,48 @@
+{% extends 'fontEn.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/productlist.css') }}" />
+        {% endblock %}
+{% block content %}
+    <div class="cartlogo" style="position: absolute; right: 120px; top:100px;">
+        <ul>
+            <li><a href="{{ path('chisnbal_carrito_en') }}" id="cart"><i class="fa fa-shopping-cart" style="font-size: 20px; position: relative; top: 3px"></i> My Cart <span class="badge">{{ numItems }}</span></a></li>
+        </ul>
+    </div>
+    <div class="container-fluid" style="min-height: 700px;">
+        <div class="row">
+            <div class="col-sm-3 col-md-1 sidebar">
+                <ul class="category" id="category">
+                    <li class="nuevo"><a href="{{ path('chisnbal_product_list_new_en') }}">LAST<br>WEEK</a></li>
+                    <i class="empty-divider" role="separator">&nbsp;</i>
+                    <li class="mujer">MAN</li>
+                    <i class="empty-divider" role="separator">&nbsp;</i>
+                    {% for category in categories %}
+                        <li class="_category-link" data-categoryid="{{ category.id }}" tabindex="0">
+                            <a href="{{ path('chisnbal_product_list_en', { 'categoryId': category.id }) }}">{{ category.categoryNameEn }}</a>
+                        </li>
+                    {% endfor %}
+                    <li class="_category-link" style="display: none">
+                        <a href="">SALES</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-7 col-sm-offset-2 col-md-10 col-md-offset-1 imglist">
+                {% for product in products %}
+                    <div class='col-sm-6 col-md-4 col-lg-3'>
+                        <a href="{{ path('chisnbal_fotodetalle_list_en', { 'productId': product.id }) }}">
+                            <img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="320px">
+                        </a>
+                        <div class="product-info">
+                            <div class="price productNew" style="padding-bottom: 5px;"><span>一 new 一</span></div>
+                            <a class="" href="{{ path('chisnbal_fotodetalle_list_en', { 'productId': product.id }) }}">{{ product.productNameEn }}</a>
+                            <div class="price _product-price"><span>ref: {{ product.codigo }}</span></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

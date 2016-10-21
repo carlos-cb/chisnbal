@@ -136,6 +136,18 @@ class OrderController extends Controller
             'orderInfos' => $orderInfos,
         ));
     }
+
+    public function orderclientEnAction()
+    {
+        $user = $this->getUser();
+
+        $repository = $this->getDoctrine()->getRepository('ChisnbalBundle:OrderInfo');
+        $orderInfos = $repository->findByUser($user);
+
+        return $this->render('ChisnbalBundle:DefaultEn:orderclient.html.twig', array(
+            'orderInfos' => $orderInfos,
+        ));
+    }
     
     public function productlistclientAction($orderInfoId)
     {
@@ -147,6 +159,21 @@ class OrderController extends Controller
         $orderItems = $query->getResult();
 
         return $this->render('ChisnbalBundle:Default:productlistclient.html.twig', array(
+            'orderItems' => $orderItems,
+            'orderInfo' => $orderInfo,
+        ));
+    }
+
+    public function productlistclientEnAction($orderInfoId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $orderInfo = $this->getOrderInfo($orderInfoId);
+
+        $query = $em->createQuery("SELECT p FROM ChisnbalBundle:OrderItem p WHERE p.orderInfo=$orderInfoId");
+        $orderItems = $query->getResult();
+
+        return $this->render('ChisnbalBundle:DefaultEn:productlistclient.html.twig', array(
             'orderItems' => $orderItems,
             'orderInfo' => $orderInfo,
         ));

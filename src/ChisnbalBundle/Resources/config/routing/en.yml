@@ -1,0 +1,35 @@
+chisnbal_homepage_en:
+    path:     /
+    defaults: { _controller: ChisnbalBundle:DefaultEn:index }
+
+chisnbal_quiensomos_en:
+    path:     /quiensomos
+    defaults: { _controller: ChisnbalBundle:DefaultEn:quiensomos }
+
+chisnbal_product_list_en:
+    path:     /productList/{categoryId}
+    defaults: { _controller: ChisnbalBundle:DefaultEn:productList }
+
+chisnbal_product_list_new_en:
+    path:     /productListNew
+    defaults: { _controller: ChisnbalBundle:DefaultEn:productListNew }
+
+chisnbal_fotodetalle_list_en:
+    path:     /fotodetalle/{productId}
+    defaults: { _controller: ChisnbalBundle:DefaultEn:productDetalle }
+
+chisnbal_carrito_en:
+    path:     /carrito
+    defaults: { _controller: ChisnbalBundle:DefaultEn:cart }
+
+chisnbal_guestinfo_en:
+    path:     /orderinfo
+    defaults: { _controller: ChisnbalBundle:DefaultEn:guestinfo }
+
+chisnbal_orderclient_en:
+    path:     /orderclient
+    defaults: { _controller: ChisnbalBundle:Order:orderclientEn }
+
+chisnbal_productlistclient_en:
+    path:     /orderclient/orderitems/{orderInfoId}
+    defaults: { _controller: ChisnbalBundle:Order:productlistclientEn }

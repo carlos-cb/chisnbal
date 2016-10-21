@@ -1,0 +1,56 @@
+{% extends 'fontEn.html.twig' %}
+
+        {% block stylesheets %}
+            {{ parent() }}
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/cart.css') }}" />
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        {% endblock %}
+{% block content %}
+    <section id="main" class="content-main" role="main">
+
+        <h2>List of products</h2>
+        <section id="shop-cart-content" data-controller="shop/shop-cart-controller">
+            <form action="//www.zara.com/es/es/shop/shipping/251514673" method="POST" class="_shopCartForm">
+                <table class="order-table">
+                    <thead>
+                    <tr class="thead"><th>PRODUCT</th>
+                        <th class="description">DESCRIPTION</th>
+                        <th>COLOR</th>
+                        <th>SIZE</th>
+                        <th class="quantity">UNITS</th>
+                    </tr>
+                    </thead>
+                    <tbody id="shangpin">
+                    {% for orderItem in orderItems %}
+                        <tr id="order-item" class="order-item  _order-item-919231977">
+                            <td class="_detail">
+                                <a href="{{ path('chisnbal_fotodetalle_list_en', { 'productId': orderItem.product.id }) }}" target="_self">
+                                    <img src="{{ asset('uploads/fotos/' ~ orderItem.foto) }}" width="135px;">
+                                </a>
+                            </td>
+                            <td class="description _detail">
+                                <a href="{{ path('chisnbal_fotodetalle_list_en', { 'productId': orderItem.product.id }) }}" target="_self">
+                                    <span>{{ orderItem.product.productNameEn }}</span><br>Ref.&nbsp;{{ orderItem.product.codigo }}
+                                </a>
+                            </td>
+                            <td class="color">{{ orderItem.colorName }}</td>
+                            <td class="size">
+                            {%for role in orderItem.product.sizes %}
+                                {{ role.sizeName }}&nbsp;&nbsp;
+                            {%endfor%}
+                            </td>
+                            <td class="quantity">
+                                <span class="_quantity" id="_unit">{{ orderItem.unit }} </span> x <span class="_quantity" id="_quantity">{{ orderItem.quantity }}</span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <div class="anniu">
+                    <button class="button-secondary button-big FL _continue-shopping-btn"  onclick="window.location.href='{{ path('chisnbal_orderclient_en') }}'" type="button"><span>Back</span></button>
+                </div>
+            </form>
+        </section>
+    </section>
+{% endblock %}
