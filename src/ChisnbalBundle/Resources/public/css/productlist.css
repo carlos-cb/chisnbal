@@ -53,8 +53,6 @@ a{
 }
 .imglist{
     text-align: center;
-    position: relative;
-    left: 70px;
 }
 .product-info {
     text-align: center;
@@ -80,7 +78,7 @@ a{
 }
 
 .purchase-column {
-    height: 1000px;
+    height: 100%;
     text-transform: none;
     text-align: left;
     position: absolute;
@@ -324,9 +322,29 @@ label.color{
     padding: 15px;
     width: 100%;
 }
-img#imgzoom{
-    max-width: none;
+
+@media screen and (min-width: 1201px) {
+    .imgdiv{
+        vertical-align:middle;
+        height: 750px;
+        overflow: hidden;
+        margin-left: 8%;
+        border: 1px solid red;
+    }
+    img#imgzoom{
+        display:inline-block;
+        max-width: none;
+        vertical-align:middle;
+    }
 }
+
+@media screen and (max-width: 1200px) {
+    img#imgzoom{
+        max-width: none;
+        height: 750px;
+    }
+}
+
 img#colorimg{
     padding-bottom: 5px;
 }

@@ -31,12 +31,12 @@
                 </ul>
             </div>
 
-            <div class="col-sm-4 col-md-4 col-md-offset-1 col-lg-4 col-lg-offset-2 imglist" id="imglist">
+            <div class="col-sm-4 col-md-6 col-md-offset-1 col-lg-7 imglist" id="imglist">
 
                 {% for fotodetalle in product.fotodetalles %}
-                    <div class='col-sm-12 col-md-12 col-lg-12'>
+                    <div class='imgdiv'>
                             <a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" class="imgzoom" title="Detalle de Foto" target="_blank">
-                                <img id="imgzoom" src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" height="750px">
+                                <img id="imgzoom" src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}">
                             </a>
                         <div class="product-info">
                             <br>
@@ -114,9 +114,8 @@
                         {% else %}
                             <p style="font-size: 1.4rem;">* Artículo se vende en pack de color individual. No se admite elegir talla.</p>
                         {% endif %}
-                        <br>
                         <div class="save-help talla" data-module="tooltip">
-                            <div class="selectric">
+                            <div class="selectric" style="display: none">
                                 <p class="label">Tallas</p>
                             </div>
                             <div class="guia" style="width: auto;">
@@ -148,39 +147,7 @@
                         </div>
                         <button class="shopping-bag-cta add-to-shopping-bag various" type="submit" id="buy" data-path="{% if product.isHunzhuang %}{{ path('chisnbal_addToCartHunzhuang') }}{% else %}{{ path('chisnbal_addToCart') }}{% endif %}">
                             Añadir a Bolsa de Compras</button>
-                        <div class="save-help guardar" data-module="tooltip">
-                            <ul>
-                                <li>
-                                    <a class="save overlay-open main-product" href="#" tabindex="-1" data-save-item="432489ZHZ813215">Guardar este artículo</a>
-                                </li>
-
-                                <li class="divider"></li>
-                                <li>
-                                    <a class="help  may-we-help fancybox" href="#contacto">¿Necesita ayuda?</a>
-                                    <!-- <div id="tooltip-help" class="tooltip tooltip-help tooltip-mwh">
-                                        <ul>
-                                            <li class="email">
-                                                <a class="overlay-open simple-tabs-opener" href="#may-we-help-overlay" data-simple-tab-open="tab3">
-                                                    ENVIAR UN CORREO ELECTRÓNICO</a>
-                                            </li>
-                                            <li class="chat">
-                                        <a class="overlay-open simple-tabs-opener" href="#may-we-help-overlay" data-simple-tab-open="tab1">LIVE CHAT</a>
-                                    </li>
-                                        </ul>
-                                    </div>-->
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                    <!-- .product-info-wrapper -->
-                    <input type="hidden" class="gucciProductName" value="Bomber de seda con estampado de rosa">
-                    <input type="hidden" class="gucciProductCode" value="432489ZHZ813215">
-                    <input type="hidden" class="gucciProductPrice" value="2980.0">
-                    <input type="hidden" class="gucciProductCategory" value="Women/Womens-Ready-to-Wear/Womens-Outerwear">
-                    <input type="hidden" class="gucciProductVariation" value="estampado de rosa">
-                    <input type="hidden" class="gucciProductPostion" value="3">
-                    <input type="hidden" class="gucciProductBrand" value="">
-                    <input type="hidden" class="gucciProductList" value="ProductGridComponent">
                 </section>
             </div>
         </div>

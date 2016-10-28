@@ -60,6 +60,8 @@ window.onload = function(){
     var column = document.getElementById('purchase-column');
     var fixH = category.offsetHeight;
     var columnH = column.offsetHeight;
+    var clientW = document.documentElement.clientWidth;
+    var docW = $(document).width();
 
     function box1(){
         var chazhi = clientH - 250 - fixH;
@@ -82,7 +84,7 @@ window.onload = function(){
 
     }
     function box2(){
-        var chazhi2 = clientH - 250 - columnH;
+        var chazhi2 = clientH - 230 - columnH;
         var st2 = $(document).scrollTop();
         if(chazhi2 >= 0){
             if(st2 >= 230){
@@ -92,7 +94,7 @@ window.onload = function(){
                 $(".purchase-column").css('position','absolute').css('top', '230px')
             }
         }else{
-            if(st2 >= (200-chazhi2)){
+            if(st2 >= (100-chazhi2)){
                 $(".purchase-column").css('position','fixed').css('bottom', '200px').css('top', 'auto');
             }
             else{
@@ -101,8 +103,24 @@ window.onload = function(){
         }
 
     }
+    function imgfix(){
+        if(clientW >= 1200)
+        {
+            var ff = $('div.imgdiv').find('img#imgzoom');
+            for(var j=0; j<ff.length; j++)
+            {
+                if((750-$(ff[j]).height()) > 0)
+                {
+                    var top = (750-$(ff[j]).height())/2;
+                    $(ff[j]).css('margin-top',top+'px');
+                }
+            }
+        }
+
+    }
     box1();
     box2();
+    imgfix();
     window.onscroll = function (e) {
         box1();
         box2();
