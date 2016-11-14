@@ -5,6 +5,7 @@ namespace ChisnbalBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UserType extends AbstractType
 {
@@ -15,7 +16,9 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('cart')
+            ->add('username', null, array('label' => '用户名'))
+            ->add('email', null, array('label' => '邮箱'))
+            ->add('plainPassword', null, array('label' => '密码'))
         ;
     }
     

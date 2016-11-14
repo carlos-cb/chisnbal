@@ -17,11 +17,11 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">新用户创建</h1>
+    <h1 class="sub-header">新管理员创建</h1>
     <br>
 
     {{ form_start(form) }}
-        {{ form_widget(form) }}
+    {{ form_widget(form) }}
     <br>
     <input type="submit" class="button button-pill" value="创建" />
     <a href="{{ path('user_index') }}" class="button button-pill">返回用户列表</a>

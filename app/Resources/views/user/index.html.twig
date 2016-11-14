@@ -19,6 +19,13 @@
 {% block content %}
     <h1 class="sub-header">用户管理</h1>
     <br>
+    <ul>
+        <li>
+            <a href="{{ path('user_new') }}" class="button button-rounded button-inverse">创建新用户</a>
+            <a href="{{ path('user_newAdmin') }}" class="button button-rounded button-inverse">创建新管理员</a>
+        </li>
+    </ul>
+    <br>
     <table class="table table-bordered table-striped table-hover">
         <thead>
         <tr>
@@ -58,7 +65,7 @@
                 <td>
                     <ul class="list">
                         {%for role in user.roles %}
-                            <li>{{role}}</li>
+                            <li>{% if role == 'ROLE_SUPER_ADMIN' %}超级管理员{% elseif role == 'ROLE_ADMIN' %}普通管理员{% else %}普通用户{% endif %}</li>
                         {%endfor%}
                     </ul>
                 </td>

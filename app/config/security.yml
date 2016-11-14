@@ -36,5 +36,5 @@ security:
         - { path: ^/carrito$, role: ROLE_USER }
         - { path: ^/orderinfo/, role: ROLE_USER }
         - { path: ^/orderinfo$, role: ROLE_USER }
+        - { path: /admin/user/, role: ROLE_SUPER_ADMIN }
         - { path: ^/admin, role: ROLE_ADMIN }
-        - { path: ^/admin/user, role: ROLE_SUPER_ADMIN }
