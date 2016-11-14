@@ -38,9 +38,13 @@ chisnbal_orderitem:
     resource: "@ChisnbalBundle/Resources/config/routing/orderitem.yml"
     prefix:   /admin/orderitem
 
-celina_select:
+chisnbal_select:
     resource: "@ChisnbalBundle/Resources/config/routing/select.yml"
     prefix: /admin/select
+
+chisnbal_fontproduct:
+    resource: "@ChisnbalBundle/Resources/config/routing/fontproduct.yml"
+    prefix: /admin/fontproduct
 
 chisnbal_homepage:
     path:     /

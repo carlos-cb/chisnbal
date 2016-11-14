@@ -12,6 +12,7 @@
         <li><a href="{{ path('product_index') }}">产品管理</a></li>
         <li><a href="{{ path('select_new') }}">新品选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
+        <li><a href="{{ path('fontproduct_index') }}">首页产品</a></li>
     </ul>
 {% endblock %}
 
@@ -39,11 +40,21 @@
                 <td>{{ user.email }}</td>
                 <td>
                     {% if user.enabled %}Yes{% else %}No{% endif %}<br>
+                {% if user.enabled %}
+                {% else %}
                     <a href="{{ path('user_enable', { 'id': user.id }) }}" onclick="return confirm('确定开通此用户权限?')" class="button button-tiny button-highlight">开通权限</a>
+                {% endif %}
                 </td>
                 <td>{% if user.lastLogin %}{{ user.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ user.tel }}</td>
-                <td><a href="{{ asset('uploads/fotos/' ~ user.liciencia) }}" target="_blank" class="button button-tiny button-primary">查看</a></td>
+                <td>
+                    {% if user.liciencia %}
+                        <a href="{{ asset('uploads/fotos/' ~ user.liciencia) }}" target="_blank" class="button button-tiny button-primary">查看</a>
+                    {% else %}
+                        <p>无</p>
+                    {% endif %}
+
+                </td>
                 <td>
                     <ul class="list">
                         {%for role in user.roles %}

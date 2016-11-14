@@ -30,8 +30,11 @@ class DefaultEnController extends Controller
             $em->persist($cart);
             $em->flush();
         }
-        
-        return $this->render('ChisnbalBundle:DefaultEn:index.html.twig');
+        $fontProducts = $em->getRepository('ChisnbalBundle:FontProduct')->findAll();
+
+        return $this->render('ChisnbalBundle:DefaultEn:index.html.twig', array(
+            'fontProducts' => $fontProducts,
+        ));
     }
 
     public function quiensomosAction()

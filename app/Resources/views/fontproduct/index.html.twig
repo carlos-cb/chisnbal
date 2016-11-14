@@ -8,44 +8,38 @@
     </ul>
     <ul class="nav nav-sidebar">
         <li><a href="{{ path('user_index') }}">用户管理</a></li>
-        <li class="active"><a href="{{ path('category_index') }}">分类管理</a></li>
+        <li><a href="{{ path('category_index') }}">分类管理</a></li>
         <li><a href="{{ path('product_index') }}">产品管理</a></li>
         <li><a href="{{ path('select_new') }}">新品选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
-        <li><a href="{{ path('fontproduct_index') }}">首页产品</a></li>
+        <li class="active"><a href="{{ path('fontproduct_index') }}">首页产品</a></li>
     </ul>
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">产品分类管理</h1>
-    <br>
-    <ul>
-        <li>
-            <a href="{{ path('category_new') }}" class="button button-rounded button-inverse">创建新产品分类</a>
-        </li>
-    </ul>
+    <h1 class="sub-header">首页产品管理</h1>
     <br>
     <table class="table table-bordered table-striped table-hover">
         <thead>
-        <tr>
-            <th>ID</th>
-            <th>产品分类名西语</th>
-            <th>产品分类名英语</th>
-            <th>备注</th>
-            <th>操作</th>
-        </tr>
+            <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>照片</th>
+                <th>备注</th>
+                <th>操作</th>
+            </tr>
         </thead>
         <tbody>
-        {% for category in categories %}
+        {% for fontProduct in fontProducts %}
             <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.categoryNameEs }}</td>
-                <td>{{ category.categoryNameEn }}</td>
-                <td>{{ category.description }}</td>
+                <td>{{ fontProduct.id }}</td>
+                <td>{{ fontProduct.name }}</td>
+                <td><a href="{{ asset('uploads/fotos/' ~ fontProduct.foto) }}"><img src="{{ asset('uploads/fotos/' ~ fontProduct.foto) }}" height="100px" width="100px"></a></td>
+                <td>{{ fontProduct.description }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('category_edit', { 'id': category.id }) }}" class="button button-tiny button-primary">修改</a>
+                            <a href="{{ path('fontproduct_edit', { 'id': fontProduct.id }) }}" class="button button-tiny button-primary">修改</a>
                         </li>
                     </ul>
                 </td>
@@ -53,6 +47,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-
 {% endblock %}

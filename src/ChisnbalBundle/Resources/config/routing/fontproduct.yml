@@ -1,0 +1,24 @@
+fontproduct_index:
+    path:     /
+    defaults: { _controller: "ChisnbalBundle:FontProduct:index" }
+    methods:  GET
+
+fontproduct_show:
+    path:     /{id}/show
+    defaults: { _controller: "ChisnbalBundle:FontProduct:show" }
+    methods:  GET
+
+fontproduct_new:
+    path:     /new
+    defaults: { _controller: "ChisnbalBundle:FontProduct:new" }
+    methods:  [GET, POST]
+
+fontproduct_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ChisnbalBundle:FontProduct:edit" }
+    methods:  [GET, POST]
+
+fontproduct_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ChisnbalBundle:FontProduct:delete" }
+    methods:  DELETE

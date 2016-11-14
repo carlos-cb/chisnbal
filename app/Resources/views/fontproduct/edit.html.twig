@@ -9,20 +9,20 @@
     <ul class="nav nav-sidebar">
         <li><a href="{{ path('user_index') }}">用户管理</a></li>
         <li><a href="{{ path('category_index') }}">分类管理</a></li>
-        <li class="active"><a href="{{ path('product_index') }}">产品管理</a></li>
+        <li><a href="{{ path('product_index') }}">产品管理</a></li>
         <li><a href="{{ path('select_new') }}">新品选择</a></li>
         <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
-        <li><a href="{{ path('fontproduct_index') }}">首页产品</a></li>
+        <li class="active"><a href="{{ path('fontproduct_index') }}">首页产品</a></li>
     </ul>
 {% endblock %}
 
 {% block content %}
-    <h1 class="sub-header">新尺码配比创建</h1>
+    <h1 class="sub-header">首页产品修改</h1>
     <br>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
     <br>
-    <input type="submit" class="button button-pill" value="创建" />
-    <a href="{{ path('size_index', { 'productId': product.id }) }}" class="button button-pill">返回尺码列表</a>
-    {{ form_end(form) }}
+    <input type="submit" class="button button-inverse" value="修改" />
+    <a href="{{ path('fontproduct_index') }}" class="button button-inverse">返回首页产品列表</a>
+    {{ form_end(edit_form) }}
 {% endblock %}

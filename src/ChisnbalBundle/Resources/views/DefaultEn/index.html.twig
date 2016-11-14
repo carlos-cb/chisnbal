@@ -12,63 +12,17 @@
             <h2 class="site-section__title">BEST SELLER</h2>
 
             <div class="flex-row flex-row--space products grid--row-6">
-                <div class="flex-row__col flex-row__col--2">
-                    <div class="product product--small">
-                        <a href="">
-                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item1.jpg') }}" alt="13&quot; Macbook EDC Kit">
-                        </a>
-                        <p class="product__subtitle"><a href="https://gallantry.com/collections/cargo-works">Cargo Works</a></p>
-                        <h4 class="product__title"><a href="">13" Macbook EDC Kit</a></h4>
-                    </div><!--end .product-->
-                </div><!--end .flex-row__col-->
-
-                <div class="flex-row__col flex-row__col--2">
-                    <div class="product product--small">
-                        <a href="">
-                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item2.jpg') }}" alt="Atom AL"></a>
-                        <p class="product__subtitle"><a href="https://gallantry.com/collections/foursevens">Foursevens</a></p>
-                        <h4 class="product__title"><a href="">Atom AL</a></h4>
-                    </div><!--end .product-->
-                </div><!--end .flex-row__col-->
-
-                <div class="flex-row__col flex-row__col--2">
-                    <div class="product product--small">
-                        <a href="">
-                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item3.jpg') }}" alt="Bolt Pen"></a>
-                        <p class="product__subtitle"><a href="https://gallantry.com/collections/karas-kustoms">Karas Kustoms</a></p>
-                        <h4 class="product__title"><a href="">Bolt Pen</a></h4>
-                    </div><!--end .product-->
-                </div><!--end .flex-row__col-->
-
-                <div class="flex-row__col flex-row__col--2">
-                    <div class="product product--small" onclick="location.href='/products/the-ridge-wallet-carbon-fiber-cash-strap'">
-                        <a href="">
-                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/item4.jpg') }}" alt="Carbon Fiber Wallet + Cash Strap"></a>
-                        <p class="product__subtitle"><a href="https://gallantry.com/collections/the-ridge">The Ridge</a></p>
-                        <h4 class="product__title"><a href="">Carbon Fiber Wallet + Cash Strap</a></h4>
-                    </div><!--end .product-->
-                </div><!--end .flex-row__col-->
-
-                <div class="flex-row__col flex-row__col--2">
-                    <div class="product product--small" onclick="location.href='/products/lum-tec-combat-b28-military-24h'">
-                        <a href="">
-                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/show5.png') }}" alt="Combat B28 Military 24H"></a>
-                        <p class="product__subtitle"><a href="https://gallantry.com/collections/lum-tec">Lum-Tec</a></p>
-                        <h4 class="product__title"><a href="">Combat B28 Military 24H</a></h4>
-                    </div><!--end .product-->
-                </div><!--end .flex-row__col-->
-
-                <div class="flex-row__col flex-row__col--2">
-                    <div class="product product--small" onclick="location.href='/products/the-james-brand-the-county-knife-walnut-and-stainless'">
-                        <a href="">
-                            <img class="product__thumb" src="{{ asset('bundles/chisnbal/img/show6.png') }}" alt="The County Knife"></a>
-
-                        <p class="product__subtitle"><a href="https://gallantry.com/collections/the-james-brand">The James Brand</a></p>
-
-                        <h4 class="product__title"><a href="">The County Knife</a></h4>
-                    </div><!--end .product-->
-                </div><!--end .flex-row__col-->
-
+                {% for fontProduct in fontProducts %}
+                    <div class="flex-row__col flex-row__col--2">
+                        <div class="product product--small">
+                            <a href="">
+                                <img class="product__thumb" src="{{ asset('uploads/fotos/' ~ fontProduct.foto) }}">
+                            </a>
+                            <p class="product__subtitle"><a href="">{{ fontProduct.description }}</a></p>
+                            <h4 class="product__title"><a href="">{{ fontProduct.name }}</a></h4>
+                        </div><!--end .product-->
+                    </div><!--end .flex-row__col-->
+                {% endfor %}
             </div><!--end .products-->
         </div><!--end .site-section__content-->
     </div>
