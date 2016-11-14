@@ -26,6 +26,7 @@
                 <th>名称</th>
                 <th>照片</th>
                 <th>备注</th>
+                <th>所对应ID</th>
                 <th>操作</th>
             </tr>
         </thead>
@@ -36,6 +37,7 @@
                 <td>{{ fontProduct.name }}</td>
                 <td><a href="{{ asset('uploads/fotos/' ~ fontProduct.foto) }}"><img src="{{ asset('uploads/fotos/' ~ fontProduct.foto) }}" height="100px" width="100px"></a></td>
                 <td>{{ fontProduct.description }}</td>
+                <td>{{ fontProduct.url }}</td>
                 <td>
                     <ul>
                         <li>

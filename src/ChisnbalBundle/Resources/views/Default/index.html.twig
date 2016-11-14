@@ -12,15 +12,17 @@
             <h2 class="site-section__title">MÁS VENDIDO</h2>
             <div class="flex-row flex-row--space products grid--row-6">
             {% for fontProduct in fontProducts %}
+                {% if fontProduct.id >= 1 and fontProduct.id <= 6 %}
                 <div class="flex-row__col flex-row__col--2">
                     <div class="product product--small">
-                        <a href="">
+                        <a href="{{ path('chisnbal_fotodetalle_list', { 'productId': fontProduct.url }) }}">
                             <img class="product__thumb" src="{{ asset('uploads/fotos/' ~ fontProduct.foto) }}">
                         </a>
                         <p class="product__subtitle"><a href="">{{ fontProduct.description }}</a></p>
                         <h4 class="product__title"><a href="">{{ fontProduct.name }}</a></h4>
                     </div><!--end .product-->
                 </div><!--end .flex-row__col-->
+                {% endif %}
             {% endfor %}
             </div><!--end .products-->
         </div><!--end .site-section__content-->
@@ -31,14 +33,19 @@
             <h2 class="site-section__title">COLECCIONES TOP</h2>
             <div class="flex-row flex-row--space collections grid--row-4">
 
-                <div class="flex-row__col flex-row__col--4">
-                    <a class="collection" href="{{ path('chisnbal_product_list', { 'categoryId': 9 }) }}">
-                        <img class="collection__thumb" src="{{ asset('bundles/chisnbal/img/item11.png') }}" alt="Cazadoras">
-                        <h4 class="collection__title">
-                            <span class="collection__title__txt">Cazadoras</span>
-                        </h4>
-                    </a><!--end .collection-->
-                </div><!--end .flex-row__col-->
+                {% for fontProduct in fontProducts %}
+                    {% if fontProduct.id >= 7 %}
+                        <div class="flex-row__col flex-row__col--4">
+                            <a class="collection" href="{{ path('chisnbal_product_list', { 'categoryId': fontProduct.url }) }}">
+                                <img class="collection__thumb" src="{{ asset('uploads/fotos/' ~ fontProduct.foto) }}">
+                                <h4 class="collection__title">
+                                    <span class="collection__title__txt">{{ fontProduct.name }}</span>
+                                </h4>
+                            </a><!--end .collection-->
+                        </div><!--end .flex-row__col-->
+                    {% endif %}
+                {% endfor %}
+
 
                 <div class="flex-row__col flex-row__col--4">
                     <a class="collection" href="">

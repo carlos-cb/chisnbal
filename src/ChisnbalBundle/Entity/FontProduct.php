@@ -71,7 +71,9 @@ class FontProduct
      */
     public function setFoto($foto)
     {
-        $this->foto = $foto;
+        if(!empty($foto)){
+            $this->foto = $foto;
+        }
 
         return $this;
     }
@@ -107,5 +109,33 @@ class FontProduct
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * @var integer
+     */
+    private $url;
+
+
+    /**
+     * Set url
+     *
+     * @param integer $url
+     * @return FontProduct
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * Get url
+     *
+     * @return integer 
+     */
+    public function getUrl()
+    {
+        return $this->url;
     }
 }

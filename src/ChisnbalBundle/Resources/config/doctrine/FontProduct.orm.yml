@@ -18,4 +18,6 @@ ChisnbalBundle\Entity\FontProduct:
         description:
             type: string
             length: 255
+        url:
+            type: integer
     lifecycleCallbacks: {  }

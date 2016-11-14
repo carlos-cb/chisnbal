@@ -23,6 +23,7 @@ class FontProductType extends AbstractType
                 'required' => false,
             ))
             ->add('description', 'text', array('label' => '描述'))
+            ->add('url', 'text', array('label' => '所对应产品或分类ID'))
         ;
     }
     
