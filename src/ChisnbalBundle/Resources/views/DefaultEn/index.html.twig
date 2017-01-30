@@ -1,6 +1,12 @@
 {% extends 'fontEn.html.twig' %}
 
 {% block content %}
+    <div class="cartlogo">
+        <ul class="cartlogo">
+            <li><a href="{{ path('chisnbal_carrito_en') }}" id="cart"><i class="fa fa-shopping-cart"></i> My Cart </a></li>
+            <li><a class="link-text level-1-link" id="level-1-m789" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
+        </ul>
+    </div>
     <div class="site-inner" style="margin-bottom: 50px">
         <div style="height: auto;" class="view-container">
             <img style="max-width: 100%;" src="{{ asset('bundles/chisnbal/img/1.jpg') }}"/>

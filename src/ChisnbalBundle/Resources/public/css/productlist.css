@@ -340,8 +340,11 @@ label.color{
 
 @media screen and (max-width: 1200px) {
     img#imgzoom{
-        max-width: none;
-        height: 750px;
+        max-width: 100%;
+        height: auto;
+    }
+    .purchase-column {
+        right: -40px;
     }
 }
 

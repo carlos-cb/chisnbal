@@ -7,9 +7,10 @@
             <link rel="stylesheet" href="{{ asset('bundles/chisnbal/css/detalle.css') }}" />
         {% endblock %}
 {% block content %}
-    <div class="cartlogo" style="position: absolute; right: 120px; top:100px;">
-        <ul>
-            <li><a href="{{ path('chisnbal_carrito_en') }}" id="cart"><i class="fa fa-shopping-cart" style="font-size: 20px; position: relative; top: 3px"></i> My Cart <span class="badge">{{ numItems }}</span></a></li>
+    <div class="cartlogo">
+        <ul class="cartlogo">
+            <li><a href="{{ path('chisnbal_carrito_en') }}" id="cart"><i class="fa fa-shopping-cart"></i> My Cart <span class="badge">{{ numItems }}</span></a></li>
+            <li><a class="link-text level-1-link" id="level-1-m789" href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign Out</a></li>
         </ul>
     </div>
     <div class="container-fluid">

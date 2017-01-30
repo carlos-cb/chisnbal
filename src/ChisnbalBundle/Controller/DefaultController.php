@@ -83,6 +83,9 @@ class DefaultController extends Controller
         $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.category=$categoryId and p.isShow=1");
         $products = $query->getResult();
 
+        if(!$this->getUser()){
+            return $this->redirectToRoute('fos_user_security_login');
+        }
         $cart = $this->getUser()->getCart();
         $cartItems = $cart->getCartItems();
         $numItems = count($cartItems);
@@ -102,6 +105,9 @@ class DefaultController extends Controller
         $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.isNew=1 and p.isShow=1");
         $products = $query->getResult();
 
+        if(!$this->getUser()){
+            return $this->redirectToRoute('fos_user_security_login');
+        }
         $cart = $this->getUser()->getCart();
         $cartItems = $cart->getCartItems();
         $numItems = count($cartItems);
