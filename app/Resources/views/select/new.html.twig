@@ -2,17 +2,17 @@
 
 {% block menuslide %}
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('chisnbal_homepage_admin') }}">总览  <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">报告</a></li>
-        <li><a href="#">分析</a></li>
+        <li><a href="{{ path('chisnbal_homepage_admin') }}"><i class="fa fa-tachometer" aria-hidden="true"></i> &nbsp;Visión Genenal  <span class="sr-only">(current)</span></a></li>
+        <li><a href="#"><i class="fa fa-info" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;Informe</a></li>
+        <li><a href="#"><i class="fa fa-bar-chart" aria-hidden="true"></i>&nbsp; Análisis</a></li>
     </ul>
     <ul class="nav nav-sidebar">
-        <li><a href="{{ path('user_index') }}">用户管理</a></li>
-        <li><a href="{{ path('category_index') }}">分类管理</a></li>
-        <li><a href="{{ path('product_index') }}">产品管理</a></li>
-        <li class="active"><a href="{{ path('select_new') }}">新品选择</a></li>
-        <li><a href="{{ path('orderinfo_index') }}">订单管理</a></li>
-        <li><a href="{{ path('fontproduct_index') }}">首页产品</a></li>
+        <li><a href="{{ path('user_index') }}"><i class="fa fa-users" aria-hidden="true"></i> &nbsp;&nbsp;用户管理</a></li>
+        <li><a href="{{ path('category_index') }}"><i class="fa fa-columns" aria-hidden="true"></i> &nbsp;&nbsp;分类管理</a></li>
+        <li><a href="{{ path('product_index') }}"><i class="fa fa-male" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;产品管理</a></li>
+        <li class="active"><a href="{{ path('select_new') }}"><i class="fa fa-heart" aria-hidden="true"></i> &nbsp;&nbsp;新品选择</a></li>
+        <li><a href="{{ path('orderinfo_index') }}"><i class="fa fa-credit-card" aria-hidden="true"></i> &nbsp;&nbsp;订单管理</a></li>
+        <li><a href="{{ path('fontproduct_index') }}"><i class="fa fa-bell" aria-hidden="true"></i> &nbsp;&nbsp;首页产品</a></li>
     </ul>
 {% endblock %}
 

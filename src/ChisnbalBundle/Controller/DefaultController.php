@@ -44,7 +44,34 @@ class DefaultController extends Controller
 
     public function backEndAction()
     {
-        return $this->render('ChisnbalBundle:BackEnd:overview.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $numUser = $em->getRepository('ChisnbalBundle:User')->createQueryBuilder('a')->select('COUNT(a.id)')->getQuery()->getSingleScalarResult();
+        $numOrder = $em->getRepository('ChisnbalBundle:OrderInfo')->createQueryBuilder('b')->select('COUNT(b.id)')->getQuery()->getSingleScalarResult();
+        $numProduct = $em->getRepository('ChisnbalBundle:Product')->createQueryBuilder('c')->select('COUNT(c.id)')->getQuery()->getSingleScalarResult();
+        $numCategory = $em->getRepository('ChisnbalBundle:Category')->createQueryBuilder('d')->select('COUNT(d.id)')->getQuery()->getSingleScalarResult();
+
+        $queryU = $em->createQuery("SELECT p FROM ChisnbalBundle:User p WHERE 1=1 order by p.id DESC")->setMaxResults(10);
+        $users = $queryU->getResult();
+
+        $queryO = $em->createQuery("SELECT t FROM ChisnbalBundle:OrderInfo t WHERE 1=1 order by t.id DESC")->setMaxResults(10);
+        $orders = $queryO->getResult();
+
+        $day6Orders = array();
+        for($i=0; $i<6; $i++){
+            $queryday6Orders[$i] = $em->createQuery("SELECT COUNT(o) FROM ChisnbalBundle:OrderInfo o where o.orderDate <= DATE_ADD(CURRENT_DATE(), (1-$i), 'day') and o.orderDate >= DATE_SUB(CURRENT_DATE(), $i, 'day')");
+            $day6Orders[$i] = $queryday6Orders[$i]->getSingleScalarResult();
+        }
+
+        return $this->render('ChisnbalBundle:BackEnd:overview.html.twig', array(
+            'numUser' => $numUser,
+            'numOrder' => $numOrder,
+            'numProduct' => $numProduct,
+            'numCategory' => $numCategory,
+            'users' => $users,
+            'orders' => $orders,
+            'day6Orders' => $day6Orders,
+        ));
     }
     
     public function productListAction($categoryId)

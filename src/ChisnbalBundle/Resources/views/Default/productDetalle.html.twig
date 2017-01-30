@@ -35,7 +35,7 @@
 
                 {% for fotodetalle in product.fotodetalles %}
                     <div class='imgdiv'>
-                            <a href="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}" class="imgzoom" title="Detalle de Foto" target="_blank">
+                            <a class="imgzoom" title="Detalle de Foto">
                                 <img id="imgzoom" src="{{ asset('uploads/fotos/' ~ fotodetalle.fotodetalle) }}">
                             </a>
                         <div class="product-info">
