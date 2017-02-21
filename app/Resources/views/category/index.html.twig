@@ -32,6 +32,7 @@
             <th>产品分类名西语</th>
             <th>产品分类名英语</th>
             <th>备注</th>
+            <th>是否显示</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -42,6 +43,14 @@
                 <td>{{ category.categoryNameEs }}</td>
                 <td>{{ category.categoryNameEn }}</td>
                 <td>{{ category.description }}</td>
+                <td>{% if category.isShow %}
+                        显示<br>
+                        <a href="{{ path('category_changeShow', { 'id': category.id }) }}" class="button button-tiny button-highlight">切换</a>
+                    {% else %}
+                        不显示<br>
+                        <a href="{{ path('category_changeShow', { 'id': category.id }) }}" class="button button-tiny button-action">切换</a>
+                    {% endif %}
+                </td>
                 <td>
                     <ul>
                         <li>

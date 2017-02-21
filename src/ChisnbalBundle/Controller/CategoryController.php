@@ -40,6 +40,7 @@ class CategoryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $category->setIsShow(1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);
             $em->flush();
@@ -124,5 +125,16 @@ class CategoryController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    public function changeShowAction(Category $category)
+    {
+        $category->setIsShow(!$category->getIsShow());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($category);
+        $em->flush();
+
+        return $this->redirectToRoute('category_index');
     }
 }

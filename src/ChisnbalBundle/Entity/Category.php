@@ -157,4 +157,32 @@ class Category
     public function __toString() {
         return strval($this->id);
     }
+    /**
+     * @var boolean
+     */
+    private $isShow;
+
+
+    /**
+     * Set isShow
+     *
+     * @param boolean $isShow
+     * @return Category
+     */
+    public function setIsShow($isShow)
+    {
+        $this->isShow = $isShow;
+
+        return $this;
+    }
+
+    /**
+     * Get isShow
+     *
+     * @return boolean 
+     */
+    public function getIsShow()
+    {
+        return $this->isShow;
+    }
 }

@@ -46,7 +46,7 @@ class DefaultEnController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
+        $categories = $em->getRepository('ChisnbalBundle:Category')->findByIsShow(true);
 
         $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.category=$categoryId and p.isShow=1");
         $products = $query->getResult();
@@ -65,7 +65,7 @@ class DefaultEnController extends Controller
     public function productListNewAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
+        $categories = $em->getRepository('ChisnbalBundle:Category')->findByIsShow(true);
 
         $query = $em->createQuery("SELECT p FROM ChisnbalBundle:Product p WHERE p.isNew=1 and p.isShow=1");
         $products = $query->getResult();
@@ -85,7 +85,7 @@ class DefaultEnController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('ChisnbalBundle:Category')->findAll();
+        $categories = $em->getRepository('ChisnbalBundle:Category')->findByIsShow(true);
 
         $product = $this->getProductInfo($productId);
 

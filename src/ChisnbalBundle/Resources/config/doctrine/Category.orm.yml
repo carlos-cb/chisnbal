@@ -19,6 +19,8 @@ ChisnbalBundle\Entity\Category:
             type: string
             length: 255
             nullable: true
+        isShow:
+            type: boolean
     oneToMany:
         products:
             targetEntity: Product

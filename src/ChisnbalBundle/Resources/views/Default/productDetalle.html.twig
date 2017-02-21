@@ -17,9 +17,7 @@
         <div class="row">
             <div class="col-sm-1 col-md-1 col-lg-1 sidebar">
                 <ul class="category" id="category">
-                    <li class="nuevo"><a href="{{ path('chisnbal_product_list_new') }}">ÚLTIMA<br>SEMANA</a></li>
-                    <i class="empty-divider" role="separator">&nbsp;</i>
-                    <li class="mujer">HOMBRE</li>
+                    <li class="mujer"><a href="{{ path('chisnbal_product_list_new') }}" style="color:red;">REBAJAS</a></li>
                     <i class="empty-divider" role="separator">&nbsp;</i>
                     {% for category in categories %}
                         <li class="_category-link" data-categoryid="{{ category.id }}" tabindex="0">

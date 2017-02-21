@@ -52,8 +52,14 @@
                 <td>{{ product.codigo }}</td>
                 <td><a href="{{ asset('uploads/fotos/' ~ product.foto) }}"><img src="{{ asset('uploads/fotos/' ~ product.foto) }}" height="120px" width="100px"></a></td>
                 <td>{{ product.categoryName }}</td>
-                <td>{% if product.isShow %}显示{% else %}不显示{% endif %}<br>
-                    <a href="{{ path('product_changeShow', { 'id': product.id }) }}" class="button button-tiny button-highlight">显示切换</a>
+                <td>
+                    {% if product.isShow %}
+                        显示<br>
+                        <a href="{{ path('product_changeShow', { 'id': product.id }) }}" class="button button-tiny button-highlight">切换</a>
+                    {% else %}
+                        不显示<br>
+                        <a href="{{ path('product_changeShow', { 'id': product.id }) }}" class="button button-tiny button-action">切换</a>
+                    {% endif %}
                 </td>
                 <td>{% if product.isHunzhuang %}混装{% else %}单色{% endif %}</td>
                 <td>

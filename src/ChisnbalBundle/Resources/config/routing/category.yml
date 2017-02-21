@@ -22,3 +22,7 @@ category_delete:
     path:     /{id}/delete
     defaults: { _controller: "ChisnbalBundle:Category:delete" }
     methods:  DELETE
+
+category_changeShow:
+    path:     /{id}/changeShow
+    defaults: { _controller: "ChisnbalBundle:Category:changeShow" }
